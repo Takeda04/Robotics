@@ -200,7 +200,7 @@ export const Navbar = () => {
             RU
           </Button>
         </ButtonGroup>
-        <div onClick={handleToggle} className="cursor-pointer">
+        <button onClick={handleToggle} className="cursor-pointer">
           <div className="relative w-9 h-9">
             <div
               className={`absolute inset-0 flex justify-center items-center transition-all duration-300 ${
@@ -226,7 +226,7 @@ export const Navbar = () => {
               />
             </div>
           </div>
-        </div>
+        </button>
       </NavbarContent>
       <NavbarMenu className="mt-[100px] gap-y-5">
         <NavbarItem>
