@@ -1,0 +1,8 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.font-tektur {
+    font-family: var(--font-tektur), sans-serif;
+}
+  
