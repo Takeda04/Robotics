@@ -102,6 +102,7 @@ export const PlayIcon = ({}) => {
       viewBox="0 0 80 48"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
+      className="absolute"
     >
       <rect x="0.5" y="0.5" width="79" height="47" rx="23.5" stroke="white" />
       <path

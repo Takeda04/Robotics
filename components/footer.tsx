@@ -10,7 +10,8 @@ import { ClockIcon, LocationIcon, PhoneIcon } from "@/assets/icons/icons";
 import { Button, ButtonGroup } from "@nextui-org/button";
 import { Input } from "@nextui-org/input";
 import { Select, SelectItem } from "@nextui-org/react";
-import CarouselSlider from "./carousel";
+
+import CustomCarousel from "./carousel";
 
 export const Footer = () => {
   const [activeLanguage, setActiveLanguage] = useState("S1");
@@ -21,8 +22,8 @@ export const Footer = () => {
 
   return (
     <section>
-      <div className="container mx-auto max-w-7xl">
-        <CarouselSlider />
+      <div className="container mx-auto max-w-7xl overflow-hidden">
+        <CustomCarousel/>
       </div>
 
       <div className="container mx-auto max-w-7xl">
