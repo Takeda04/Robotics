@@ -162,17 +162,18 @@ export const Navbar = () => {
             </Link>
           </NavbarItem>
           <Button
-            style={{
-              borderColor: "#F0D625",
-              background: "#F0D625",
-              color: "#000000",
-              boxShadow:
-                "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
-            }}
-            className={`${fontTektur.variable} font-tektur font-bold text-[24px]`}
-          >
-            Позвонить
-          </Button>
+  onClick={() => window.open('tel:+998998552572')}
+  style={{
+    borderColor: "#F0D625",
+    background: "#F0D625",
+    color: "#000000",
+    boxShadow: "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
+  }}
+  className={`${fontTektur.variable} font-tektur font-bold text-[24px]`}
+>
+  Позвонить
+</Button>
+
           <ButtonGroup className="hidden sm:flex">
             <Button
               onClick={() => handleLanguageChange("UZ")}

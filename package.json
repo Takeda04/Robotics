@@ -23,6 +23,9 @@
 		"@nextui-org/theme": "2.2.11",
 		"@react-aria/ssr": "3.9.4",
 		"@react-aria/visually-hidden": "3.8.12",
+		"@tsparticles/engine": "^3.5.0",
+		"@tsparticles/react": "^3.0.0",
+		"@tsparticles/slim": "^3.5.0",
 		"clsx": "2.1.1",
 		"css-loader": "^7.1.2",
 		"file-loader": "^6.2.0",
@@ -35,7 +38,8 @@
 		"react-icons": "^5.3.0",
 		"react-multi-carousel": "^2.8.5",
 		"react-slick": "^0.30.2",
-		"styled-components": "^6.1.13"
+		"styled-components": "^6.1.13",
+		"swiper": "^11.1.14"
 	},
 	"devDependencies": {
 		"@types/node": "20.5.7",

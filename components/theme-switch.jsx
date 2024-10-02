@@ -11,7 +11,6 @@ import clsx from "clsx";
 
 import { SunFilledIcon, MoonFilledIcon } from "@/components/icons";
 
-
 export const ThemeSwitch = ({
   className,
   classNames,
@@ -20,7 +19,10 @@ export const ThemeSwitch = ({
   const isSSR = useIsSSR();
 
   const onChange = () => {
-    theme === "light" ? setTheme("dark") : setTheme("light");
+    // Only switch to dark mode
+    if (theme !== "dark") {
+      setTheme("dark");
+    }
   };
 
   const {
@@ -32,7 +34,7 @@ export const ThemeSwitch = ({
     getWrapperProps,
   } = useSwitch({
     isSelected: theme === "dark" || isSSR,
-    "aria-label": `Switch to ${theme === "dark" || isSSR ? "dark" : "dark"} mode`,
+    "aria-label": `Switch to ${theme === "dark" ? "dark" : "dark"} mode`,
     onChange,
   });
 
@@ -68,10 +70,10 @@ export const ThemeSwitch = ({
           ),
         })}
       >
-        {!isSelected || isSSR ? (
-          <SunFilledIcon size={22} />
-        ) : (
+        {isSelected || isSSR ? (
           <MoonFilledIcon size={22} />
+        ) : (
+          <SunFilledIcon size={22} />
         )}
       </div>
     </Component>

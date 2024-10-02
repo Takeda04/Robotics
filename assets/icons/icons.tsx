@@ -112,3 +112,17 @@ export const PlayIcon = ({}) => {
     </svg>
   );
 };
+
+export const LogoIcon = ({}) => {
+  return (
+    <svg
+      width="111"
+      height="111"
+      viewBox="0 0 111 111"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <circle cx="55.5" cy="55.5" r="55.5" fill="#FFE000" />
+    </svg>
+  );
+};
