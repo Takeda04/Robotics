@@ -162,17 +162,18 @@ export const Navbar = () => {
             </Link>
           </NavbarItem>
           <Button
-  onClick={() => window.open('tel:+998998552572')}
-  style={{
-    borderColor: "#F0D625",
-    background: "#F0D625",
-    color: "#000000",
-    boxShadow: "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
-  }}
-  className={`${fontTektur.variable} font-tektur font-bold text-[24px]`}
->
-  Позвонить
-</Button>
+            onClick={() => window.open("tel:+998998552572")}
+            style={{
+              borderColor: "#F0D625",
+              background: "#F0D625",
+              color: "#000000",
+              boxShadow:
+                "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
+            }}
+            className={`${fontTektur.variable} font-tektur font-bold text-[24px]`}
+          >
+            Позвонить
+          </Button>
 
           <ButtonGroup className="hidden sm:flex">
             <Button
@@ -205,7 +206,7 @@ export const Navbar = () => {
 
       {/* Mobile version */}
       {isMobile && (
-        <NavbarContent className="custom-lg:hidden basis-1 pl-4" justify="end">
+        <NavbarContent className="custom-lg:hidden" justify="end">
           <ButtonGroup className="flex">
             <Button
               onClick={() => handleLanguageChange("UZ")}
@@ -304,35 +305,35 @@ export const Navbar = () => {
             }}
           >
             <DropdownItem
-                href="/robotic"
-                className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
-              >
-                Robotics
-              </DropdownItem>
-              <DropdownItem
-                href="/english"
-                className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
-              >
-                English
-              </DropdownItem>
-              <DropdownItem
-                href="/painting_children"
-                className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
-              >
-                Painting for children
-              </DropdownItem>
-              <DropdownItem
-                href="/painting_olders"
-                className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
-              >
-                Painting for olders
-              </DropdownItem>
-              <DropdownItem
-                href="/chess"
-                className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
-              >
-                Chess
-              </DropdownItem>
+              href="/robotic"
+              className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
+            >
+              Robotics
+            </DropdownItem>
+            <DropdownItem
+              href="/english"
+              className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
+            >
+              English
+            </DropdownItem>
+            <DropdownItem
+              href="/painting_children"
+              className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
+            >
+              Painting for children
+            </DropdownItem>
+            <DropdownItem
+              href="/painting_olders"
+              className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
+            >
+              Painting for olders
+            </DropdownItem>
+            <DropdownItem
+              href="/chess"
+              className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
+            >
+              Chess
+            </DropdownItem>
           </DropdownMenu>
         </Dropdown>
 
