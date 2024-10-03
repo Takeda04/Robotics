@@ -16,7 +16,7 @@ export default function Home() {
         <div className="absolute md:relative mt-0 md:mt-36 -top-[93px] md:-top-20 z-50 p-1 container mx-auto max-w-7xl flex items-center justify-between ">
           <Card />
           <Image
-            className="w-[192px] h-[201px] md:w-[600px] md:h-[600px]"
+            className="w-[166px] h-[201px] md:w-[600px] md:h-[600px]"
             src={robot}
             width={500}
             height={500}
