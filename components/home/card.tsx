@@ -21,7 +21,7 @@ const Card = () => {
         твой проводник в мир технологий и искусства
       </p>
       <p className={`text-[#000] text-[14px] sm:text-[22px] md:text-[32px] lg:text-[40px]`}>получите бесплатное первое занятие</p>
-      <Button className="bg-black text-[#FFE001] text-[16px] sm:text-[32px] md:h-[150px]">Перейти к курсам</Button>
+      <Button className="bg-black text-[#FFE001] text-[16px] sm:text-[32px] md:h-[150px] mt-2 md:mt-0">Перейти к курсам</Button>
     </div>
   );
 };

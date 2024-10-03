@@ -70,7 +70,7 @@ export default function Home() {
         >
           Авторские кусы от JustRobotics
         </p>
-        <div className="flex md:flex-wrap items-center justify-center gap-[20px] md:gap-[58px] my-10 overflow-y-scroll">
+        <div className="flex md:flex-wrap items-center gap-[20px] sm:justify-center md:gap-[58px] my-10 overflow-y-scroll">
           {images.map(({ image, text, link }) => (
             <HomeCard image={image} text={text} link={link} key={link} />
           ))}

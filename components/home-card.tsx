@@ -2,6 +2,7 @@ import { fontTektur } from "@/config/fonts";
 import { Button } from "@nextui-org/button";
 import Image from "next/image";
 import React from "react";
+import { GrFormNextLink } from "react-icons/gr";
 
 const HomeCard = ({ image, text, link }: any) => {
   return (
@@ -27,8 +28,8 @@ const HomeCard = ({ image, text, link }: any) => {
         </p>
       </span>
       <div className="flex items-end justify-end mb-0">
-        <Button className="mb-0 bg-black rounded-full text-white text-end hidden sm:block">
-          {"Подробнее о кусе ->"}
+        <Button endContent={<GrFormNextLink className="text-[2xl]" />} className="mb-0 bg-black rounded-full text-white text-end hidden sm:flex">
+          {"Подробнее о кусе"}
         </Button>
       </div>
     </div>
