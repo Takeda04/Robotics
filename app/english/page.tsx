@@ -284,8 +284,8 @@ export default function RoboticsPage() {
           </Button>
         </div>
         <div className="flex items-center gap-[10px] justify-between sm:justify-center md:gap-[28px] my-10 py-0 md:py-5 px-2 md:px-0 overflow-x-scroll">
-          {[1, 2, 3].map(() => (
-            <FootCard />
+          {[1, 2, 3].map((idx) => (
+            <FootCard key={idx}/>
           ))}
         </div>
       </section>
