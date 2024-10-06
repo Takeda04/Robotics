@@ -1,3 +1,5 @@
+'use client'
+
 import HomeCard from "@/components/home-card";
 
 import { fontTektur } from "@/config/fonts";
@@ -8,6 +10,9 @@ import Image from "next/image";
 import borderimg from "@/assets/icons/cardbottom.png";
 import robot from "@/assets/icons/home_robot.png";
 import Card from "@/components/home/card";
+import CustomCarousel from "@/components/carousel";
+import { Input } from "@nextui-org/input";
+import { Button, Select, SelectItem } from "@nextui-org/react";
 
 export default function Home() {
   return (
@@ -70,11 +75,69 @@ export default function Home() {
         >
           Авторские кусы от JustRobotics
         </p>
-        <div className="flex md:flex-wrap items-center gap-[20px] sm:justify-center md:gap-[58px] my-10 overflow-y-scroll">
+        <div className="flex md:flex-wrap items-center gap-[20px] sm:justify-center md:gap-[58px] my-10 overflow-x-scroll">
           {images.map(({ image, text, link }) => (
             <HomeCard image={image} text={text} link={link} key={link} />
           ))}
         </div>
+
+        <div className="container mx-auto max-w-7xl overflow-hidden ">
+        <p className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] md:text-[32px] font-bold text-center md:text-start`}>отзывы</p>
+        <CustomCarousel/>
+      </div>
+
+      <div className="container mx-auto max-w-7xl">
+        <p
+          className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] text-center font-bold`}
+        >
+          Получите бесплатный первый урок
+        </p>
+      </div>
+
+      <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-center justify-center gap-4 sm:gap-5">
+        <Input
+          type="name"
+          label="Ваше имя"
+          variant="bordered"
+          className="w-full sm:w-[240px]" // Full width on smaller screens
+        />
+        <Input
+          type="phone"
+          label="Номер телефона"
+          variant="bordered"
+          className="w-full sm:w-[240px]" // Full width on smaller screens
+        />
+        <Select
+          label="Выберете курс"
+          variant="bordered"
+          className="w-full sm:w-[240px]" // Full width on smaller screens
+        >
+          {[
+            "Robotics",
+            "English",
+            "Chess",
+            "Painting for children",
+            "Painting for olders",
+          ].map((course, index) => (
+            <SelectItem key={index}>{course}</SelectItem>
+          ))}
+        </Select>
+        <Input
+          type="age"
+          label="Возраст"
+          variant="bordered"
+          className="w-full sm:w-[240px]" // Full width on smaller screens
+        />
+        <Button
+          style={{
+            boxShadow:
+              "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
+          }}
+          className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[55px] text-[24px]`}
+        >
+          Получить
+        </Button>
+      </div>
       </section>
     </div>
   );

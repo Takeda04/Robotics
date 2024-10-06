@@ -5,9 +5,10 @@ import React from "react";
 import { GrFormNextLink } from "react-icons/gr";
 
 const HomeCard = ({ image, text, link }: any) => {
+  
   return (
     <div
-      className="flex flex-col justify-between md:w-[551px] min-w-[300px] md:h-[508px] md:bg-[#F0D625] w-[250px] h-[306px] bg-[#181818]  shadow-yellow-400 px-[15px] py-[15px]  md:px-[51px] md:py-[43px]"
+      className="flex flex-col justify-between md:w-[551px] min-w-[300px] md:h-[508px] md:bg-[#F0D625] w-[250px] h-[315px] bg-[#181818] px-[15px] py-[15px]  md:px-[51px] md:py-[43px]"
       style={{
         borderRadius: "30px",
       }}

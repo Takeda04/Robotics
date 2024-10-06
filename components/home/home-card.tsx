@@ -4,7 +4,7 @@ import React from "react";
 const StatCard = ({ text, subText }: any) => {
   return (
     <div
-      className="w-[195px] h-[110px] md:w-[398px] md:h-[369px] bg-[#F0D625] rounded-3xl flex flex-col items-center justify-center mx-auto"
+      className="w-[165px] h-[110px] md:w-[398px] md:h-[369px] bg-[#F0D625] rounded-3xl flex flex-col items-center justify-center mx-auto"
       style={{
         boxShadow: "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
       }}
