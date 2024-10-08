@@ -4,15 +4,16 @@ import { fontTektur } from "@/config/fonts";
 
 import Image from "next/image";
 import borderimg from "@/assets/icons/cardbottom.png";
-import child from "@/assets/images/child.png";
+import older from "@/assets/images/olders.png";
 import CustomCarousel from "@/components/carousel";
 import { Input } from "@nextui-org/input";
 import { Button, Select, SelectItem } from "@nextui-org/react";
 import FootCard from "@/components/robotics/foot-card";
 import HeadCard from "@/components/robotics/head-card";
 
-import bigchild from "@/assets/images/child_big.png";
+import bigchild from "@/assets/images/girl_image.png";
 import secondimage from "@/assets/images/english2.png";
+import call from "@/assets/images/call.png";
 
 import thirdimage from "@/assets/images/english3.png";
 import fourthimage from "@/assets/images/english4.png";
@@ -45,19 +46,19 @@ export default function PaintingOlderPage() {
 
   return (
     <div className="realtive">
-      <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 flex">
-        <div className="absolute md:relative mt-0 md:mt-36 -top-[93px] md:-top-20 z-50 p-1 container mx-auto max-w-7xl flex items-center justify-between ">
+      <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 flex overflow-hidden">
+        <div className="absolute md:relative mt-0 md:mt-36 -top-[93px] md:-top-20 z-50 p-1 container mx-auto max-w-7xl flex items-center justify-between">
           <div className="w-full">
             <p
-              className={`absolute -top-10 md:top-0 ${fontTektur.variable}  font-tektur text-[#FFDE00] text-[26px] md:text-[84px] font-bold`}
+              className={`absolute -top-10 md:top-0 ${fontTektur.variable}  font-tektur text-[#FFDE00] text-[26px] md:text-[84px] font-bold w-[300px] md:w-[800px]`}
             >
-              Живопись для <br /> взрослых
+              Живопись для взрослых
             </p>
             <p
-              className={`absolute md:relative top-10 mt-0 md:mt-[80px] ${fontTektur.variable} font-tektur font-normal text-[#FFFFFF] text-[14px] md:text-[24px]`}
+              className={`absolute md:relative top-10 mt-0 md:mt-[60px] ${fontTektur.variable} font-tektur font-normal text-[#FFFFFF] text-[14px] md:text-[24px]`}
             >
               практический курс пробуждающий интерес к робототехнике и физике у
-              вашего ребенка 
+              вашего ребенка
               <strong> от 5 до 18 лет</strong>
             </p>
 
@@ -104,8 +105,8 @@ export default function PaintingOlderPage() {
             </div>
           </div>
           <Image
-            className="w-[303px] h-[213.5px] md:w-[800px] md:h-[605px] rounded-br-3xl md:rounded-none"
-            src={child}
+            className="w-[303px] h-[253.5px] -mt-[56px] md:mt-0 mr-0 md:-mr-[100px] md:w-[500px] md:h-[605px] rounded-br-3xl md:rounded-none "
+            src={older}
             width={500}
             height={500}
             alt="home robot"
@@ -147,9 +148,46 @@ export default function PaintingOlderPage() {
           Обучения
         </p>
         <div className="flex flex-wrap items-center justify-between gap-y-7 p-3 md:p-0 transition-all duration-300 ease-in-out">
-          
+          {/* Render only the visible cards */}
+          {[1, 2, 3, 4, 5, 6].slice(0, visibleCards).map((_, index) => (
+            <div
+              key={index}
+              className={`w-full md:w-[30%] transition-opacity duration-300 ${
+                !showAll && isMobile && index > 2
+                  ? "opacity-0 h-0"
+                  : "opacity-100 h-auto"
+              }`}
+            >
+              <ChildCard />
+            </div>
+          ))}
         </div>
 
+        {/* Show "Больше" button only on mobile */}
+        {isMobile && (
+          <Button onClick={toggleShowAll} className="mx-auto flex md:hidden">
+            {showAll ? "Меньше" : "Больше"}
+          </Button>
+        )}
+      </section>
+      <section className="relative container mx-auto max-w-7xl my-20">
+        <Image
+          width={500}
+          height={500}
+          src={call}
+          alt="call image"
+          className="w-full"
+        />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center space-y-0 md:space-y-10">
+          <p
+            className={`${fontTektur.variable} w-[306px] md:w-[872px] font-tektur text-[#FFFFFF] text-[15px] md:text-[32px] text-center font-bold`}
+          >
+            Приглашаем на первый бесплатный урок
+          </p>
+          <Button className="bg-[#FFE000] text-[#000] w-[208px] h-[25px] md:w-[530px] md:h-[51px] text-[15px] md:text-[32px]" variant="bordered">
+            Записаться
+          </Button>
+        </div>
       </section>
 
       <section className="container mx-auto max-w-7xl my-5">
@@ -162,11 +200,11 @@ export default function PaintingOlderPage() {
 
         <div className="flex md:flex-wrap px-5 md:px-0 flex-row items-start gap-3 overflow-x-scroll">
           {/* First large image */}
-          <div className="min-w-[200px] w-[200px] h-[150px] md:w-full md:h-[602px]">
+          <div className="min-w-[200px] w-[200px] h-[150px] md:w-full md:h-[825px]">
             <Image
               src={bigchild}
               alt="First image"
-              className="w-full h-full object-cover rounded-lg shadow-lg"
+              className="w-full h-full object-fill rounded-lg shadow-lg"
             />
           </div>
 
@@ -263,7 +301,7 @@ export default function PaintingOlderPage() {
         </div>
         <div className="flex items-center gap-[10px] justify-between sm:justify-center md:gap-[28px] my-10 py-0 md:py-5 px-2 md:px-0 overflow-x-scroll">
           {[1, 2, 3].map((idx) => (
-            <FootCard key={idx}/>
+            <FootCard key={idx} />
           ))}
         </div>
       </section>
