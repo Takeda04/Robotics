@@ -98,18 +98,18 @@ export default function Home() {
         <Input
           type="name"
           label="Ваше имя"
-          variant="bordered"
+          variant="flat"
           className="w-full sm:w-[240px]" // Full width on smaller screens
         />
         <Input
           type="phone"
           label="Номер телефона"
-          variant="bordered"
+          variant="flat"
           className="w-full sm:w-[240px]" // Full width on smaller screens
         />
         <Select
           label="Выберете курс"
-          variant="bordered"
+          variant="flat"
           className="w-full sm:w-[240px]" // Full width on smaller screens
         >
           {[
@@ -125,7 +125,7 @@ export default function Home() {
         <Input
           type="age"
           label="Возраст"
-          variant="bordered"
+          variant="flat"
           className="w-full sm:w-[240px]" // Full width on smaller screens
         />
         <Button

@@ -7,17 +7,16 @@ import { FaInstagram, FaTelegramPlane, FaYoutube } from "react-icons/fa";
 import { Link } from "@nextui-org/link";
 import { fontTektur } from "@/config/fonts";
 import { ClockIcon, LocationIcon, PhoneIcon } from "@/assets/icons/icons";
-import { Button, ButtonGroup } from "@nextui-org/button";
-import { Input } from "@nextui-org/input";
-import { Select, SelectItem } from "@nextui-org/react";
-
-import CustomCarousel from "./carousel";
+import { Button } from "@nextui-org/button";
+import { useRouter } from "next/navigation";
 
 export const Footer = () => {
   const [activeLanguage, setActiveLanguage] = useState("S1");
+  const router = useRouter();
 
-  const handleLanguageChange = (lang: string) => {
-    setActiveLanguage(lang);
+  const handleLanguageChange = (position: string, map:string) => {
+    setActiveLanguage(position);
+    router.push(map)
   };
 
   return (
@@ -26,7 +25,7 @@ export const Footer = () => {
 
       <div className="container mx-auto max-w-7xl flex items-center justify-center sm:justify-start">
         <Button
-          onClick={() => handleLanguageChange("S1")}
+          onClick={() => handleLanguageChange("S1", "https://yandex.uz/maps/-/CDXeEHMG")}
           style={{
             background: activeLanguage === "S1" ? "#F0D625" : "#ffffff",
             color: "#000000",
@@ -40,7 +39,7 @@ export const Footer = () => {
           Филиал Ц4
         </Button>
         <Button
-          onClick={() => handleLanguageChange("BERUNIY")}
+          onClick={() => handleLanguageChange("BERUNIY", "https://yandex.uz/maps/-/CDXeI49L")}
           style={{
             background: activeLanguage === "BERUNIY" ? "#F0D625" : "#ffffff",
             color: "#000000",

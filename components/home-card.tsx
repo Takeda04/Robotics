@@ -1,10 +1,17 @@
 import { fontTektur } from "@/config/fonts";
 import { Button } from "@nextui-org/button";
 import Image from "next/image";
+import { useRouter } from "next/navigation";
 import React from "react";
 import { GrFormNextLink } from "react-icons/gr";
 
 const HomeCard = ({ image, text, link }: any) => {
+
+  const router = useRouter();
+
+  const navigator = (page: string) => {
+    router.push(page);
+  };
   
   return (
     <div
@@ -29,7 +36,7 @@ const HomeCard = ({ image, text, link }: any) => {
         </p>
       </span>
       <div className="flex items-end justify-end mb-0">
-        <Button endContent={<GrFormNextLink className="text-[2xl]" />} className="mb-0 bg-black rounded-full text-white text-end hidden sm:flex">
+        <Button  onClick={() => navigator(link)}  endContent={<GrFormNextLink className="text-[2xl]" />} className="mb-0 bg-black rounded-full text-white text-end hidden sm:flex">
           {"Подробнее о кусе"}
         </Button>
       </div>

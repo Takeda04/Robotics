@@ -8,17 +8,17 @@ export const images = [
   {
     image: home,
     text: "Робототехника",
-    link: "/robotics",
+    link: "/robotic",
   },
   {
     image: home2,
     text: "Живопись для детей",
-    link: "/paiting_for_children",
+    link: "/painting_children",
   },
   {
     image: home3,
     text: "Живопись для взрослых",
-    link: "/paiting_for_olders",
+    link: "/painting_olders",
   },
   {
     image: home4,
