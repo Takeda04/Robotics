@@ -11,7 +11,9 @@ import {
   SelectItem,
   useDisclosure,
 } from "@nextui-org/react";
+import Image from "next/image";
 import React from "react";
+import robot from "@/assets/images/modal_robot.png";
 
 const Card = () => {
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
@@ -49,68 +51,85 @@ const Card = () => {
       <Modal
         isOpen={isOpen}
         onOpenChange={onOpenChange}
-        placement="top-center"
+        placement="center"
         backdrop="blur"
         className="bg-black py-[30px]"
+        size="3xl"
       >
         <ModalContent>
           {(onClose) => (
             <>
-              <ModalBody>
-                <Input
-                  labelPlacement="outside"
-                  label="Введите свое имя"
-                  placeholder="Patrick"
-                  variant="bordered"
-                />
-                <Input
-                  labelPlacement="outside"
-                  label="Введите свое второе имя"
-                  placeholder="Handsome"
-                  variant="bordered"
-                />
-                <Input
-                  labelPlacement="outside"
-                  label="Введите номер телефона"
-                  placeholder="+998901234567"
-                  variant="bordered"
-                  type="tel"
-                />
-                <div className="flex w-full gap-5">
-                  <Input
-                    labelPlacement="outside"
-                    label="Возраст"
-                    placeholder="14"
-                    variant="bordered"
-                    type="age"
-                    className="w-[200px]"
-                  />
-                  <Select
-                    labelPlacement="outside"
-                    label="Выберете курс"
-                    variant="bordered"
-                    className="w-full sm:w-[240px]" // Full width on smaller screens
-                  >
-                    {[
-                      "Robotics",
-                      "English",
-                      "Chess",
-                      "Painting for children",
-                      "Painting for olders",
-                    ].map((course, index) => (
-                      <SelectItem key={index}>{course}</SelectItem>
-                    ))}
-                  </Select>
+              <div className="flex flex-col items-center">
+                <ModalHeader className="text-2xl">Приглашаем на первый урок!</ModalHeader>
+                <div className="sm:flex items-center justify-around">
+                  <div className="w-[400px] ">
+                    <ModalBody>
+                      <Input
+                        labelPlacement="outside"
+                        label="Введите свое имя"
+                        placeholder="Patrick"
+                        variant="bordered"
+                      />
+                      <Input
+                        labelPlacement="outside"
+                        label="Введите свое второе имя"
+                        placeholder="Handsome"
+                        variant="bordered"
+                      />
+                      <Input
+                        labelPlacement="outside"
+                        label="Введите номер телефона"
+                        placeholder="+998901234567"
+                        variant="bordered"
+                        type="tel"
+                      />
+                      <div className="flex w-full gap-5">
+                        <Input
+                          labelPlacement="outside"
+                          label="Возраст"
+                          placeholder="14"
+                          variant="bordered"
+                          type="age"
+                          className="w-[200px]"
+                        />
+                        <Select
+                          labelPlacement="outside"
+                          label="Выберете курс"
+                          variant="bordered"
+                          className="w-full sm:w-[240px]" // Full width on smaller screens
+                        >
+                          {[
+                            "Robotics",
+                            "English",
+                            "Chess",
+                            "Painting for children",
+                            "Painting for olders",
+                          ].map((course, index) => (
+                            <SelectItem key={index}>{course}</SelectItem>
+                          ))}
+                        </Select>
+                      </div>
+                    </ModalBody>
+                  </div>
+                  <div className="flex flex-col items-center justify-between">
+                    <Image
+                      src={robot}
+                      alt="modal robot"
+                      width={200}
+                      height={130}
+                      className="hidden md:flex w-[250px] h-[200px]"
+                    />
+                    <ModalFooter className="m-0  md:mt-14 ml-0 md:ml-8">
+                      <Button color="danger" variant="flat" onPress={onClose}>
+                        Назад
+                      </Button>
+                      <Button color="primary" onPress={onClose}>
+                        Записать
+                      </Button>
+                    </ModalFooter>
+                  </div>
                 </div>
-              </ModalBody>
-              <ModalFooter>
-                <Button color="danger" variant="flat" onPress={onClose}>
-                  Назад
-                </Button>
-                <Button color="primary" onPress={onClose}>
-                  Записать
-                </Button>
-              </ModalFooter>
+              </div>
             </>
           )}
         </ModalContent>
