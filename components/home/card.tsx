@@ -59,7 +59,6 @@ const Card = () => {
               <ModalBody>
                 <Input
                   labelPlacement="outside"
-                  autoFocus
                   label="Введите свое имя"
                   placeholder="Patrick"
                   variant="bordered"
