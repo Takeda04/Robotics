@@ -202,23 +202,30 @@ export default function RoboticsPage() {
           </p>
         </div>
 
-        <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-center justify-center gap-4 sm:gap-5">
+        <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5">
           <Input
-            type="name"
+            labelPlacement="outside"
+            placeholder="John Doe"
+            variant="flat"
+            className="w-full sm:w-[240px]"
+            type="email"
             label="Ваше имя"
-            variant="bordered"
-            className="w-full sm:w-[240px]" // Full width on smaller screens
           />
+
           <Input
+            labelPlacement="outside"
             type="phone"
             label="Номер телефона"
-            variant="bordered"
-            className="w-full sm:w-[240px]"
+            placeholder="+9998901234567"
+            variant="flat"
+            className="w-full sm:w-[240px]" // Full width on smaller screens
           />
           <Select
+            labelPlacement="outside"
             label="Выберете курс"
-            variant="bordered"
-            className="w-full sm:w-[240px]"
+            placeholder="Robotics"
+            variant="flat"
+            className="w-full sm:w-[240px]" // Full width on smaller screens
           >
             {[
               "Robotics",
@@ -231,9 +238,11 @@ export default function RoboticsPage() {
             ))}
           </Select>
           <Input
+            labelPlacement="outside"
             type="age"
+            placeholder="10"
             label="Возраст"
-            variant="bordered"
+            variant="flat"
             className="w-full sm:w-[240px]" // Full width on smaller screens
           />
           <Button
@@ -241,7 +250,7 @@ export default function RoboticsPage() {
               boxShadow:
                 "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
             }}
-            className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[55px] text-[24px]`}
+            className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[40px] text-[24px]`}
           >
             Получить
           </Button>

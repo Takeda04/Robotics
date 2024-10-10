@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import HomeCard from "@/components/home-card";
 
@@ -82,68 +82,75 @@ export default function Home() {
         </div>
 
         <div className="container mx-auto max-w-7xl overflow-hidden ">
-        <p className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] md:text-[32px] font-bold text-center md:text-start`}>отзывы</p>
-        <CustomCarousel/>
-      </div>
+          <p
+            className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] md:text-[32px] font-bold text-center md:text-start`}
+          >
+            отзывы
+          </p>
+          <CustomCarousel />
+        </div>
 
-      <div className="container mx-auto max-w-7xl">
-        <p
-          className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] text-center font-bold`}
-        >
-          Получите бесплатный первый урок
-        </p>
-      </div>
+        <div className="container mx-auto max-w-7xl">
+          <p
+            className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] text-center font-bold`}
+          >
+            Получите бесплатный первый урок
+          </p>
+        </div>
 
-      <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-center justify-center gap-4 sm:gap-5">
-        <Input
-        labelPlacement="outside"
-        description="outside"
-          type="name"
-          label="Ваше имя"
-          variant="flat"
-          className="w-full sm:w-[240px]" // Full width on smaller screens
-        />
-        <Input
-        labelPlacement="outside"
-        description="outside"
-          type="phone"
-          label="Номер телефона"
-          variant="flat"
-          className="w-full sm:w-[240px]" // Full width on smaller screens
-        />
-        <Select
-        labelPlacement="outside"
-          label="Выберете курс"
-          variant="flat"
-          className="w-full sm:w-[240px]" // Full width on smaller screens
-        >
-          {[
-            "Robotics",
-            "English",
-            "Chess",
-            "Painting for children",
-            "Painting for olders",
-          ].map((course, index) => (
-            <SelectItem key={index}>{course}</SelectItem>
-          ))}
-        </Select>
-        <Input
-        labelPlacement="outside"
-          type="age"
-          label="Возраст"
-          variant="flat"
-          className="w-full sm:w-[240px]" // Full width on smaller screens
-        />
-        <Button
-          style={{
-            boxShadow:
-              "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
-          }}
-          className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[55px] text-[24px]`}
-        >
-          Получить
-        </Button>
-      </div>
+        <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5">
+          <Input
+            labelPlacement="outside"
+            placeholder="John Doe"
+            variant="flat"
+            className="w-full sm:w-[240px]"
+            type="email"
+            label="Ваше имя"
+          />
+
+          <Input
+            labelPlacement="outside"
+            type="phone"
+            label="Номер телефона"
+            placeholder="+9998901234567"
+            variant="flat"
+            className="w-full sm:w-[240px]" // Full width on smaller screens
+          />
+          <Select
+            labelPlacement="outside"
+            label="Выберете курс"
+            placeholder="Robotics"
+            variant="flat"
+            className="w-full sm:w-[240px]" // Full width on smaller screens
+          >
+            {[
+              "Robotics",
+              "English",
+              "Chess",
+              "Painting for children",
+              "Painting for olders",
+            ].map((course, index) => (
+              <SelectItem key={index}>{course}</SelectItem>
+            ))}
+          </Select>
+          <Input
+            labelPlacement="outside"
+            type="age"
+            placeholder="10"
+            label="Возраст"
+            variant="flat"
+            className="w-full sm:w-[240px]" // Full width on smaller screens
+          />
+          <Button
+            style={{
+              boxShadow:
+                "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
+            }}
+            className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[40px] text-[24px]`}
+          >
+            Получить
+          </Button>
+        </div>
       </section>
     </div>
   );

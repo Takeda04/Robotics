@@ -20,30 +20,6 @@ import ChildCard from "@/components/children/child-card";
 import { useEffect, useState } from "react";
 
 export default function PaintingChildrenPage() {
-
-  const [showAll, setShowAll] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768); 
-    };
-
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const toggleShowAll = () => {
-    setShowAll(!showAll);
-  };
-
-  const visibleCards = isMobile && !showAll ? 3 : 6;
-
   return (
     <div className="realtive">
       <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 flex">
@@ -77,7 +53,7 @@ export default function PaintingChildrenPage() {
                   transform: "rotate(10deg)",
                 }}
               >
-                бесплатно
+                50.000 сум
               </div>
             </div>
             <div className="absolute flex mt-[50px] md:mt-[100px] gap-2 md:gap-10 w-[300px] md:w-full">
@@ -142,34 +118,17 @@ export default function PaintingChildrenPage() {
         </div>
       </section>
       <section className="container mx-auto max-w-7xl">
-      <p
-        className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] md:text-[96px] text-center font-bold`}
-      >
-        Обучения
-      </p>
-      <div className="flex flex-wrap items-center justify-between gap-y-7 p-3 md:p-0 transition-all duration-300 ease-in-out">
-        {/* Render only the visible cards */}
-        {[1, 2, 3, 4, 5, 6]
-          .slice(0, visibleCards)
-          .map((_, index) => (
-            <div
-              key={index}
-              className={`w-full md:w-[30%] transition-opacity duration-300 ${
-                !showAll && isMobile && index > 2 ? "opacity-0 h-0" : "opacity-100 h-auto"
-              }`}
-            >
-              <ChildCard />
-            </div>
+        <p
+          className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] md:text-[96px] text-center font-bold`}
+        >
+          Обучения
+        </p>
+        <div className="flex flex-wrap items-center justify-between gap-y-7 p-2 md:p-0">
+          {[1, 2, 3, 4, 5, 6].map((item) => (
+            <ChildCard key={item} />
           ))}
-      </div>
-
-      {/* Show "Больше" button only on mobile */}
-      {isMobile && (
-        <Button onClick={toggleShowAll} className="mx-auto flex md:hidden">
-          {showAll ? "Меньше" : "Больше"}
-        </Button>
-      )}
-    </section>
+        </div>
+      </section>
 
       <section className="container mx-auto max-w-7xl my-5">
         {/* Title */}
@@ -236,23 +195,30 @@ export default function PaintingChildrenPage() {
           </p>
         </div>
 
-        <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-center justify-center gap-4 sm:gap-5">
+        <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5">
           <Input
-            type="name"
+            labelPlacement="outside"
+            placeholder="John Doe"
+            variant="flat"
+            className="w-full sm:w-[240px]"
+            type="email"
             label="Ваше имя"
-            variant="bordered"
-            className="w-full sm:w-[240px]" // Full width on smaller screens
           />
+
           <Input
+            labelPlacement="outside"
             type="phone"
             label="Номер телефона"
-            variant="bordered"
-            className="w-full sm:w-[240px]"
+            placeholder="+9998901234567"
+            variant="flat"
+            className="w-full sm:w-[240px]" // Full width on smaller screens
           />
           <Select
+            labelPlacement="outside"
             label="Выберете курс"
-            variant="bordered"
-            className="w-full sm:w-[240px]"
+            placeholder="Robotics"
+            variant="flat"
+            className="w-full sm:w-[240px]" // Full width on smaller screens
           >
             {[
               "Robotics",
@@ -265,9 +231,11 @@ export default function PaintingChildrenPage() {
             ))}
           </Select>
           <Input
+            labelPlacement="outside"
             type="age"
+            placeholder="10"
             label="Возраст"
-            variant="bordered"
+            variant="flat"
             className="w-full sm:w-[240px]" // Full width on smaller screens
           />
           <Button
@@ -275,14 +243,14 @@ export default function PaintingChildrenPage() {
               boxShadow:
                 "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
             }}
-            className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[55px] text-[24px]`}
+            className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[40px] text-[24px]`}
           >
             Получить
           </Button>
         </div>
         <div className="flex items-center gap-[10px] justify-between sm:justify-center md:gap-[28px] my-10 py-0 md:py-5 px-2 md:px-0 overflow-x-scroll">
           {[1, 2, 3].map((idx) => (
-            <FootCard key={idx}/>
+            <FootCard key={idx} />
           ))}
         </div>
       </section>

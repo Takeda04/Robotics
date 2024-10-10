@@ -77,7 +77,7 @@ export default function PaintingOlderPage() {
                   transform: "rotate(10deg)",
                 }}
               >
-                бесплатно
+                50.000 сум
               </div>
             </div>
             <div className="absolute flex mt-[50px] md:mt-[100px] gap-2 md:gap-10 w-[300px] md:w-full">
@@ -105,7 +105,7 @@ export default function PaintingOlderPage() {
             </div>
           </div>
           <Image
-            className="w-[303px] h-[253.5px] -mt-[56px] md:mt-0 mr-0 md:-mr-[100px] md:w-[500px] md:h-[605px] rounded-br-3xl md:rounded-none "
+            className="w-[303px] h-[253.5px] -mt-[56px] md:mt-0 -mr-5 md:-mr-[450px] md:w-[500px] md:h-[605px] rounded-br-3xl md:rounded-none "
             src={older}
             width={500}
             height={500}
@@ -255,23 +255,30 @@ export default function PaintingOlderPage() {
           </p>
         </div>
 
-        <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-center justify-center gap-4 sm:gap-5">
+        <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5">
           <Input
-            type="name"
+            labelPlacement="outside"
+            placeholder="John Doe"
+            variant="flat"
+            className="w-full sm:w-[240px]"
+            type="email"
             label="Ваше имя"
-            variant="bordered"
-            className="w-full sm:w-[240px]" // Full width on smaller screens
           />
+
           <Input
+            labelPlacement="outside"
             type="phone"
             label="Номер телефона"
-            variant="bordered"
-            className="w-full sm:w-[240px]"
+            placeholder="+9998901234567"
+            variant="flat"
+            className="w-full sm:w-[240px]" // Full width on smaller screens
           />
           <Select
+            labelPlacement="outside"
             label="Выберете курс"
-            variant="bordered"
-            className="w-full sm:w-[240px]"
+            placeholder="Robotics"
+            variant="flat"
+            className="w-full sm:w-[240px]" // Full width on smaller screens
           >
             {[
               "Robotics",
@@ -284,9 +291,11 @@ export default function PaintingOlderPage() {
             ))}
           </Select>
           <Input
+            labelPlacement="outside"
             type="age"
+            placeholder="10"
             label="Возраст"
-            variant="bordered"
+            variant="flat"
             className="w-full sm:w-[240px]" // Full width on smaller screens
           />
           <Button
@@ -294,7 +303,7 @@ export default function PaintingOlderPage() {
               boxShadow:
                 "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
             }}
-            className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[55px] text-[24px]`}
+            className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[40px] text-[24px]`}
           >
             Получить
           </Button>
