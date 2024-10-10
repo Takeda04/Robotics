@@ -14,8 +14,10 @@ import {
 import Image from "next/image";
 import React from "react";
 import robot from "@/assets/images/modal_robot.png";
+import { useTranslation } from "@/app/[lng]/i18n/client";
 
-const Card = () => {
+const Card = ({ lng }: { lng: string }) => {
+  const { t } = useTranslation(lng, 'translation', {});
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
@@ -34,18 +36,18 @@ const Card = () => {
         <p
           className={`${fontTektur.variable} font-tektur text-[#000] text-[16px] sm:text-[28px] md:text-[32px] lg:text-[40px] font-bold`}
         >
-          твой проводник в мир технологий и искусства
+          {t("main_card")}
         </p>
         <p
           className={`text-[#000] text-[14px] sm:text-[22px] md:text-[32px] lg:text-[40px]`}
         >
-          получите бесплатное первое занятие
+          {t("sub_main_card")}
         </p>
         <Button
           onPress={onOpen}
           className="bg-black text-[#FFE001] text-[16px] sm:text-[32px] md:h-[150px] mt-2 md:mt-0"
         >
-          Перейти к курсам
+          {t("card_btn")}
         </Button>
       </div>
       <Modal

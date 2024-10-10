@@ -4,41 +4,43 @@ import { fontTektur } from "@/config/fonts";
 
 import Image from "next/image";
 import borderimg from "@/assets/icons/cardbottom.png";
-import child from "@/assets/images/child.png";
+import chess from "@/assets/images/chess.png";
 import CustomCarousel from "@/components/carousel";
 import { Input } from "@nextui-org/input";
 import { Button, Select, SelectItem } from "@nextui-org/react";
 import FootCard from "@/components/robotics/foot-card";
 import HeadCard from "@/components/robotics/head-card";
 
-import bigchild from "@/assets/images/child_big.png";
+import bigchild from "@/assets/images/chess_child2.png";
 import secondimage from "@/assets/images/english2.png";
+import call from "@/assets/images/chess_child.png";
 
 import thirdimage from "@/assets/images/english3.png";
 import fourthimage from "@/assets/images/english4.png";
 import ChildCard from "@/components/children/child-card";
-import { useEffect, useState } from "react";
+import CarouselChess from "@/components/carousel/CarouselChess";
 
-export default function PaintingChildrenPage() {
+export default function ChessPage() {
+
   return (
     <div className="realtive">
       <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 flex">
         <div className="absolute md:relative mt-0 md:mt-36 -top-[93px] md:-top-20 z-50 p-1 container mx-auto max-w-7xl flex items-center justify-between ">
           <div className="w-full">
             <p
-              className={`absolute -top-10 md:top-0 ${fontTektur.variable}  font-tektur text-[#FFDE00] text-[26px] md:text-[84px] font-bold`}
+              className={`absolute -top-10 md:top-0 ${fontTektur.variable}  font-tektur text-[#FFDE00] text-[26px] md:text-[84px] font-bold w-[300px] md:w-[1100px]`}
             >
-              Живопись для детей
+              Курсы шахмат для детей от JustRobotics
             </p>
             <p
               className={`absolute md:relative top-10 mt-0 md:mt-[60px] ${fontTektur.variable} font-tektur font-normal text-[#FFFFFF] text-[14px] md:text-[24px]`}
             >
-              практический курс пробуждающий интерес к робототехнике и физике у
-              вашего ребенка
-              <strong> от 5 до 18 лет</strong>
+              Практические курсы, которые пробуждают интерес к шахматам,
+              развивают логическое мышление у вашего ребенка
+              <strong> от 5 лет и старше</strong>
             </p>
 
-            <div className="relative">
+            <div className="relative mt-16 md:mt-0">
               <p
                 className={`absolute md:relative w-[300px] md:w-[500px] md:top-20 ${fontTektur.variable} font-tektur font-bold text-[#FFE001] text-[14px] md:text-[24px]`}
               >
@@ -53,7 +55,7 @@ export default function PaintingChildrenPage() {
                   transform: "rotate(10deg)",
                 }}
               >
-                50.000 сум
+                бесплатно
               </div>
             </div>
             <div className="absolute flex mt-[50px] md:mt-[100px] gap-2 md:gap-10 w-[300px] md:w-full">
@@ -81,8 +83,8 @@ export default function PaintingChildrenPage() {
             </div>
           </div>
           <Image
-            className="w-[303px] h-[213.5px] md:w-[800px] md:h-[605px] rounded-br-3xl md:rounded-none"
-            src={child}
+            className="w-[170px] h-[170px] md:w-[628px] md:h-[628px] rounded-br-3xl md:rounded-none "
+            src={chess}
             width={500}
             height={500}
             alt="home robot"
@@ -123,57 +125,45 @@ export default function PaintingChildrenPage() {
         >
           Обучения
         </p>
-        <div className="flex flex-wrap items-center justify-between gap-y-7 p-2 md:p-0">
+        <div className="flex flex-wrap items-center justify-between gap-y-7 p-3 md:p-0 transition-all duration-300 ease-in-out">
+          {/* Render only the visible cards */}
           {[1, 2, 3, 4, 5, 6].map((item) => (
-            <ChildCard key={item} />
+              <ChildCard key={item}/>
           ))}
         </div>
       </section>
+      <section className="relative container mx-auto max-w-7xl my-20">
+        <Image
+          width={500}
+          height={500}
+          src={call}
+          alt="call image"
+          className="mx-auto w-full" // Center the image
+        />
+        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center space-y-0 md:space-y-10">
+          <p
+            className={`${fontTektur.variable} w-[306px] md:w-[872px] font-tektur text-[#FFFFFF] text-[15px] md:text-[32px] text-center font-bold`}
+          >
+            Приглашаем на первый бесплатный урок
+          </p>
+          <Button
+            className="bg-[#FFE000] text-[#000] w-[208px] h-[25px] md:w-[530px] md:h-[51px] text-[15px] md:text-[32px]"
+            variant="bordered"
+          >
+            Записаться
+          </Button>
+        </div>
+      </section>
 
-      <section className="container mx-auto max-w-7xl my-5">
-        {/* Title */}
+      <section className="container mx-auto max-w-7xl">
+        <div className="overflow-hidden">
         <p
           className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] text-center font-bold`}
         >
           ФОТОГАЛЕРЕЯ
         </p>
 
-        <div className="flex md:flex-wrap px-5 md:px-0 flex-row items-start gap-3 overflow-x-scroll">
-          {/* First large image */}
-          <div className="min-w-[200px] w-[200px] h-[150px] md:w-full md:h-[602px]">
-            <Image
-              src={bigchild}
-              alt="First image"
-              className="w-full h-full object-cover rounded-lg shadow-lg"
-            />
-          </div>
-
-          {/* Second smaller image */}
-          <div className="block md:hidden min-w-[200px] w-[200px] h-[150px] md:w-[545px] md:h-[456px]">
-            <Image
-              src={secondimage}
-              alt="Second image"
-              className="w-full h-full object-cover rounded-lg shadow-lg"
-            />
-          </div>
-
-          {/* Third smaller image */}
-          <div className="block md:hidden min-w-[200px] w-[200px] h-[150px] md:w-[714px] md:h-[311px]">
-            <Image
-              src={thirdimage}
-              alt="Third image"
-              className="w-full h-full object-cover rounded-lg shadow-lg"
-            />
-          </div>
-
-          {/* Fourth large image */}
-          <div className="block md:hidden min-w-[200px] w-[200px] h-[150px] md:w-[545px] md:h-[456px]">
-            <Image
-              src={fourthimage}
-              alt="Fourth image"
-              className="w-full h-full object-cover rounded-lg shadow-lg"
-            />
-          </div>
+        <CarouselChess/>
         </div>
       </section>
 

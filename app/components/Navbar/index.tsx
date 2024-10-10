@@ -26,20 +26,26 @@ import {
   DropdownTrigger,
 } from "@nextui-org/react";
 import { ChevronDown } from "@/assets/icons/icons";
+import { useRouter } from "next/navigation";
+import { useTranslation } from "@/app/[lng]/i18n/client";
 
-export const Navbar = () => {
-  const [isOpen, setIsOpen] = useState(false); // Initially set it to false to hide the menu
-  const [activeLanguage, setActiveLanguage] = useState("UZ");
+export const Navbar = ({ lng }: { lng: string }) => {
+  const { t } = useTranslation(lng, 'translation', {});
+  const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
+  const router = useRouter();
+  const lang = window.localStorage.getItem("i18nextLng")
 
-  // const iconClasses = "text-xl text-default-500 pointer-events-none flex-shrink-0";
 
   const handleToggle = () => {
     setIsOpen((prevState) => !prevState);
   };
 
   const handleLanguageChange = (lang: string) => {
-    setActiveLanguage(lang);
+
+    const pathname = window.location.pathname;
+    const path = pathname.slice(4, pathname.length);
+    router.push(`/${lang.toLowerCase()}/${path}`);
   };
 
   const icons = {
@@ -75,7 +81,7 @@ export const Navbar = () => {
           alt="website logo"
           width={70}
           height={70}
-          className="sm:w-[111px]"
+          className="sm:w-[111px] md:min-w-[100px]"
         />
         </Link>
       </NavbarBrand>
@@ -87,7 +93,7 @@ export const Navbar = () => {
               color="foreground"
               href="/"
             >
-              Главная
+              {t("main")}
             </Link>
           </NavbarItem>
           <NavbarItem>
@@ -96,7 +102,7 @@ export const Navbar = () => {
               color="foreground"
               href="/"
             >
-              О нас
+              {t("about")}
             </Link>
           </NavbarItem>
           <Dropdown backdrop="blur">
@@ -110,7 +116,7 @@ export const Navbar = () => {
                   variant="bordered"
                   style={{ borderColor: "#F0D625", color: "#F0D625" }} // Button border and text color
                 >
-                  Курсы
+                  {t("drop")}
                 </Button>
               </DropdownTrigger>
             </NavbarItem>
@@ -125,31 +131,31 @@ export const Navbar = () => {
                 href="/robotic"
                 className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
               >
-                Robotics
+                {t("drop1")}
               </DropdownItem>
               <DropdownItem
                 href="/english"
                 className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
               >
-                English
+                {t("drop2")}
               </DropdownItem>
               <DropdownItem
                 href="/painting_children"
                 className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
               >
-                Painting for children
+                {t("drop3")}
               </DropdownItem>
               <DropdownItem
                 href="/painting_olders"
                 className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
               >
-                Painting for olders
+                {t("drop4")}
               </DropdownItem>
               <DropdownItem
                 href="/chess"
                 className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
               >
-                Chess
+                {t("drop5")}
               </DropdownItem>
             </DropdownMenu>
           </Dropdown>
@@ -160,7 +166,7 @@ export const Navbar = () => {
               color="foreground"
               href="/"
             >
-              Контакты
+              {t("contact")}
             </Link>
           </NavbarItem>
           <Button
@@ -174,15 +180,15 @@ export const Navbar = () => {
             }}
             className={`${fontTektur.variable} font-tektur font-bold text-[24px]`}
           >
-            Позвонить
+            {t("call")}
           </Button>
 
           <ButtonGroup className="hidden sm:flex">
             <Button
               onClick={() => handleLanguageChange("UZ")}
               style={{
-                background: activeLanguage === "UZ" ? "#F0D625" : "transparent",
-                color: activeLanguage === "UZ" ? "#FFFFFF" : "#F0D625",
+                background: lng === "uz" ? "#F0D625" : "transparent",
+                color: lng === "uz" ? "#FFFFFF" : "#F0D625",
                 borderRadius: "15px",
                 padding: "10px 20px",
               }}
@@ -193,8 +199,8 @@ export const Navbar = () => {
             <Button
               onClick={() => handleLanguageChange("RU")}
               style={{
-                background: activeLanguage === "RU" ? "#F0D625" : "transparent",
-                color: activeLanguage === "RU" ? "#FFFFFF" : "#F0D625",
+                background: lng === "ru" ? "#F0D625" : "transparent",
+                color: lng === "ru" ? "#FFFFFF" : "#F0D625",
                 borderRadius: "15px",
                 padding: "10px 20px",
               }}
@@ -213,8 +219,8 @@ export const Navbar = () => {
             <Button
               onClick={() => handleLanguageChange("UZ")}
               style={{
-                background: activeLanguage === "UZ" ? "#F0D625" : "transparent",
-                color: activeLanguage === "UZ" ? "#FFFFFF" : "#F0D625",
+                background: lng === "uz" ? "#F0D625" : "transparent",
+                color: lng === "uz" ? "#FFFFFF" : "#F0D625",
                 borderRadius: "15px",
                 padding: "5px 10px",
               }}
@@ -225,8 +231,8 @@ export const Navbar = () => {
             <Button
               onClick={() => handleLanguageChange("RU")}
               style={{
-                background: activeLanguage === "RU" ? "#F0D625" : "transparent",
-                color: activeLanguage === "RU" ? "#FFFFFF" : "#F0D625",
+                background: lng === "ru" ? "#F0D625" : "transparent",
+                color: lng === "ru" ? "#FFFFFF" : "#F0D625",
                 borderRadius: "15px",
                 padding: "5px 10px",
               }}
@@ -270,18 +276,18 @@ export const Navbar = () => {
           <Link
             className={`${fontTektur.variable} font-tektur text-[24px]`}
             color="foreground"
-            href="/"
+            href={`/${lang}/`}
           >
-            Главная
+            {t("main")}
           </Link>
         </NavbarItem>
         <NavbarItem>
           <Link
             className={`${fontTektur.variable} font-tektur text-[24px]`}
             color="foreground"
-            href="/"
+            href={`/${lang}/`}
           >
-            О нас
+            {t("about")}
           </Link>
         </NavbarItem>
         <Dropdown backdrop="blur">
@@ -295,7 +301,7 @@ export const Navbar = () => {
                 variant="bordered"
                 style={{ borderColor: "#F0D625", color: "#F0D625" }} // Button border and text color
               >
-                Курсы
+                {t("drop")}
               </Button>
             </DropdownTrigger>
           </NavbarItem>
@@ -307,34 +313,34 @@ export const Navbar = () => {
             }}
           >
             <DropdownItem
-              href="/robotic"
+              href={`/${lang}/robotic`}
               className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
             >
-              Robotics
+              {t("drop1")}
             </DropdownItem>
             <DropdownItem
-              href="/english"
+              href={`/${lang}/english`}
               className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
             >
-              English
+              {t("drop2")}
             </DropdownItem>
             <DropdownItem
-              href="/painting_children"
+              href={`/${lang}/painting_children`}
               className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
             >
-              Painting for children
+              {t("drop3")}
             </DropdownItem>
             <DropdownItem
-              href="/painting_olders"
+              href={`/${lang}/painting_olders`}
               className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
             >
-              Painting for olders
+              {t("drop4")}
             </DropdownItem>
             <DropdownItem
-              href="/chess"
+              href={`/${lang}/chess`}
               className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
             >
-              Chess
+              {t("drop5")}
             </DropdownItem>
           </DropdownMenu>
         </Dropdown>
@@ -343,9 +349,9 @@ export const Navbar = () => {
           <Link
             className={`${fontTektur.variable} font-tektur text-[24px]`}
             color="foreground"
-            href="/"
+            href={`/${lang}/`}
           >
-            Контакты
+            {t("contact")}
           </Link>
         </NavbarItem>
         <Button
@@ -358,7 +364,7 @@ export const Navbar = () => {
           }}
           className={`${fontTektur.variable} font-tektur font-bold text-[24px]`}
         >
-          Позвонить
+          {t("call")}
         </Button>
       </NavbarMenu>
     </NextUINavbar>

@@ -9,15 +9,31 @@ import { fontTektur } from "@/config/fonts";
 import { ClockIcon, LocationIcon, PhoneIcon } from "@/assets/icons/icons";
 import { Button } from "@nextui-org/button";
 import { useRouter } from "next/navigation";
+import { useTranslation } from "@/app/[lng]/i18n/client";
 
-export const Footer = () => {
+export const Footer = ({ lng }: { lng: string }) => {
+  const { t } = useTranslation(lng, "translation", {});
   const [activeLanguage, setActiveLanguage] = useState("S1");
   const router = useRouter();
+  const lang = window.localStorage.getItem("i18nextLng");
 
   const handleLanguageChange = (position: string, map: string) => {
     setActiveLanguage(position);
     router.push(map);
   };
+
+  const courses = [
+    { drop: t("drop1"), link: `/${lang}/robotic` },
+    { drop: t("drop2"), link: `/${lang}/english` },
+    { drop: t("drop3"), link: `/${lang}/painting_children` },
+    { drop: t("drop4"), link: `/${lang}/painting_olders` },
+    { drop: t("drop5"), link: `/${lang}/chess` },
+  ];
+  const socials = [
+    { soc: t("footer_soc1"), link: `/${lang}/` },
+    { soc: t("footer_soc2"), link: `/${lang}/`  },
+    { soc: t("footer_soc3"), link: `/${lang}/`  },
+  ];
 
   return (
     <section>
@@ -36,7 +52,7 @@ export const Footer = () => {
           }}
           className={`${fontTektur.variable} font-tektur py-5 sm:py-[20px] h-[50px] sm:h-[78px] px-9 sm:px-[64px] text-[16px] sm:text-[30px]`}
         >
-          Филиал Ц4
+          {t("footer_btn1")}
         </Button>
         <Button
           onClick={() =>
@@ -52,7 +68,7 @@ export const Footer = () => {
           }}
           className={`${fontTektur.variable} font-tektur py-5 sm:py-[20px] h-[50px] sm:h-[78px] px-9 sm:px-[64px] text-[16px] sm:text-[30px] ml-[20px] sm:ml-[60px]`}
         >
-          Филиал Беруни
+          {t("footer_btn2")}
         </Button>
       </div>
 
@@ -62,7 +78,7 @@ export const Footer = () => {
           <p
             className={`${fontTektur.variable} font-tektur text-white text-[24px]`}
           >
-            Номера телефонов
+            {t("footer_phone")}
           </p>
         </span>
         <span className="flex items-center justify-start gap-x-[50px] w-[350px]">
@@ -70,7 +86,7 @@ export const Footer = () => {
           <p
             className={`${fontTektur.variable} font-tektur text-white text-[24px]`}
           >
-            Адрес Орьентир
+            {t("footer_location")}
           </p>
         </span>
         <span className="flex items-center justify-start gap-x-[50px] w-[350px]">
@@ -78,7 +94,7 @@ export const Footer = () => {
           <p
             className={`${fontTektur.variable} font-tektur text-white text-[24px]`}
           >
-            График работы
+            {t("footer_plan")}
           </p>
         </span>
       </div>
@@ -140,22 +156,16 @@ export const Footer = () => {
             <h2
               className={`${fontTektur.variable} font-tektur text-black font-bold text-[26px]`}
             >
-              Курсы
+              {t("drop")}
             </h2>
             <ul className="mt-4 space-y-2">
-              {[
-                "Работотехника",
-                "Английский для взрослых",
-                "Английский для детей",
-                "Шахмат",
-                "Живопись",
-              ].map((course, index) => (
+              {courses.map((course, index) => (
                 <li key={index}>
                   <Link
-                    href="#"
+                    href={course.link}
                     className={`${fontTektur.variable} font-tektur text-black text-[20px]`}
                   >
-                    {course}
+                    {course.drop}
                   </Link>
                 </li>
               ))}
@@ -167,16 +177,16 @@ export const Footer = () => {
             <h2
               className={`${fontTektur.variable} font-tektur text-black font-bold text-[26px]`}
             >
-              Контакты
+              {t("contact")}
             </h2>
             <ul className="mt-4 space-y-2">
-              {["Телеграм", "Инстаграм", "Ютюб"].map((contact, index) => (
+              {socials.map((contact, index) => (
                 <li key={index}>
                   <Link
                     href="#"
                     className={`${fontTektur.variable} font-tektur text-black text-[20px]`}
                   >
-                    {contact}
+                    {contact.soc}
                   </Link>
                 </li>
               ))}
@@ -188,7 +198,7 @@ export const Footer = () => {
         <div className="container mx-auto max-w-7xl">
           <div className="font-bold mt-8 text-black text-[14px] text-center sm:text-left">
             <p className={`${fontTektur.variable} font-tektur`}>
-              Ideallux.com © 2000-2024, All Rights Reserved
+              {t("security")}
             </p>
           </div>
         </div>

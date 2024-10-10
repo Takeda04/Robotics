@@ -5,7 +5,6 @@ import HomeCard from "@/components/home-card";
 import { fontTektur } from "@/config/fonts";
 
 import StatCard from "@/components/home/home-card";
-import { CardContent, images } from "@/config/data";
 import Image from "next/image";
 import borderimg from "@/assets/icons/cardbottom.png";
 import robot from "@/assets/images/robo-robot.png";

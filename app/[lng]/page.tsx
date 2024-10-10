@@ -1,0 +1,217 @@
+"use client";
+
+import HomeCard from "@/components/home-card";
+
+import { fontTektur } from "@/config/fonts";
+
+import StatCard from "@/components/home/home-card";
+
+import Image from "next/image";
+import borderimg from "@/assets/icons/cardbottom.png";
+import robot from "@/assets/icons/home_robot.png";
+import Card from "@/components/home/card";
+import CustomCarousel from "@/components/carousel";
+import { Input } from "@nextui-org/input";
+import { Button, Select, SelectItem } from "@nextui-org/react";
+import { useTranslation } from "./i18n/client";
+
+// images
+
+import home from "@/assets/images/home.png";
+import home2 from "@/assets/images/home2.png";
+import home3 from "@/assets/images/home3.png";
+import home4 from "@/assets/images/home4.png";
+import home5 from "@/assets/images/home5.png";
+
+export default function Home({ params: { lng } }: { params: { lng: string } }) {
+  const { t } = useTranslation(lng, "translation", {});
+  const lang = window.localStorage.getItem("i18nextLng");
+  const CardContent = [
+    {
+      text: "300+",
+      subText: t("stat_card1"),
+    },
+    {
+      text: "25+",
+      subText: t("stat_card2"),
+    },
+    {
+      text: "60+",
+      subText: t("stat_card3"),
+    },
+  ];
+
+  const images = [
+    {
+      image: home,
+      text: t("home1"),
+      link: `${lang}/robotic`,
+      btn: t("home_btn"),
+    },
+    {
+      image: home2,
+      text: t("home2"),
+      link: `${lang}/painting_children`,
+      btn: t("home_btn"),
+    },
+    {
+      image: home3,
+      text: t("home3"),
+      link: `${lang}/painting_olders`,
+      btn: t("home_btn"),
+    },
+    {
+      image: home4,
+      text: t("home4"),
+      link: `${lang}/english`,
+      btn: t("home_btn"),
+    },
+    {
+      image: home5,
+      text: t("home5"),
+      link: `${lang}/chess`,
+      btn: t("home_btn"),
+    },
+  ];
+
+  const courses = [
+    {drop: t("drop1")},
+    {drop: t("drop2")},
+    {drop: t("drop3")},
+    {drop: t("drop4")},
+    {drop: t("drop5")},
+
+  ]
+
+  return (
+    <div className="realtive">
+      <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 flex">
+        <div className="absolute md:relative mt-0 md:mt-36 -top-[93px] md:-top-20 z-50 p-1 container mx-auto max-w-7xl flex items-center justify-between ">
+          <Card lng={lng} />
+          <Image
+            className="w-[166px] h-[201px] md:w-[600px] md:h-[600px]"
+            src={robot}
+            width={500}
+            height={500}
+            alt="home robot"
+          />
+        </div>
+        <Image
+          className="absolute bottom-0 right-0"
+          width={400}
+          height={400}
+          alt="border image"
+          src={borderimg}
+          style={{ borderBottomRightRadius: "30px" }}
+        />
+      </div>
+      <section className="relative w-full h-[300px] md:h-[400px] bg-black flex items-center ">
+        <div className="absolute top-[58%] left-1/2 transform -translate-x-1/2 -translate-y-1/2 z-10 container mx-auto max-w-7xl flex flex-wrap items-center justify-center gap-[10px] md:gap-6">
+          {CardContent.map(({ text, subText }) => (
+            <StatCard lng={lng} text={text} subText={subText} key={text} />
+          ))}
+        </div>
+      </section>
+      <section className="relative w-full h-[486px] bg-white py-[30px] px-[10px]">
+        <div className="container mx-auto max-w-7xl flex flex-col items-center justify-center ">
+          <p
+            className={`${fontTektur.variable} font-tektur text-[#000] text-[14px] sm:text-[18px] md:text-[24px] lg:text-[28px]`}
+          >
+            <b>{t("robo_bold")}</b>
+            {t("about_text1")}
+          </p>
+          <p
+            className={`${fontTektur.variable} font-tektur text-[#000] text-[14px] sm:text-[18px] md:text-[24px] lg:text-[28px]`}
+          >
+            <b>{t("robo_bold")}</b>
+            {t("about_text2")}
+          </p>
+        </div>
+      </section>
+
+      <section className="container mx-auto max-w-7xl ">
+        <p
+          className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] text-center font-bold`}
+        >
+          {t("author")}
+        </p>
+        <div className="flex md:flex-wrap items-center gap-[20px] sm:justify-center md:gap-[58px] my-10 overflow-x-scroll">
+          {images.map(({ image, text, link, btn }) => (
+            <HomeCard
+              image={image}
+              text={text}
+              btn={btn}
+              link={link}
+              key={link}
+            />
+          ))}
+        </div>
+
+        <div className="container mx-auto max-w-7xl overflow-hidden ">
+          <p
+            className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] md:text-[32px] font-bold text-center md:text-start`}
+          >
+            {t("advices")}
+          </p>
+          <CustomCarousel />
+        </div>
+
+        <div className="container mx-auto max-w-7xl">
+          <p
+            className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] text-center font-bold`}
+          >
+            {t("sub_main_card")}
+          </p>
+        </div>
+
+        <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5">
+          <Input
+            labelPlacement="outside"
+            placeholder="John Doe"
+            variant="flat"
+            className="w-full sm:w-[240px]"
+            type="email"
+            label={t("form_name")}
+          />
+
+          <Input
+            labelPlacement="outside"
+            type="phone"
+            label={t("form_phone")}
+            placeholder="+9998901234567"
+            variant="flat"
+            className="w-full sm:w-[240px]" // Full width on smaller screens
+          />
+          <Select
+            labelPlacement="outside"
+            label={t("form_course")}
+            placeholder="Robotics"
+            variant="flat"
+            className="w-full sm:w-[240px]" // Full width on smaller screens
+          >
+            {courses.map((course, idx) => (
+              <SelectItem key={idx}>{course.drop}</SelectItem>
+            ))}
+          </Select>
+          <Input
+            labelPlacement="outside"
+            type="age"
+            placeholder="10"
+            label={t("form_age")}
+            variant="flat"
+            className="w-full sm:w-[240px]" // Full width on smaller screens
+          />
+          <Button
+            style={{
+              boxShadow:
+                "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
+            }}
+            className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[40px] text-[24px]`}
+          >
+            {t("form_btn")}
+          </Button>
+        </div>
+      </section>
+    </div>
+  );
+}

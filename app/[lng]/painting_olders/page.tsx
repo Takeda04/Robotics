@@ -19,6 +19,7 @@ import thirdimage from "@/assets/images/english3.png";
 import fourthimage from "@/assets/images/english4.png";
 import ChildCard from "@/components/children/child-card";
 import { useEffect, useState } from "react";
+import CarouselOlders from "@/components/carousel/Carouselolders";
 
 export default function PaintingOlderPage() {
   const [showAll, setShowAll] = useState(false);
@@ -148,27 +149,12 @@ export default function PaintingOlderPage() {
           Обучения
         </p>
         <div className="flex flex-wrap items-center justify-between gap-y-7 p-3 md:p-0 transition-all duration-300 ease-in-out">
-          {/* Render only the visible cards */}
-          {[1, 2, 3, 4, 5, 6].slice(0, visibleCards).map((_, index) => (
-            <div
-              key={index}
-              className={`w-full md:w-[30%] transition-opacity duration-300 ${
-                !showAll && isMobile && index > 2
-                  ? "opacity-0 h-0"
-                  : "opacity-100 h-auto"
-              }`}
-            >
-              <ChildCard />
-            </div>
+          {[1, 2, 3, 4, 5, 6].map((item) => (
+            
+              <ChildCard key={item} />
           ))}
         </div>
 
-        {/* Show "Больше" button only on mobile */}
-        {isMobile && (
-          <Button onClick={toggleShowAll} className="mx-auto flex md:hidden">
-            {showAll ? "Меньше" : "Больше"}
-          </Button>
-        )}
       </section>
       <section className="relative container mx-auto max-w-7xl my-20">
         <Image
@@ -190,50 +176,15 @@ export default function PaintingOlderPage() {
         </div>
       </section>
 
-      <section className="container mx-auto max-w-7xl my-5">
-        {/* Title */}
+      <section className="container mx-auto max-w-7xl">
+        <div className="overflow-hidden">
         <p
           className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] text-center font-bold`}
         >
           ФОТОГАЛЕРЕЯ
         </p>
 
-        <div className="flex md:flex-wrap px-5 md:px-0 flex-row items-start gap-3 overflow-x-scroll">
-          {/* First large image */}
-          <div className="min-w-[200px] w-[200px] h-[150px] md:w-full md:h-[825px]">
-            <Image
-              src={bigchild}
-              alt="First image"
-              className="w-full h-full object-fill rounded-lg shadow-lg"
-            />
-          </div>
-
-          {/* Second smaller image */}
-          <div className="block md:hidden min-w-[200px] w-[200px] h-[150px] md:w-[545px] md:h-[456px]">
-            <Image
-              src={secondimage}
-              alt="Second image"
-              className="w-full h-full object-cover rounded-lg shadow-lg"
-            />
-          </div>
-
-          {/* Third smaller image */}
-          <div className="block md:hidden min-w-[200px] w-[200px] h-[150px] md:w-[714px] md:h-[311px]">
-            <Image
-              src={thirdimage}
-              alt="Third image"
-              className="w-full h-full object-cover rounded-lg shadow-lg"
-            />
-          </div>
-
-          {/* Fourth large image */}
-          <div className="block md:hidden min-w-[200px] w-[200px] h-[150px] md:w-[545px] md:h-[456px]">
-            <Image
-              src={fourthimage}
-              alt="Fourth image"
-              className="w-full h-full object-cover rounded-lg shadow-lg"
-            />
-          </div>
+        <CarouselOlders/>
         </div>
       </section>
 

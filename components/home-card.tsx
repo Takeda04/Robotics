@@ -5,7 +5,7 @@ import { useRouter } from "next/navigation";
 import React from "react";
 import { GrFormNextLink } from "react-icons/gr";
 
-const HomeCard = ({ image, text, link }: any) => {
+const HomeCard = ({ image, text, link, btn }: any) => {
 
   const router = useRouter();
 
@@ -37,7 +37,7 @@ const HomeCard = ({ image, text, link }: any) => {
       </span>
       <div className="flex items-end justify-end mb-0">
         <Button  onClick={() => navigator(link)}  endContent={<GrFormNextLink className="text-[2xl]" />} className="mb-0 bg-black rounded-full text-white text-end hidden sm:flex">
-          {"Подробнее о кусе"}
+          {btn}
         </Button>
       </div>
     </div>
