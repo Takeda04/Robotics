@@ -96,18 +96,23 @@ export default function Home() {
 
       <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-center justify-center gap-4 sm:gap-5">
         <Input
+        labelPlacement="outside"
+        description="outside"
           type="name"
           label="Ваше имя"
           variant="flat"
           className="w-full sm:w-[240px]" // Full width on smaller screens
         />
         <Input
+        labelPlacement="outside"
+        description="outside"
           type="phone"
           label="Номер телефона"
           variant="flat"
           className="w-full sm:w-[240px]" // Full width on smaller screens
         />
         <Select
+        labelPlacement="outside"
           label="Выберете курс"
           variant="flat"
           className="w-full sm:w-[240px]" // Full width on smaller screens
@@ -123,6 +128,7 @@ export default function Home() {
           ))}
         </Select>
         <Input
+        labelPlacement="outside"
           type="age"
           label="Возраст"
           variant="flat"

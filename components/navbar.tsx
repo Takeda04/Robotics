@@ -69,6 +69,7 @@ export const Navbar = () => {
       onMenuOpenChange={setIsOpen} // Handle menu open change
     >
       <NavbarBrand>
+        <Link href="/">
         <Image
           src={logo}
           alt="website logo"
@@ -76,6 +77,7 @@ export const Navbar = () => {
           height={70}
           className="sm:w-[111px]"
         />
+        </Link>
       </NavbarBrand>
       {!isMobile && (
         <NavbarContent className="sm:gap-[46px] hidden sm:flex">

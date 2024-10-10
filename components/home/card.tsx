@@ -123,7 +123,7 @@ const Card = () => {
                       <Button color="danger" variant="flat" onPress={onClose}>
                         Назад
                       </Button>
-                      <Button color="primary" onPress={onClose}>
+                      <Button className="bg-[#FFE000] text-black" onPress={onClose}>
                         Записать
                       </Button>
                     </ModalFooter>

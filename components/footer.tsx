@@ -14,18 +14,18 @@ export const Footer = () => {
   const [activeLanguage, setActiveLanguage] = useState("S1");
   const router = useRouter();
 
-  const handleLanguageChange = (position: string, map:string) => {
+  const handleLanguageChange = (position: string, map: string) => {
     setActiveLanguage(position);
-    router.push(map)
+    router.push(map);
   };
 
   return (
     <section>
-     
-
       <div className="container mx-auto max-w-7xl flex items-center justify-center sm:justify-start">
         <Button
-          onClick={() => handleLanguageChange("S1", "https://yandex.uz/maps/-/CDXeEHMG")}
+          onClick={() =>
+            handleLanguageChange("S1", "https://yandex.uz/maps/-/CDXeEHMG")
+          }
           style={{
             background: activeLanguage === "S1" ? "#F0D625" : "#ffffff",
             color: "#000000",
@@ -39,7 +39,9 @@ export const Footer = () => {
           Филиал Ц4
         </Button>
         <Button
-          onClick={() => handleLanguageChange("BERUNIY", "https://yandex.uz/maps/-/CDXeI49L")}
+          onClick={() =>
+            handleLanguageChange("BERUNIY", "https://yandex.uz/maps/-/CDXeI49L")
+          }
           style={{
             background: activeLanguage === "BERUNIY" ? "#F0D625" : "#ffffff",
             color: "#000000",
@@ -81,19 +83,19 @@ export const Footer = () => {
         </span>
       </div>
       <iframe
-        title="google map"
-        src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d11520.30876460942!2d69.32351225000001!3d41.305524199999994!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e1!3m2!1sru!2s!4v1727763477753!5m2!1sru!2s"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5758.997039052575!2d69.27864672431006!3d41.31862378008828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b981e0fe325%3A0xa6fc38e83861c109!2sJust%20Robotics%20Wyndham!5e1!3m2!1suz!2s!4v1728532818798!5m2!1suz!2s"
+        width="600"
+        height="450"
         style={{
-          height: "500px", // Ensure the height is set to 500px
+          height: "320px",
           border: "0",
           width: "100%",
           marginBottom: "80px",
         }}
-        className="h-[500px]"
-        allowFullScreen={true}
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
       ></iframe>
+
       <footer className="bg-[#FFE000] py-8">
         <div className="container mx-auto max-w-7xl flex flex-col sm:flex-row py-6 gap-y-8 px-4 lg:px-0">
           {/* Logo and Slogan Section */}
