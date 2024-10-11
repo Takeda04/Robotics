@@ -2,7 +2,7 @@
 
 import Image from "next/image";
 import { Input } from "@nextui-org/input";
-import { Button, Select, SelectItem } from "@nextui-org/react";
+import { Accordion, AccordionItem, Button, Select, SelectItem } from "@nextui-org/react";
 
 import { fontTektur } from "@/config/fonts";
 import borderimg from "@/assets/icons/cardbottom.png";
@@ -14,8 +14,28 @@ import firstimage from "@/assets/images/english1.png";
 import secondimage from "@/assets/images/english2.png";
 import thirdimage from "@/assets/images/english3.png";
 import fourthimage from "@/assets/images/english4.png";
+import { useTranslation } from "../i18n/client";
+import RobotCarousel from "@/components/carousel/CarouselRobot";
 
-export default function RoboticsPage() {
+export default function RoboticsPage({
+  params: { lng },
+}: {
+  params: { lng: string };
+}) {
+
+
+
+  const { t } = useTranslation(lng, "translation", {});
+
+  const courses = [
+    { drop: t("drop1") },
+    { drop: t("drop2") },
+    { drop: t("drop3") },
+    { drop: t("drop4") },
+    { drop: t("drop5") },
+  ];
+
+
   return (
     <div className="realtive">
       <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 flex">
@@ -24,23 +44,21 @@ export default function RoboticsPage() {
             <p
               className={`absolute -top-10 md:top-0 ${fontTektur.variable}  font-tektur text-[#FFDE00] text-[26px] md:text-[84px] font-bold`}
             >
-              Английский
+              {t("english")}
             </p>
             <p
               className={`absolute md:relative top-10 mt-0 md:mt-[60px] ${fontTektur.variable} font-tektur font-normal text-[#FFFFFF] text-[14px] md:text-[24px]`}
             >
-              Практические курсы, которые пробуждают интерес к изучению
-              английского языка, помогают развивать навыки общения, расширяют
-              словарный запас у вашего ребенка
-              <strong> от 5 до 14 лет</strong>
+              {t("english_desc")}
+              <strong className={`${lng === "uz" ? "hidden" : ""}`}>{t("english_bold")}</strong>
             </p>
 
             <div className="relative mt-16 md:mt-0">
               <p
                 className={`absolute md:relative w-[300px] md:w-[500px] md:top-20 ${fontTektur.variable} font-tektur font-bold text-[#FFE001] text-[14px] md:text-[24px]`}
               >
-                Получи первый урок{" "}
-                <strong className="line-through">100.000 сум</strong>
+                {t("english_price")}{" "}
+                <strong className="line-through">{t("english_cost")}</strong>
               </p>
               <div
                 className="absolute text-[11px] md:text-[24px] -top-[15] left-[170px] md:top-[50px] md:left-[300px] text-black font-bold flex items-center justify-center w-[80px] h-[20px] rounded-xl md:w-[167px] md:h-[40px] bg-[#FFE001]"
@@ -50,19 +68,19 @@ export default function RoboticsPage() {
                   transform: "rotate(10deg)",
                 }}
               >
-                бесплатно
+                {t("english_free")}
               </div>
             </div>
             <div className="absolute flex mt-8 md:mt-[100px] gap-2 md:gap-10 w-[300px] md:w-full">
-              <Input
+            <Input
                 className="w-[100px] sm:w-[240px] h-[35px] md:h-[55px]" // Full width on smaller screens
-                label="Ваше имя"
+                label={t("robot_placeholder1")}
                 type="name"
                 variant="flat"
               />
               <Input
                 className="w-[100px] sm:w-[240px] h-[35px] md:h-[55px]"
-                label="Номер телефона"
+                label={t("robot_placeholder2")}
                 type="phone"
                 variant="flat"
               />
@@ -73,7 +91,7 @@ export default function RoboticsPage() {
                     "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
                 }}
               >
-                Получить
+                {t("robot_btn")}
               </Button>
             </div>
           </div>
@@ -105,12 +123,7 @@ export default function RoboticsPage() {
           <p
             className={`${fontTektur.variable} font-tektur font-normal text-[#FFFFFF] text-[11px] md:text-[23px]`}
           >
-            Откройте для себя увлекательный мир технологий! Наш курс
-            робототехники предназначен для детей и подростков, которые хотят
-            узнать основы программирования и сборки роботов. Под руководством
-            опытных преподавателей, учащиеся научатся создавать и
-            программировать собственных роботов, развивая при этом логическое
-            мышление и инженерные навыки.
+            {t("english_main_text")}
           </p>
         </div>
       </section>
@@ -119,47 +132,33 @@ export default function RoboticsPage() {
         <p
           className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] md:text-[96px] text-center font-bold`}
         >
-          Этапы робототехники
+          {t("step")}
         </p>
 
         <div className="flex flex-col items-center gap-y-5">
-          <Select className="w-full sm:w-1/2" label="We Do" variant="flat">
-            {[
-              "Robotics",
-              "English",
-              "Chess",
-              "Painting for children",
-              "Painting for olders",
-            ].map((course, index) => (
-              <SelectItem key={index}>{course}</SelectItem>
-            ))}
-          </Select>
-          <Select className="w-full sm:w-1/2" label="NXT" variant="flat">
-            {[
-              "Robotics",
-              "English",
-              "Chess",
-              "Painting for children",
-              "Painting for olders",
-            ].map((course, index) => (
-              <SelectItem key={index}>{course}</SelectItem>
-            ))}
-          </Select>
-          <Select
-            className="w-full sm:w-1/2 border-white"
-            label="Arduino"
-            variant="flat"
-          >
-            {[
-              "Robotics",
-              "English",
-              "Chess",
-              "Painting for children",
-              "Painting for olders",
-            ].map((course, index) => (
-              <SelectItem key={index}>{course}</SelectItem>
-            ))}
-          </Select>
+        <Accordion variant="splitted" className="w-full sm:w-1/2">
+            <AccordionItem
+              key="1"
+              aria-label="Beginner"
+              title="Beginner"
+            >
+              {t("english1_text")}
+            </AccordionItem>
+            <AccordionItem
+              key="2"
+              aria-label="Elementary"
+              title="Elementary"
+            >
+              {t("english2_text")}
+            </AccordionItem>
+            <AccordionItem
+              key="3"
+              aria-label="Intermediate"
+              title="Intermediate"
+            >
+              {t("english3_text")}
+            </AccordionItem>
+          </Accordion>
           <Button
             className={`w-full sm:w-1/2 ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[55px] text-[24px]`}
             style={{
@@ -167,7 +166,7 @@ export default function RoboticsPage() {
                 "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
             }}
           >
-            Получить
+            {t("robot_btn")}
           </Button>
         </div>
       </section>
@@ -176,7 +175,7 @@ export default function RoboticsPage() {
         <p
           className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] text-center font-bold`}
         >
-          ФОТОГАЛЕРЕЯ
+          {t("foto")}
         </p>
 
         {/* Photo Gallery Grid */}
@@ -224,7 +223,7 @@ export default function RoboticsPage() {
           <p
             className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] md:text-[32px] font-bold text-center md:text-start`}
           >
-            отзывы
+            {t("advices")}
           </p>
           <CustomCarousel />
         </div>
@@ -233,14 +232,14 @@ export default function RoboticsPage() {
           <p
             className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] text-center font-bold`}
           >
-            Получите бесплатный первый урок
+            {t("sub_main_card")}
           </p>
         </div>
 
         <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5">
-          <Input
+        <Input
             className="w-full sm:w-[240px]"
-            label="Ваше имя"
+            label={t("form_name")}
             labelPlacement="outside"
             placeholder="John Doe"
             type="email"
@@ -249,7 +248,7 @@ export default function RoboticsPage() {
 
           <Input
             className="w-full sm:w-[240px]" // Full width on smaller screens
-            label="Номер телефона"
+            label={t("form_phone")}
             labelPlacement="outside"
             placeholder="+9998901234567"
             type="phone"
@@ -257,24 +256,18 @@ export default function RoboticsPage() {
           />
           <Select
             className="w-full sm:w-[240px]" // Full width on smaller screens
-            label="Выберете курс"
+            label={t("form_course")}
             labelPlacement="outside"
             placeholder="Robotics"
             variant="flat"
           >
-            {[
-              "Robotics",
-              "English",
-              "Chess",
-              "Painting for children",
-              "Painting for olders",
-            ].map((course, index) => (
-              <SelectItem key={index}>{course}</SelectItem>
+            {courses.map((course, idx) => (
+              <SelectItem key={idx}>{course.drop}</SelectItem>
             ))}
           </Select>
           <Input
             className="w-full sm:w-[240px]" // Full width on smaller screens
-            label="Возраст"
+            label={t("form_age")}
             labelPlacement="outside"
             placeholder="10"
             type="age"
@@ -287,13 +280,11 @@ export default function RoboticsPage() {
                 "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
             }}
           >
-            Получить
+            {t("form_btn")}
           </Button>
         </div>
-        <div className="flex items-center gap-[10px] justify-between sm:justify-center md:gap-[28px] my-10 py-0 md:py-5 px-2 md:px-0 overflow-x-scroll">
-          {[1, 2, 3].map((idx) => (
-            <FootCard key={idx} />
-          ))}
+        <div className="container mx-auto max-w-7xl my-5 overflow-hidden">
+          <RobotCarousel/>
         </div>
       </section>
     </div>

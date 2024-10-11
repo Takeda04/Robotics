@@ -2,7 +2,13 @@
 
 import Image from "next/image";
 import { Input } from "@nextui-org/input";
-import { Button, Select, SelectItem } from "@nextui-org/react";
+import {
+  Accordion,
+  AccordionItem,
+  Button,
+  Select,
+  SelectItem,
+} from "@nextui-org/react";
 
 import { fontTektur } from "@/config/fonts";
 import borderimg from "@/assets/icons/cardbottom.png";
@@ -12,6 +18,7 @@ import FootCard from "@/components/robotics/foot-card";
 import HubCard from "@/components/robotics/hub";
 import HeadCard from "@/components/robotics/head-card";
 import { useTranslation } from "../i18n/client";
+import RobotCarousel from "@/components/carousel/CarouselRobot";
 
 export default function RoboticsPage({
   params: { lng },
@@ -19,6 +26,14 @@ export default function RoboticsPage({
   params: { lng: string };
 }) {
   const { t } = useTranslation(lng, "translation", {});
+
+  const courses = [
+    { drop: t("drop1") },
+    { drop: t("drop2") },
+    { drop: t("drop3") },
+    { drop: t("drop4") },
+    { drop: t("drop5") },
+  ];
   return (
     <div className="realtive">
       <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 flex">
@@ -105,12 +120,7 @@ export default function RoboticsPage({
           <p
             className={`${fontTektur.variable} font-tektur font-normal text-[#FFFFFF] text-[11px] md:text-[23px]`}
           >
-            Откройте для себя увлекательный мир технологий! Наш курс
-            робототехники предназначен для детей и подростков, которые хотят
-            узнать основы программирования и сборки роботов. Под руководством
-            опытных преподавателей, учащиеся научатся создавать и
-            программировать собственных роботов, развивая при этом логическое
-            мышление и инженерные навыки.
+            {t("robot_main_text")}
           </p>
         </div>
       </section>
@@ -119,47 +129,33 @@ export default function RoboticsPage({
         <p
           className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] md:text-[96px] text-center font-bold`}
         >
-          Этапы робототехники
+          {t("robot_step")}
         </p>
 
         <div className="flex flex-col items-center gap-y-5">
-          <Select className="w-full sm:w-1/2" label="We Do" variant="flat">
-            {[
-              "Robotics",
-              "English",
-              "Chess",
-              "Painting for children",
-              "Painting for olders",
-            ].map((course, index) => (
-              <SelectItem key={index}>{course}</SelectItem>
-            ))}
-          </Select>
-          <Select className="w-full sm:w-1/2" label="NXT" variant="flat">
-            {[
-              "Robotics",
-              "English",
-              "Chess",
-              "Painting for children",
-              "Painting for olders",
-            ].map((course, index) => (
-              <SelectItem key={index}>{course}</SelectItem>
-            ))}
-          </Select>
-          <Select
-            className="w-full sm:w-1/2 border-white"
-            label="Arduino"
-            variant="flat"
-          >
-            {[
-              "Robotics",
-              "English",
-              "Chess",
-              "Painting for children",
-              "Painting for olders",
-            ].map((course, index) => (
-              <SelectItem key={index}>{course}</SelectItem>
-            ))}
-          </Select>
+          <Accordion variant="splitted" className="w-full sm:w-1/2">
+            <AccordionItem
+              key="1"
+              aria-label={t("accordion1_title")}
+              title={t("accordion1_title")}
+            >
+              {t("accordion1_text")}
+            </AccordionItem>
+            <AccordionItem
+              key="2"
+              aria-label={t("accordion2_title")}
+              title={t("accordion2_title")}
+            >
+              {t("accordion2_text")}
+            </AccordionItem>
+            <AccordionItem
+              key="3"
+              aria-label={t("accordion3_title")}
+              title={t("accordion3_title")}
+            >
+              {t("accordion3_text")}
+            </AccordionItem>
+          </Accordion>
           <Button
             className={`w-full sm:w-1/2 ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[55px] text-[24px]`}
             style={{
@@ -167,7 +163,7 @@ export default function RoboticsPage({
                 "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
             }}
           >
-            Получить
+            {t("robot_btn")}
           </Button>
         </div>
       </section>
@@ -175,7 +171,7 @@ export default function RoboticsPage({
         <p
           className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] text-center font-bold`}
         >
-          ФОТОГАЛЕРЕЯ
+          {t("foto")}
         </p>
         <div className="flex md:flex-wrap items-center gap-5 md:gap-7 sm:justify-center px-2 md:px-0 my-10 overflow-x-scroll">
           {[1, 2, 3, 4, 5, 6].map((item, index) => (
@@ -189,7 +185,7 @@ export default function RoboticsPage({
           <p
             className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] md:text-[32px] font-bold text-center md:text-start`}
           >
-            отзывы
+            {t("advices")}
           </p>
           <CustomCarousel />
         </div>
@@ -198,14 +194,14 @@ export default function RoboticsPage({
           <p
             className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] text-center font-bold`}
           >
-            Получите бесплатный первый урок
+            {t("sub_main_card")}
           </p>
         </div>
 
         <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5">
           <Input
             className="w-full sm:w-[240px]"
-            label="Ваше имя"
+            label={t("form_name")}
             labelPlacement="outside"
             placeholder="John Doe"
             type="email"
@@ -214,7 +210,7 @@ export default function RoboticsPage({
 
           <Input
             className="w-full sm:w-[240px]" // Full width on smaller screens
-            label="Номер телефона"
+            label={t("form_phone")}
             labelPlacement="outside"
             placeholder="+9998901234567"
             type="phone"
@@ -222,24 +218,18 @@ export default function RoboticsPage({
           />
           <Select
             className="w-full sm:w-[240px]" // Full width on smaller screens
-            label="Выберете курс"
+            label={t("form_course")}
             labelPlacement="outside"
             placeholder="Robotics"
             variant="flat"
           >
-            {[
-              "Robotics",
-              "English",
-              "Chess",
-              "Painting for children",
-              "Painting for olders",
-            ].map((course, index) => (
-              <SelectItem key={index}>{course}</SelectItem>
+            {courses.map((course, idx) => (
+              <SelectItem key={idx}>{course.drop}</SelectItem>
             ))}
           </Select>
           <Input
             className="w-full sm:w-[240px]" // Full width on smaller screens
-            label="Возраст"
+            label={t("form_age")}
             labelPlacement="outside"
             placeholder="10"
             type="age"
@@ -252,13 +242,11 @@ export default function RoboticsPage({
                 "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
             }}
           >
-            Получить
+            {t("form_btn")}
           </Button>
         </div>
-        <div className="flex items-center gap-[10px] justify-between sm:justify-center md:gap-[28px] my-10 py-0 md:py-5 px-2 md:px-0 overflow-x-scroll">
-          {[1, 2, 3].map((idx) => (
-            <FootCard key={idx} />
-          ))}
+        <div className="container mx-auto max-w-7xl my-5 overflow-hidden">
+          <RobotCarousel/>
         </div>
       </section>
     </div>

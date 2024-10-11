@@ -13,8 +13,28 @@ import HeadCard from "@/components/robotics/head-card";
 import call from "@/assets/images/chess_child.png";
 import ChildCard from "@/components/children/child-card";
 import CarouselChess from "@/components/carousel/CarouselChess";
+import RobotCarousel from "@/components/carousel/CarouselRobot";
+import { useTranslation } from "../i18n/client";
 
-export default function ChessPage() {
+export default function ChessPage({
+  params: { lng },
+}: {
+  params: { lng: string };
+}) {
+
+
+
+  const { t } = useTranslation(lng, "translation", {});
+
+  const courses = [
+    { drop: t("drop1") },
+    { drop: t("drop2") },
+    { drop: t("drop3") },
+    { drop: t("drop4") },
+    { drop: t("drop5") },
+  ];
+
+
   return (
     <div className="realtive">
       <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 flex">
@@ -137,13 +157,13 @@ export default function ChessPage() {
           <p
             className={`${fontTektur.variable} w-[306px] md:w-[872px] font-tektur text-[#FFFFFF] text-[15px] md:text-[32px] text-center font-bold`}
           >
-            Приглашаем на первый бесплатный урок
+           {t("sub_main_card")}
           </p>
           <Button
             className="bg-[#FFE000] text-[#000] w-[208px] h-[25px] md:w-[530px] md:h-[51px] text-[15px] md:text-[32px]"
             variant="bordered"
           >
-            Записаться
+            {t("record_btn")}
           </Button>
         </div>
       </section>
@@ -153,7 +173,7 @@ export default function ChessPage() {
           <p
             className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] text-center font-bold`}
           >
-            ФОТОГАЛЕРЕЯ
+             {t("foto")}
           </p>
 
           <CarouselChess />
@@ -165,7 +185,7 @@ export default function ChessPage() {
           <p
             className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] md:text-[32px] font-bold text-center md:text-start`}
           >
-            отзывы
+           {t("advices")}
           </p>
           <CustomCarousel />
         </div>
@@ -174,14 +194,14 @@ export default function ChessPage() {
           <p
             className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] text-center font-bold`}
           >
-            Получите бесплатный первый урок
+             {t("sub_main_card")}
           </p>
         </div>
 
         <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5">
-          <Input
+        <Input
             className="w-full sm:w-[240px]"
-            label="Ваше имя"
+            label={t("form_name")}
             labelPlacement="outside"
             placeholder="John Doe"
             type="email"
@@ -190,7 +210,7 @@ export default function ChessPage() {
 
           <Input
             className="w-full sm:w-[240px]" // Full width on smaller screens
-            label="Номер телефона"
+            label={t("form_phone")}
             labelPlacement="outside"
             placeholder="+9998901234567"
             type="phone"
@@ -198,24 +218,18 @@ export default function ChessPage() {
           />
           <Select
             className="w-full sm:w-[240px]" // Full width on smaller screens
-            label="Выберете курс"
+            label={t("form_course")}
             labelPlacement="outside"
             placeholder="Robotics"
             variant="flat"
           >
-            {[
-              "Robotics",
-              "English",
-              "Chess",
-              "Painting for children",
-              "Painting for olders",
-            ].map((course, index) => (
-              <SelectItem key={index}>{course}</SelectItem>
+            {courses.map((course, idx) => (
+              <SelectItem key={idx}>{course.drop}</SelectItem>
             ))}
           </Select>
           <Input
             className="w-full sm:w-[240px]" // Full width on smaller screens
-            label="Возраст"
+            label={t("form_age")}
             labelPlacement="outside"
             placeholder="10"
             type="age"
@@ -228,13 +242,11 @@ export default function ChessPage() {
                 "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
             }}
           >
-            Получить
+            {t("form_btn")}
           </Button>
         </div>
-        <div className="flex items-center gap-[10px] justify-between sm:justify-center md:gap-[28px] my-10 py-0 md:py-5 px-2 md:px-0 overflow-x-scroll">
-          {[1, 2, 3].map((idx) => (
-            <FootCard key={idx} />
-          ))}
+        <div className="container mx-auto max-w-7xl my-5 overflow-hidden">
+          <RobotCarousel/>
         </div>
       </section>
     </div>
