@@ -39,5 +39,14 @@
   "footer_soc1" : "Телеграм",
   "footer_soc2" : "Инстаграм",
   "footer_soc3" :"Ютуб",
-  "security" : "Ideallux.com © 2000-2024, Все права защищены."
+  "security" : "Ideallux.com © 2000-2024, Все права защищены.",
+  "robot_title" : "Курс робототехники от JustRobotics",
+  "robot_desc1" : "практический курс пробуждающий интерес к робототехнике и физике у вашего ребенка",
+  "robot_desc2" : "от 5 до 18 лет",
+  "robot_price" : "Получи первый урок",
+  "robot_cost" : "100.000 сум",
+  "robot_free" : "Бесплатно",
+  "robot_placeholder1": "Ваше имя",
+  "robot_placeholder2" : "Номер телефона",
+  "robot_btn" : "Получить"
 }

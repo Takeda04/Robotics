@@ -1,14 +1,13 @@
 import React from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
-
+import Image from "next/image";
 
 import slider2 from "@/assets/images/slider2.png";
 import slider3 from "@/assets/images/slider3.png";
 import slider4 from "@/assets/images/slider4.png";
 import slider5 from "@/assets/images/slider5.png";
 import slider from "@/assets/images/child_big.png";
-import Image from "next/image";
 
 const CarouselContainer = styled.div`
   .slick-slide {
@@ -79,13 +78,7 @@ const CarouselContainer = styled.div`
 `;
 
 const CarouselChess = () => {
-  const images = [
-    slider,
-    slider2,
-    slider3,
-    slider4,
-    slider5,
-  ];
+  const images = [slider, slider2, slider3, slider4, slider5];
 
   const settings = {
     dots: true,
@@ -123,11 +116,14 @@ const CarouselChess = () => {
     <CarouselContainer>
       <Slider {...settings}>
         {images.map((image, index) => (
-          <div className="min-w-[200px] w-[200px] h-[150px] md:w-[1200px] md:h-[602px] px-5" key={index}>
+          <div
+            key={index}
+            className="min-w-[200px] w-[200px] h-[150px] md:w-[1200px] md:h-[602px] px-5"
+          >
             <Image
-              src={image}
               alt="First image"
               className="min-w-[200px] w-[200px] h-[150px] md:w-[1400px] md:h-[602px] object-cover rounded-lg shadow-lg"
+              src={image}
             />
           </div>
         ))}

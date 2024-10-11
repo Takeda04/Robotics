@@ -2,20 +2,22 @@
 
 import Image from "next/image";
 import React, { useState } from "react";
-import dark_logo from "@/assets/icons/dark_logo.png";
 import { FaInstagram, FaTelegramPlane, FaYoutube } from "react-icons/fa";
 import { Link } from "@nextui-org/link";
-import { fontTektur } from "@/config/fonts";
-import { ClockIcon, LocationIcon, PhoneIcon } from "@/assets/icons/icons";
 import { Button } from "@nextui-org/button";
 import { useRouter } from "next/navigation";
+
+import { fontTektur } from "@/config/fonts";
+import { ClockIcon, LocationIcon, PhoneIcon } from "@/assets/icons/icons";
+import dark_logo from "@/assets/icons/dark_logo.png";
 import { useTranslation } from "@/app/[lng]/i18n/client";
+import { getCookie } from "cookies-next";
 
 export const Footer = ({ lng }: { lng: string }) => {
   const { t } = useTranslation(lng, "translation", {});
   const [activeLanguage, setActiveLanguage] = useState("S1");
   const router = useRouter();
-  const lang = window.localStorage.getItem("i18nextLng");
+  const lang = getCookie("i18next");
 
   const handleLanguageChange = (position: string, map: string) => {
     setActiveLanguage(position);
@@ -31,17 +33,15 @@ export const Footer = ({ lng }: { lng: string }) => {
   ];
   const socials = [
     { soc: t("footer_soc1"), link: `/${lang}/` },
-    { soc: t("footer_soc2"), link: `/${lang}/`  },
-    { soc: t("footer_soc3"), link: `/${lang}/`  },
+    { soc: t("footer_soc2"), link: `/${lang}/` },
+    { soc: t("footer_soc3"), link: `/${lang}/` },
   ];
 
   return (
     <section>
       <div className="container mx-auto max-w-7xl flex items-center justify-center sm:justify-start">
         <Button
-          onClick={() =>
-            handleLanguageChange("S1", "https://yandex.uz/maps/-/CDXeEHMG")
-          }
+          className={`${fontTektur.variable} font-tektur py-5 sm:py-[20px] h-[50px] sm:h-[78px] px-9 sm:px-[64px] text-[16px] sm:text-[30px]`}
           style={{
             background: activeLanguage === "S1" ? "#F0D625" : "#ffffff",
             color: "#000000",
@@ -50,14 +50,14 @@ export const Footer = ({ lng }: { lng: string }) => {
                 ? "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625"
                 : "",
           }}
-          className={`${fontTektur.variable} font-tektur py-5 sm:py-[20px] h-[50px] sm:h-[78px] px-9 sm:px-[64px] text-[16px] sm:text-[30px]`}
+          onClick={() =>
+            handleLanguageChange("S1", "https://yandex.uz/maps/-/CDXeEHMG")
+          }
         >
           {t("footer_btn1")}
         </Button>
         <Button
-          onClick={() =>
-            handleLanguageChange("BERUNIY", "https://yandex.uz/maps/-/CDXeI49L")
-          }
+          className={`${fontTektur.variable} font-tektur py-5 sm:py-[20px] h-[50px] sm:h-[78px] px-9 sm:px-[64px] text-[16px] sm:text-[30px] ml-[20px] sm:ml-[60px]`}
           style={{
             background: activeLanguage === "BERUNIY" ? "#F0D625" : "#ffffff",
             color: "#000000",
@@ -66,7 +66,9 @@ export const Footer = ({ lng }: { lng: string }) => {
                 ? "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625"
                 : "",
           }}
-          className={`${fontTektur.variable} font-tektur py-5 sm:py-[20px] h-[50px] sm:h-[78px] px-9 sm:px-[64px] text-[16px] sm:text-[30px] ml-[20px] sm:ml-[60px]`}
+          onClick={() =>
+            handleLanguageChange("BERUNIY", "https://yandex.uz/maps/-/CDXeI49L")
+          }
         >
           {t("footer_btn2")}
         </Button>
@@ -99,30 +101,30 @@ export const Footer = ({ lng }: { lng: string }) => {
         </span>
       </div>
       <iframe
-        title="Google Maps - Just Robotics Wyndham Location"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5758.997039052575!2d69.27864672431006!3d41.31862378008828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b981e0fe325%3A0xa6fc38e83861c109!2sJust%20Robotics%20Wyndham!5e1!3m2!1suz!2s!4v1728532818798!5m2!1suz!2s"
-        width="600"
         height="450"
+        loading="lazy"
+        referrerPolicy="no-referrer-when-downgrade"
+        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5758.997039052575!2d69.27864672431006!3d41.31862378008828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b981e0fe325%3A0xa6fc38e83861c109!2sJust%20Robotics%20Wyndham!5e1!3m2!1suz!2s!4v1728532818798!5m2!1suz!2s"
         style={{
           height: "320px",
           border: "0",
           width: "100%",
           marginBottom: "80px",
         }}
-        loading="lazy"
-        referrerPolicy="no-referrer-when-downgrade"
-      ></iframe>
+        title="Google Maps - Just Robotics Wyndham Location"
+        width="600"
+      />
 
       <footer className="bg-[#FFE000] py-8">
         <div className="container mx-auto max-w-7xl flex flex-col sm:flex-row py-6 gap-y-8 px-4 lg:px-0">
           {/* Logo and Slogan Section */}
           <div className="flex flex-col items-start sm:flex-col">
             <Image
-              width={70}
-              height={70}
-              src={dark_logo}
               alt="Company Logo"
               className="mb-4"
+              height={70}
+              src={dark_logo}
+              width={70}
             />
             <p
               className={`${fontTektur.variable} font-tektur text-black font-bold text-[14px] max-w-[248px]`}
@@ -131,20 +133,20 @@ export const Footer = ({ lng }: { lng: string }) => {
             </p>
             <div className="flex gap-5 mt-4">
               <Link
-                href="https://t.me/olimjon_nishanaliyev"
                 aria-label="Telegram"
+                href="https://t.me/olimjon_nishanaliyev"
               >
                 <FaTelegramPlane className="text-black text-2xl" />
               </Link>
               <Link
-                href="https://www.youtube.com/@asmrpistol"
                 aria-label="YouTube"
+                href="https://www.youtube.com/@asmrpistol"
               >
                 <FaYoutube className="text-black text-2xl" />
               </Link>
               <Link
-                href="https://www.instagram.com/nishanaliyevolimjon"
                 aria-label="Instagram"
+                href="https://www.instagram.com/nishanaliyevolimjon"
               >
                 <FaInstagram className="text-black text-2xl" />
               </Link>
@@ -162,8 +164,8 @@ export const Footer = ({ lng }: { lng: string }) => {
               {courses.map((course, index) => (
                 <li key={index}>
                   <Link
-                    href={course.link}
                     className={`${fontTektur.variable} font-tektur text-black text-[20px]`}
+                    href={course.link}
                   >
                     {course.drop}
                   </Link>
@@ -183,8 +185,8 @@ export const Footer = ({ lng }: { lng: string }) => {
               {socials.map((contact, index) => (
                 <li key={index}>
                   <Link
-                    href="#"
                     className={`${fontTektur.variable} font-tektur text-black text-[20px]`}
+                    href="#"
                   >
                     {contact.soc}
                   </Link>

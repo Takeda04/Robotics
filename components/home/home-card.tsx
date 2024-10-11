@@ -1,9 +1,19 @@
-import { useTranslation } from "@/app/[lng]/i18n/client";
-import { fontTektur } from "@/config/fonts";
 import React from "react";
 
-const StatCard = ({ lng, text, subText }: { lng: string, text:string, subText:string }) => {
-  const { t } = useTranslation(lng, 'translation', {});
+import { useTranslation } from "@/app/[lng]/i18n/client";
+import { fontTektur } from "@/config/fonts";
+
+const StatCard = ({
+  lng,
+  text,
+  subText,
+}: {
+  lng: string;
+  text: string;
+  subText: string;
+}) => {
+  const { t } = useTranslation(lng, "translation", {});
+
   return (
     <div
       className="w-[165px] h-[110px] md:w-[398px] md:h-[369px] bg-[#F0D625] rounded-3xl flex flex-col items-center justify-center mx-auto"

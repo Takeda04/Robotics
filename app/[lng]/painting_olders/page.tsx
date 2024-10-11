@@ -1,49 +1,21 @@
 "use client";
 
-import { fontTektur } from "@/config/fonts";
-
 import Image from "next/image";
+import { Input } from "@nextui-org/input";
+import { Button, Select, SelectItem } from "@nextui-org/react";
+import { useEffect, useState } from "react";
+
+import { fontTektur } from "@/config/fonts";
 import borderimg from "@/assets/icons/cardbottom.png";
 import older from "@/assets/images/olders.png";
 import CustomCarousel from "@/components/carousel";
-import { Input } from "@nextui-org/input";
-import { Button, Select, SelectItem } from "@nextui-org/react";
 import FootCard from "@/components/robotics/foot-card";
 import HeadCard from "@/components/robotics/head-card";
-
-import bigchild from "@/assets/images/girl_image.png";
-import secondimage from "@/assets/images/english2.png";
 import call from "@/assets/images/call.png";
-
-import thirdimage from "@/assets/images/english3.png";
-import fourthimage from "@/assets/images/english4.png";
 import ChildCard from "@/components/children/child-card";
-import { useEffect, useState } from "react";
 import CarouselOlders from "@/components/carousel/Carouselolders";
 
 export default function PaintingOlderPage() {
-  const [showAll, setShowAll] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth < 768);
-    };
-
-    handleResize();
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
-
-  const toggleShowAll = () => {
-    setShowAll(!showAll);
-  };
-
-  const visibleCards = isMobile && !showAll ? 3 : 6;
 
   return (
     <div className="realtive">
@@ -83,43 +55,43 @@ export default function PaintingOlderPage() {
             </div>
             <div className="absolute flex mt-[50px] md:mt-[100px] gap-2 md:gap-10 w-[300px] md:w-full">
               <Input
-                type="name"
-                label="Ваше имя"
-                variant="flat"
                 className="w-[100px] sm:w-[240px] h-[35px] md:h-[55px]" // Full width on smaller screens
+                label="Ваше имя"
+                type="name"
+                variant="flat"
               />
               <Input
-                type="phone"
-                label="Номер телефона"
-                variant="flat"
                 className="w-[100px] sm:w-[240px] h-[35px] md:h-[55px]"
+                label="Номер телефона"
+                type="phone"
+                variant="flat"
               />
               <Button
+                className={`${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[35px] md:h-[55px] text-[14px] md:text-[24px] w-[80px] md:w-[200px]`}
                 style={{
                   boxShadow:
                     "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
                 }}
-                className={`${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[35px] md:h-[55px] text-[14px] md:text-[24px] w-[80px] md:w-[200px]`}
               >
                 Получить
               </Button>
             </div>
           </div>
           <Image
+            alt="home robot"
             className="w-[303px] h-[253.5px] -mt-[56px] md:mt-0 -mr-5 md:-mr-[450px] md:w-[500px] md:h-[605px] rounded-br-3xl md:rounded-none "
+            height={500}
             src={older}
             width={500}
-            height={500}
-            alt="home robot"
           />
         </div>
         <Image
-          className="absolute bottom-0 right-0"
-          width={400}
-          height={400}
           alt="border image"
+          className="absolute bottom-0 right-0"
+          height={400}
           src={borderimg}
           style={{ borderBottomRightRadius: "30px" }}
+          width={400}
         />
       </div>
       <section className="container mx-auto max-w-7xl flex items-center justify-between my-10 px-2 md:px-0 gap-5 md:gap-0">
@@ -150,19 +122,17 @@ export default function PaintingOlderPage() {
         </p>
         <div className="flex flex-wrap items-center justify-between gap-y-7 p-3 md:p-0 transition-all duration-300 ease-in-out">
           {[1, 2, 3, 4, 5, 6].map((item) => (
-            
-              <ChildCard key={item} />
+            <ChildCard key={item} />
           ))}
         </div>
-
       </section>
       <section className="relative container mx-auto max-w-7xl my-20">
         <Image
-          width={500}
-          height={500}
-          src={call}
           alt="call image"
           className="w-full"
+          height={500}
+          src={call}
+          width={500}
         />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center space-y-0 md:space-y-10">
           <p
@@ -170,7 +140,10 @@ export default function PaintingOlderPage() {
           >
             Приглашаем на первый бесплатный урок
           </p>
-          <Button className="bg-[#FFE000] text-[#000] w-[208px] h-[25px] md:w-[530px] md:h-[51px] text-[15px] md:text-[32px]" variant="bordered">
+          <Button
+            className="bg-[#FFE000] text-[#000] w-[208px] h-[25px] md:w-[530px] md:h-[51px] text-[15px] md:text-[32px]"
+            variant="bordered"
+          >
             Записаться
           </Button>
         </div>
@@ -178,13 +151,13 @@ export default function PaintingOlderPage() {
 
       <section className="container mx-auto max-w-7xl">
         <div className="overflow-hidden">
-        <p
-          className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] text-center font-bold`}
-        >
-          ФОТОГАЛЕРЕЯ
-        </p>
+          <p
+            className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] text-center font-bold`}
+          >
+            ФОТОГАЛЕРЕЯ
+          </p>
 
-        <CarouselOlders/>
+          <CarouselOlders />
         </div>
       </section>
 
@@ -208,28 +181,28 @@ export default function PaintingOlderPage() {
 
         <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5">
           <Input
+            className="w-full sm:w-[240px]"
+            label="Ваше имя"
             labelPlacement="outside"
             placeholder="John Doe"
-            variant="flat"
-            className="w-full sm:w-[240px]"
             type="email"
-            label="Ваше имя"
+            variant="flat"
           />
 
           <Input
-            labelPlacement="outside"
-            type="phone"
-            label="Номер телефона"
-            placeholder="+9998901234567"
-            variant="flat"
             className="w-full sm:w-[240px]" // Full width on smaller screens
+            label="Номер телефона"
+            labelPlacement="outside"
+            placeholder="+9998901234567"
+            type="phone"
+            variant="flat"
           />
           <Select
-            labelPlacement="outside"
+            className="w-full sm:w-[240px]" // Full width on smaller screens
             label="Выберете курс"
+            labelPlacement="outside"
             placeholder="Robotics"
             variant="flat"
-            className="w-full sm:w-[240px]" // Full width on smaller screens
           >
             {[
               "Robotics",
@@ -242,19 +215,19 @@ export default function PaintingOlderPage() {
             ))}
           </Select>
           <Input
-            labelPlacement="outside"
-            type="age"
-            placeholder="10"
-            label="Возраст"
-            variant="flat"
             className="w-full sm:w-[240px]" // Full width on smaller screens
+            label="Возраст"
+            labelPlacement="outside"
+            placeholder="10"
+            type="age"
+            variant="flat"
           />
           <Button
+            className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[40px] text-[24px]`}
             style={{
               boxShadow:
                 "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
             }}
-            className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[40px] text-[24px]`}
           >
             Получить
           </Button>

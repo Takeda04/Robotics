@@ -1,5 +1,6 @@
-import { fontTektur } from "@/config/fonts";
 import React from "react";
+
+import { fontTektur } from "@/config/fonts";
 
 const ChildCard = () => {
   return (

@@ -38,10 +38,10 @@ export const ChevronDown: React.FC<ChevronDownProps> = ({
 export const PhoneIcon = ({}) => {
   return (
     <svg
-      width="40"
+      fill="none"
       height="40"
       viewBox="0 0 40 40"
-      fill="none"
+      width="40"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -55,10 +55,10 @@ export const PhoneIcon = ({}) => {
 export const LocationIcon = ({}) => {
   return (
     <svg
-      width="40"
+      fill="none"
       height="40"
       viewBox="0 0 40 40"
-      fill="none"
+      width="40"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -80,10 +80,10 @@ export const LocationIcon = ({}) => {
 export const ClockIcon = ({}) => {
   return (
     <svg
-      width="40"
+      fill="none"
       height="40"
       viewBox="0 0 40 40"
-      fill="none"
+      width="40"
       xmlns="http://www.w3.org/2000/svg"
     >
       <path
@@ -97,14 +97,14 @@ export const ClockIcon = ({}) => {
 export const PlayIcon = ({}) => {
   return (
     <svg
-      width="80"
+      className="absolute"
+      fill="none"
       height="48"
       viewBox="0 0 80 48"
-      fill="none"
+      width="80"
       xmlns="http://www.w3.org/2000/svg"
-      className="absolute"
     >
-      <rect x="0.5" y="0.5" width="79" height="47" rx="23.5" stroke="white" />
+      <rect height="47" rx="23.5" stroke="white" width="79" x="0.5" y="0.5" />
       <path
         d="M48.7422 22.6465L32.4297 12.9375C32.2305 12.8203 32.0254 12.75 31.791 12.75C31.1523 12.75 30.6309 13.2773 30.6309 13.9219H30.625V34.0781H30.6309C30.6309 34.7227 31.1523 35.25 31.791 35.25C32.0313 35.25 32.2305 35.168 32.4473 35.0508L48.7422 25.3535C49.1289 25.0312 49.375 24.5449 49.375 24C49.375 23.4551 49.1289 22.9746 48.7422 22.6465Z"
         fill="white"
@@ -116,13 +116,13 @@ export const PlayIcon = ({}) => {
 export const LogoIcon = ({}) => {
   return (
     <svg
-      width="111"
+      fill="none"
       height="111"
       viewBox="0 0 111 111"
-      fill="none"
+      width="111"
       xmlns="http://www.w3.org/2000/svg"
     >
-      <circle cx="55.5" cy="55.5" r="55.5" fill="#FFE000" />
+      <circle cx="55.5" cy="55.5" fill="#FFE000" r="55.5" />
     </svg>
   );
 };

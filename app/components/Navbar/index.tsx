@@ -7,16 +7,13 @@ import {
   NavbarItem,
   NavbarMenu,
 } from "@nextui-org/navbar";
+
 // images
-import ToggleIcon from "@/assets/icons/toggleModal.png";
-import logo from "@/assets/icons/logo.png";
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-
 import { IoMdClose } from "react-icons/io";
 import { Link } from "@nextui-org/link";
-import { fontTektur } from "@/config/fonts";
 import {
   Button,
   ButtonGroup,
@@ -25,32 +22,36 @@ import {
   DropdownMenu,
   DropdownTrigger,
 } from "@nextui-org/react";
-import { ChevronDown } from "@/assets/icons/icons";
 import { useRouter } from "next/navigation";
+
+import { fontTektur } from "@/config/fonts";
+import { ChevronDown } from "@/assets/icons/icons";
+import logo from "@/assets/icons/logo.png";
+import ToggleIcon from "@/assets/icons/toggleModal.png";
 import { useTranslation } from "@/app/[lng]/i18n/client";
+import { getCookie } from "cookies-next";
 
 export const Navbar = ({ lng }: { lng: string }) => {
-  const { t } = useTranslation(lng, 'translation', {});
+  const { t } = useTranslation(lng, "translation", {});
   const [isOpen, setIsOpen] = useState(false);
   const [isMobile, setIsMobile] = useState(false);
   const router = useRouter();
-  const lang = window.localStorage.getItem("i18nextLng")
-
+  const lang = getCookie("i18next");
 
   const handleToggle = () => {
     setIsOpen((prevState) => !prevState);
   };
 
   const handleLanguageChange = (lang: string) => {
-
     const pathname = window.location.pathname;
     const path = pathname.slice(4, pathname.length);
+
     router.push(`/${lang.toLowerCase()}/${path}`);
   };
 
   const icons = {
     chevron: (
-      <ChevronDown fill="currentColor" size={16} height={16} width={16} />
+      <ChevronDown fill="currentColor" height={16} size={16} width={16} />
     ),
   };
 
@@ -70,19 +71,19 @@ export const Navbar = ({ lng }: { lng: string }) => {
   return (
     <NextUINavbar
       className="h-[100px] sm:h-[157px] relative py-5 sm:absolute border-t-[10px] border-b-[10px] border-[#F0D625]"
-      maxWidth="xl"
       isMenuOpen={isOpen} // Control menu open state
+      maxWidth="xl"
       onMenuOpenChange={setIsOpen} // Handle menu open change
     >
       <NavbarBrand>
-        <Link href="/">
-        <Image
-          src={logo}
-          alt="website logo"
-          width={70}
-          height={70}
-          className="sm:w-[111px] md:min-w-[100px]"
-        />
+        <Link href={`/${lang}/`}>
+          <Image
+            alt="website logo"
+            className="sm:w-[111px] md:min-w-[100px]"
+            height={70}
+            src={logo}
+            width={70}
+          />
         </Link>
       </NavbarBrand>
       {!isMobile && (
@@ -91,7 +92,7 @@ export const Navbar = ({ lng }: { lng: string }) => {
             <Link
               className={`${fontTektur.variable} font-tektur text-[24px]`}
               color="foreground"
-              href="/"
+              href={`/${lang}/`}
             >
               {t("main")}
             </Link>
@@ -100,7 +101,7 @@ export const Navbar = ({ lng }: { lng: string }) => {
             <Link
               className={`${fontTektur.variable} font-tektur text-[24px]`}
               color="foreground"
-              href="/"
+              href={`/${lang}/`}
             >
               {t("about")}
             </Link>
@@ -113,8 +114,8 @@ export const Navbar = ({ lng }: { lng: string }) => {
                   className={`${fontTektur.variable} font-tektur p-4 bg-transparent data-[hover=true]:bg-transparent text-[24px]`}
                   endContent={icons.chevron}
                   radius="full"
-                  variant="bordered"
                   style={{ borderColor: "#F0D625", color: "#F0D625" }} // Button border and text color
+                  variant="bordered"
                 >
                   {t("drop")}
                 </Button>
@@ -128,32 +129,32 @@ export const Navbar = ({ lng }: { lng: string }) => {
               }}
             >
               <DropdownItem
-                href="/robotic"
                 className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
+                href={`/${lang}/robotic`}
               >
                 {t("drop1")}
               </DropdownItem>
               <DropdownItem
-                href="/english"
                 className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
+                href={`/${lang}/english`}
               >
                 {t("drop2")}
               </DropdownItem>
               <DropdownItem
-                href="/painting_children"
                 className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
+                href={`/${lang}/painting_children`}
               >
                 {t("drop3")}
               </DropdownItem>
               <DropdownItem
-                href="/painting_olders"
                 className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
+                href={`/${lang}/painting_olders`}
               >
                 {t("drop4")}
               </DropdownItem>
               <DropdownItem
-                href="/chess"
                 className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
+                href={`/${lang}/chess`}
               >
                 {t("drop5")}
               </DropdownItem>
@@ -164,13 +165,13 @@ export const Navbar = ({ lng }: { lng: string }) => {
             <Link
               className={`${fontTektur.variable} font-tektur text-[24px]`}
               color="foreground"
-              href="/"
+              href={`/${lang}/`}
             >
               {t("contact")}
             </Link>
           </NavbarItem>
           <Button
-            onClick={() => window.open("tel:+998998552572")}
+            className={`${fontTektur.variable} font-tektur font-bold text-[24px]`}
             style={{
               borderColor: "#F0D625",
               background: "#F0D625",
@@ -178,33 +179,33 @@ export const Navbar = ({ lng }: { lng: string }) => {
               boxShadow:
                 "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
             }}
-            className={`${fontTektur.variable} font-tektur font-bold text-[24px]`}
+            onClick={() => window.open("tel:+998998552572")}
           >
             {t("call")}
           </Button>
 
           <ButtonGroup className="hidden sm:flex">
             <Button
-              onClick={() => handleLanguageChange("UZ")}
+              className={`${fontTektur.variable} font-tektur text-[24px]`}
               style={{
                 background: lng === "uz" ? "#F0D625" : "transparent",
                 color: lng === "uz" ? "#FFFFFF" : "#F0D625",
                 borderRadius: "15px",
                 padding: "10px 20px",
               }}
-              className={`${fontTektur.variable} font-tektur text-[24px]`}
+              onClick={() => handleLanguageChange("UZ")}
             >
               UZ
             </Button>
             <Button
-              onClick={() => handleLanguageChange("RU")}
+              className={`${fontTektur.variable} font-tektur text-[24px]`}
               style={{
                 background: lng === "ru" ? "#F0D625" : "transparent",
                 color: lng === "ru" ? "#FFFFFF" : "#F0D625",
                 borderRadius: "15px",
                 padding: "10px 20px",
               }}
-              className={`${fontTektur.variable} font-tektur text-[24px]`}
+              onClick={() => handleLanguageChange("RU")}
             >
               RU
             </Button>
@@ -217,31 +218,31 @@ export const Navbar = ({ lng }: { lng: string }) => {
         <NavbarContent className="custom-lg:hidden" justify="end">
           <ButtonGroup className="flex">
             <Button
-              onClick={() => handleLanguageChange("UZ")}
+              className={`${fontTektur.variable} font-tektur text-[24px]`}
               style={{
                 background: lng === "uz" ? "#F0D625" : "transparent",
                 color: lng === "uz" ? "#FFFFFF" : "#F0D625",
                 borderRadius: "15px",
                 padding: "5px 10px",
               }}
-              className={`${fontTektur.variable} font-tektur text-[24px]`}
+              onClick={() => handleLanguageChange("UZ")}
             >
               UZ
             </Button>
             <Button
-              onClick={() => handleLanguageChange("RU")}
+              className={`${fontTektur.variable} font-tektur text-[24px]`}
               style={{
                 background: lng === "ru" ? "#F0D625" : "transparent",
                 color: lng === "ru" ? "#FFFFFF" : "#F0D625",
                 borderRadius: "15px",
                 padding: "5px 10px",
               }}
-              className={`${fontTektur.variable} font-tektur text-[24px]`}
+              onClick={() => handleLanguageChange("RU")}
             >
               RU
             </Button>
           </ButtonGroup>
-          <button onClick={handleToggle} className="cursor-pointer">
+          <button className="cursor-pointer" onClick={handleToggle}>
             <div className="relative w-9 h-9">
               <div
                 className={`absolute inset-0 flex justify-center items-center transition-all duration-300 ${
@@ -249,8 +250,8 @@ export const Navbar = ({ lng }: { lng: string }) => {
                 }`}
               >
                 <IoMdClose
-                  size={35}
                   className="transition-transform duration-300"
+                  size={35}
                 />
               </div>
 
@@ -260,10 +261,10 @@ export const Navbar = ({ lng }: { lng: string }) => {
                 }`}
               >
                 <Image
-                  width={35}
+                  alt="open menu icon"
                   height={35}
                   src={ToggleIcon}
-                  alt="open menu icon"
+                  width={35}
                 />
               </div>
             </div>
@@ -298,8 +299,8 @@ export const Navbar = ({ lng }: { lng: string }) => {
                 className={`${fontTektur.variable} font-tektur p-4 bg-transparent data-[hover=true]:bg-transparent text-[24px]`}
                 endContent={icons.chevron}
                 radius="full"
-                variant="bordered"
                 style={{ borderColor: "#F0D625", color: "#F0D625" }} // Button border and text color
+                variant="bordered"
               >
                 {t("drop")}
               </Button>
@@ -313,32 +314,32 @@ export const Navbar = ({ lng }: { lng: string }) => {
             }}
           >
             <DropdownItem
-              href={`/${lang}/robotic`}
               className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
+              href={`/${lang}/robotic`}
             >
               {t("drop1")}
             </DropdownItem>
             <DropdownItem
-              href={`/${lang}/english`}
               className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
+              href={`/${lang}/english`}
             >
               {t("drop2")}
             </DropdownItem>
             <DropdownItem
-              href={`/${lang}/painting_children`}
               className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
+              href={`/${lang}/painting_children`}
             >
               {t("drop3")}
             </DropdownItem>
             <DropdownItem
-              href={`/${lang}/painting_olders`}
               className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
+              href={`/${lang}/painting_olders`}
             >
               {t("drop4")}
             </DropdownItem>
             <DropdownItem
-              href={`/${lang}/chess`}
               className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
+              href={`/${lang}/chess`}
             >
               {t("drop5")}
             </DropdownItem>
@@ -355,6 +356,7 @@ export const Navbar = ({ lng }: { lng: string }) => {
           </Link>
         </NavbarItem>
         <Button
+          className={`${fontTektur.variable} font-tektur font-bold text-[24px]`}
           style={{
             borderColor: "#F0D625",
             background: "#F0D625",
@@ -362,7 +364,6 @@ export const Navbar = ({ lng }: { lng: string }) => {
             boxShadow:
               "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
           }}
-          className={`${fontTektur.variable} font-tektur font-bold text-[24px]`}
         >
           {t("call")}
         </Button>

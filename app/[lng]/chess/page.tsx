@@ -1,27 +1,20 @@
 "use client";
 
-import { fontTektur } from "@/config/fonts";
-
 import Image from "next/image";
+import { Input } from "@nextui-org/input";
+import { Button, Select, SelectItem } from "@nextui-org/react";
+
+import { fontTektur } from "@/config/fonts";
 import borderimg from "@/assets/icons/cardbottom.png";
 import chess from "@/assets/images/chess.png";
 import CustomCarousel from "@/components/carousel";
-import { Input } from "@nextui-org/input";
-import { Button, Select, SelectItem } from "@nextui-org/react";
 import FootCard from "@/components/robotics/foot-card";
 import HeadCard from "@/components/robotics/head-card";
-
-import bigchild from "@/assets/images/chess_child2.png";
-import secondimage from "@/assets/images/english2.png";
 import call from "@/assets/images/chess_child.png";
-
-import thirdimage from "@/assets/images/english3.png";
-import fourthimage from "@/assets/images/english4.png";
 import ChildCard from "@/components/children/child-card";
 import CarouselChess from "@/components/carousel/CarouselChess";
 
 export default function ChessPage() {
-
   return (
     <div className="realtive">
       <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 flex">
@@ -60,43 +53,43 @@ export default function ChessPage() {
             </div>
             <div className="absolute flex mt-[50px] md:mt-[100px] gap-2 md:gap-10 w-[300px] md:w-full">
               <Input
-                type="name"
-                label="Ваше имя"
-                variant="flat"
                 className="w-[100px] sm:w-[240px] h-[35px] md:h-[55px]" // Full width on smaller screens
+                label="Ваше имя"
+                type="name"
+                variant="flat"
               />
               <Input
-                type="phone"
-                label="Номер телефона"
-                variant="flat"
                 className="w-[100px] sm:w-[240px] h-[35px] md:h-[55px]"
+                label="Номер телефона"
+                type="phone"
+                variant="flat"
               />
               <Button
+                className={`${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[35px] md:h-[55px] text-[14px] md:text-[24px] w-[80px] md:w-[200px]`}
                 style={{
                   boxShadow:
                     "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
                 }}
-                className={`${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[35px] md:h-[55px] text-[14px] md:text-[24px] w-[80px] md:w-[200px]`}
               >
                 Получить
               </Button>
             </div>
           </div>
           <Image
+            alt="home robot"
             className="w-[170px] h-[170px] md:w-[628px] md:h-[628px] rounded-br-3xl md:rounded-none "
+            height={500}
             src={chess}
             width={500}
-            height={500}
-            alt="home robot"
           />
         </div>
         <Image
-          className="absolute bottom-0 right-0"
-          width={400}
-          height={400}
           alt="border image"
+          className="absolute bottom-0 right-0"
+          height={400}
           src={borderimg}
           style={{ borderBottomRightRadius: "30px" }}
+          width={400}
         />
       </div>
       <section className="container mx-auto max-w-7xl flex items-center justify-between my-10 px-2 md:px-0 gap-5 md:gap-0">
@@ -128,17 +121,17 @@ export default function ChessPage() {
         <div className="flex flex-wrap items-center justify-between gap-y-7 p-3 md:p-0 transition-all duration-300 ease-in-out">
           {/* Render only the visible cards */}
           {[1, 2, 3, 4, 5, 6].map((item) => (
-              <ChildCard key={item}/>
+            <ChildCard key={item} />
           ))}
         </div>
       </section>
       <section className="relative container mx-auto max-w-7xl my-20">
         <Image
-          width={500}
-          height={500}
-          src={call}
           alt="call image"
           className="mx-auto w-full" // Center the image
+          height={500}
+          src={call}
+          width={500}
         />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center space-y-0 md:space-y-10">
           <p
@@ -157,13 +150,13 @@ export default function ChessPage() {
 
       <section className="container mx-auto max-w-7xl">
         <div className="overflow-hidden">
-        <p
-          className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] text-center font-bold`}
-        >
-          ФОТОГАЛЕРЕЯ
-        </p>
+          <p
+            className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] text-center font-bold`}
+          >
+            ФОТОГАЛЕРЕЯ
+          </p>
 
-        <CarouselChess/>
+          <CarouselChess />
         </div>
       </section>
 
@@ -187,28 +180,28 @@ export default function ChessPage() {
 
         <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5">
           <Input
+            className="w-full sm:w-[240px]"
+            label="Ваше имя"
             labelPlacement="outside"
             placeholder="John Doe"
-            variant="flat"
-            className="w-full sm:w-[240px]"
             type="email"
-            label="Ваше имя"
+            variant="flat"
           />
 
           <Input
-            labelPlacement="outside"
-            type="phone"
-            label="Номер телефона"
-            placeholder="+9998901234567"
-            variant="flat"
             className="w-full sm:w-[240px]" // Full width on smaller screens
+            label="Номер телефона"
+            labelPlacement="outside"
+            placeholder="+9998901234567"
+            type="phone"
+            variant="flat"
           />
           <Select
-            labelPlacement="outside"
+            className="w-full sm:w-[240px]" // Full width on smaller screens
             label="Выберете курс"
+            labelPlacement="outside"
             placeholder="Robotics"
             variant="flat"
-            className="w-full sm:w-[240px]" // Full width on smaller screens
           >
             {[
               "Robotics",
@@ -221,19 +214,19 @@ export default function ChessPage() {
             ))}
           </Select>
           <Input
-            labelPlacement="outside"
-            type="age"
-            placeholder="10"
-            label="Возраст"
-            variant="flat"
             className="w-full sm:w-[240px]" // Full width on smaller screens
+            label="Возраст"
+            labelPlacement="outside"
+            placeholder="10"
+            type="age"
+            variant="flat"
           />
           <Button
+            className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[40px] text-[24px]`}
             style={{
               boxShadow:
                 "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
             }}
-            className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[40px] text-[24px]`}
           >
             Получить
           </Button>

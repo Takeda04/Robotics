@@ -1,4 +1,3 @@
-import { fontTektur } from "@/config/fonts";
 import { Button } from "@nextui-org/button";
 import {
   Input,
@@ -13,11 +12,13 @@ import {
 } from "@nextui-org/react";
 import Image from "next/image";
 import React from "react";
+
+import { fontTektur } from "@/config/fonts";
 import robot from "@/assets/images/modal_robot.png";
 import { useTranslation } from "@/app/[lng]/i18n/client";
 
 const Card = ({ lng }: { lng: string }) => {
-  const { t } = useTranslation(lng, 'translation', {});
+  const { t } = useTranslation(lng, "translation", {});
   const { isOpen, onOpen, onOpenChange } = useDisclosure();
 
   return (
@@ -44,61 +45,63 @@ const Card = ({ lng }: { lng: string }) => {
           {t("sub_main_card")}
         </p>
         <Button
-          onPress={onOpen}
           className="bg-black text-[#FFE001] text-[16px] sm:text-[32px] md:h-[150px] mt-2 md:mt-0"
+          onPress={onOpen}
         >
           {t("card_btn")}
         </Button>
       </div>
       <Modal
-        isOpen={isOpen}
-        onOpenChange={onOpenChange}
-        placement="center"
         backdrop="blur"
         className="bg-black py-[30px]"
+        isOpen={isOpen}
+        placement="center"
         size="3xl"
+        onOpenChange={onOpenChange}
       >
         <ModalContent>
           {(onClose) => (
             <>
               <div className="flex flex-col items-center">
-                <ModalHeader className="text-2xl">Приглашаем на первый урок!</ModalHeader>
+                <ModalHeader className="text-2xl">
+                  Приглашаем на первый урок!
+                </ModalHeader>
                 <div className="sm:flex items-center justify-around">
                   <div className="w-[400px] ">
                     <ModalBody>
                       <Input
-                        labelPlacement="outside"
                         label="Введите свое имя"
+                        labelPlacement="outside"
                         placeholder="Patrick"
                         variant="bordered"
                       />
                       <Input
-                        labelPlacement="outside"
                         label="Введите свое второе имя"
+                        labelPlacement="outside"
                         placeholder="Handsome"
                         variant="bordered"
                       />
                       <Input
-                        labelPlacement="outside"
                         label="Введите номер телефона"
+                        labelPlacement="outside"
                         placeholder="+998901234567"
-                        variant="bordered"
                         type="tel"
+                        variant="bordered"
                       />
                       <div className="flex w-full gap-5">
                         <Input
-                          labelPlacement="outside"
-                          label="Возраст"
-                          placeholder="14"
-                          variant="bordered"
-                          type="age"
                           className="w-[200px]"
+                          label="Возраст"
+                          labelPlacement="outside"
+                          placeholder="14"
+                          type="age"
+                          variant="bordered"
                         />
                         <Select
-                          labelPlacement="outside"
-                          label="Выберете курс"
-                          variant="bordered"
                           className="w-full sm:w-[240px]" // Full width on smaller screens
+                          label="Выберете курс"
+                          labelPlacement="outside"
+                          variant="bordered"
                         >
                           {[
                             "Robotics",
@@ -115,17 +118,20 @@ const Card = ({ lng }: { lng: string }) => {
                   </div>
                   <div className="flex flex-col items-center justify-between">
                     <Image
-                      src={robot}
                       alt="modal robot"
-                      width={200}
-                      height={130}
                       className="hidden md:flex w-[250px] h-[200px]"
+                      height={130}
+                      src={robot}
+                      width={200}
                     />
                     <ModalFooter className="m-0  md:mt-14 ml-0 md:ml-8">
                       <Button color="danger" variant="flat" onPress={onClose}>
                         Назад
                       </Button>
-                      <Button className="bg-[#FFE000] text-black" onPress={onClose}>
+                      <Button
+                        className="bg-[#FFE000] text-black"
+                        onPress={onClose}
+                      >
                         Записать
                       </Button>
                     </ModalFooter>

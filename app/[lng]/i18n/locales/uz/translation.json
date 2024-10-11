@@ -45,5 +45,14 @@
   "footer_soc1" : "Telegram",
   "footer_soc2" : "Instagram",
   "footer_soc3" :"YouTube",
-  "security" : "Ideallux.com © 2000-2024, Barcha huquqlar himoyalangan."
+  "security" : "Ideallux.com © 2000-2024, Barcha huquqlar himoyalangan.",
+  "robot_title" : "JustRobotics-dan robototexnika kursi",
+  "robot_desc1" : "bolangizda robototexnika va fizikaga qiziqish uyg'otadigan amaliy kurs",
+  "robot_desc2" : "5 yoshdan 18 yoshgacha",
+  "robot_price" : "Birinchi darsingizni oling",
+  "robot_cost" : "100 000 so'm",
+  "robot_free" : "Bepul",
+  "robot_placeholder1": "Ismingiz",
+  "robot_placeholder2" : "Telefon raqamingiz",
+  "robot_btn" : "Yuborish"
 }

@@ -1,4 +1,8 @@
-import { Fira_Code as FontMono, Inter as FontSans, Tektur as FontTektur } from "next/font/google";
+import {
+  Fira_Code as FontMono,
+  Inter as FontSans,
+  Tektur as FontTektur,
+} from "next/font/google";
 
 // Import "Inter" as the sans-serif font
 export const fontSans = FontSans({
@@ -15,6 +19,6 @@ export const fontMono = FontMono({
 // Import "Tektur" as another font (using correct next/font/google method)
 export const fontTektur = FontTektur({
   subsets: ["latin"],
-  weight: ["400", "700", "900"],  // Define the available font weights
+  weight: ["400", "700", "900"], // Define the available font weights
   variable: "--font-tektur",
 });

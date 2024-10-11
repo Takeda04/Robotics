@@ -1,6 +1,7 @@
-import { PlayIcon } from "@/assets/icons/icons";
 import Image from "next/image";
 import React from "react";
+
+import { PlayIcon } from "@/assets/icons/icons";
 
 export const VideoCard = ({ image }: any) => {
   return (
@@ -12,11 +13,11 @@ export const VideoCard = ({ image }: any) => {
       }}
     >
       <Image
+        alt="Slider image"
+        className="w-full h-full object-cover"
+        height={100}
         src={image}
         width={100}
-        height={100}
-        className="w-full h-full object-cover"
-        alt="Slider image"
       />
       <PlayIcon />
     </div>

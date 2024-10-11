@@ -1,6 +1,7 @@
 import React from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
+
 import { VideoCard } from "./video";
 
 import slider from "@/assets/images/slider.png";
@@ -26,7 +27,8 @@ const CarouselContainer = styled.div`
     flex-direction: row; /* Ensure horizontal layout */
   }
 
-  .slick-prev, .slick-next {
+  .slick-prev,
+  .slick-next {
     display: none !important; /* Hide the Next/Previous buttons */
   }
 
@@ -34,7 +36,7 @@ const CarouselContainer = styled.div`
     display: flex !important;
     justify-content: center; /* Center the dots */
     margin-top: 30px; /* Add margin-top of 30px */
-    
+
     li {
       margin: 0 5px; /* Space between dots */
       width: 12px; /* Make the dots circular */
@@ -49,17 +51,17 @@ const CarouselContainer = styled.div`
 
     li button:before {
       font-size: 0; /* Remove default number */
-      content: ''; /* Remove the number and add a dot */
+      content: ""; /* Remove the number and add a dot */
       display: block;
       width: 12px; /* Circle size */
       height: 12px;
-      border: 2px solid #FFE000;
+      border: 2px solid #ffe000;
       background-color: #000;
-      border-radius: 50%; 
+      border-radius: 50%;
     }
 
     li.slick-active button:before {
-      background-color: #f0d625; 
+      background-color: #f0d625;
     }
   }
 
@@ -71,13 +73,24 @@ const CarouselContainer = styled.div`
 
   @media (max-width: 480px) {
     .slick-slide {
-      width: 95%; 
+      width: 95%;
     }
   }
 `;
 
 const CustomCarousel = () => {
-  const images = [slider, slider2, slider3, slider4, slider5,slider, slider2, slider3, slider4, slider5];
+  const images = [
+    slider,
+    slider2,
+    slider3,
+    slider4,
+    slider5,
+    slider,
+    slider2,
+    slider3,
+    slider4,
+    slider5,
+  ];
 
   const settings = {
     dots: true,
@@ -91,21 +104,21 @@ const CustomCarousel = () => {
         breakpoint: 1024, // Tablet and small desktop
         settings: {
           slidesToShow: 3,
-          slidesToScroll: 1
+          slidesToScroll: 1,
         },
       },
       {
         breakpoint: 768, // Mobile landscape
         settings: {
           slidesToShow: 2,
-          slidesToScroll: 1
+          slidesToScroll: 1,
         },
       },
       {
         breakpoint: 480, // Mobile portrait
         settings: {
           slidesToShow: 1,
-          slidesToScroll: 1
+          slidesToScroll: 1,
         },
       },
     ],
@@ -115,7 +128,7 @@ const CustomCarousel = () => {
     <CarouselContainer>
       <Slider {...settings}>
         {images.map((image, index) => (
-          <VideoCard image={image} key={index} />
+          <VideoCard key={index} image={image} />
         ))}
       </Slider>
     </CarouselContainer>
