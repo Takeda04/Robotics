@@ -43,22 +43,21 @@ export default function ChessPage({
             <p
               className={`absolute -top-10 md:top-0 ${fontTektur.variable}  font-tektur text-[#FFDE00] text-[26px] md:text-[84px] font-bold w-[300px] md:w-[1100px]`}
             >
-              Курсы шахмат для детей от JustRobotics
+              {t("chess_title")}
             </p>
             <p
               className={`absolute md:relative top-10 mt-0 md:mt-[60px] ${fontTektur.variable} font-tektur font-normal text-[#FFFFFF] text-[14px] md:text-[24px]`}
             >
-              Практические курсы, которые пробуждают интерес к шахматам,
-              развивают логическое мышление у вашего ребенка
-              <strong> от 5 лет и старше</strong>
+              {t("chess_desc")}
+              <strong> {t("chess_bold")}</strong>
             </p>
 
             <div className="relative mt-16 md:mt-0">
               <p
                 className={`absolute md:relative w-[300px] md:w-[500px] md:top-20 ${fontTektur.variable} font-tektur font-bold text-[#FFE001] text-[14px] md:text-[24px]`}
               >
-                Получи первый урок{" "}
-                <strong className="line-through">100.000 сум</strong>
+                {t("robot_price")}{" "}
+                <strong className="line-through">{t("robot_cost")}</strong>
               </p>
               <div
                 className="absolute text-[11px] md:text-[24px] -top-[15] left-[170px] md:top-[50px] md:left-[300px] text-black font-bold flex items-center justify-center w-[80px] h-[20px] rounded-xl md:w-[167px] md:h-[40px] bg-[#FFE001]"
@@ -68,19 +67,19 @@ export default function ChessPage({
                   transform: "rotate(10deg)",
                 }}
               >
-                бесплатно
+                {t("english_free")}
               </div>
             </div>
             <div className="absolute flex mt-[50px] md:mt-[100px] gap-2 md:gap-10 w-[300px] md:w-full">
               <Input
                 className="w-[100px] sm:w-[240px] h-[35px] md:h-[55px]" // Full width on smaller screens
-                label="Ваше имя"
+                label={t("form_name")}
                 type="name"
                 variant="flat"
               />
               <Input
                 className="w-[100px] sm:w-[240px] h-[35px] md:h-[55px]"
-                label="Номер телефона"
+                label={t("form_phone")}
                 type="phone"
                 variant="flat"
               />
@@ -91,7 +90,7 @@ export default function ChessPage({
                     "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
                 }}
               >
-                Получить
+                {t("form_btn")}
               </Button>
             </div>
           </div>
@@ -123,12 +122,7 @@ export default function ChessPage({
           <p
             className={`${fontTektur.variable} font-tektur font-normal text-[#FFFFFF] text-[11px] md:text-[23px]`}
           >
-            Откройте для себя увлекательный мир технологий! Наш курс
-            робототехники предназначен для детей и подростков, которые хотят
-            узнать основы программирования и сборки роботов. Под руководством
-            опытных преподавателей, учащиеся научатся создавать и
-            программировать собственных роботов, развивая при этом логическое
-            мышление и инженерные навыки.
+            {t("chess_main_text")}
           </p>
         </div>
       </section>
@@ -136,7 +130,7 @@ export default function ChessPage({
         <p
           className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] md:text-[96px] text-center font-bold`}
         >
-          Обучения
+          {t('education')}
         </p>
         <div className="flex flex-wrap items-center justify-between gap-y-7 p-3 md:p-0 transition-all duration-300 ease-in-out">
           {/* Render only the visible cards */}

@@ -75,5 +75,15 @@
   "english1_text" : "Ingliz tili bo‘yicha Beginner level (boshlang‘ich daraja) bolalar uchun mo‘ljallangan o‘quv dasturlari tilni o‘rganishni yangi boshlagan yosh o‘quvchilar uchun eng asosiy tushunchalar va oddiy jumlalarni o‘rgatadi. Ushbu daraja bolalarga qiyinchiliksiz o‘zlashtirish uchun qulay bo‘lib, o‘yinlar, qo‘shiqlar va vizual materiallar orqali darslar qiziqarli shaklda tashkil etiladi.",
   "english2_text" : "Ingliz tili Elementary level (elementar daraja) bolalar uchun mo‘ljallangan o‘quv dasturlari tilni o‘rganishni davom ettirayotgan yosh o‘quvchilar uchun ko‘proq mantiqiy va aniq tushunchalarni taqdim etadi. Ushbu daraja, odatda, boshlang‘ich darajadan keyin keladi va bolalarga asosiy grammatika va so‘z boyligini rivojlantirishga yordam beradi.",
   "english3_text" : "Ingliz tili Intermediate level (o‘rta daraja) bolalar uchun mo‘ljallangan o‘quv dasturlari yosh o‘quvchilarni tilni o‘rganish jarayonida yanada chuqurroq va kengroq tushunchalar bilan ta’minlaydi. Ushbu daraja, odatda, boshlang‘ich va elementar darajalardan keyin keladi va o‘quvchilarga tilni yanada murakkab ravishda tushunishga yordam beradi.",
-  "record_btn" :"Ro'yxatdan o'tish"
+  "record_btn" :"Ro'yxatdan o'tish",
+  "education" : "Ta'lim",
+  "chess_main_text" : "Texnologiyaning qiziqarli dunyosini kashf eting! Bizning robototexnika kursimiz dasturlash va robot yaratish asoslarini o‘rganishni xohlovchi bolalar va o‘smirlar uchun mo‘ljallangan. Tajribali o‘qituvchilar rahbarligida talabalar o‘z robotlarini yaratish va dasturlashni o‘rganadi, shu bilan birga mantiqiy fikrlash va muhandislik ko‘nikmalarini rivojlantiradi.",
+  "chess_title" : "JustRoboticsdan bolalar uchun shaxmat kurslari",
+  "chess_desc" : "Farzandingizda shaxmatga qiziqish uyg'otadigan va mantiqiy fikrlashni rivojlantiruvchi amaliy kurslar",
+  "chess_bold" : "5 yosh va undan katta",
+  "paint_child" : "60 daqiqada birinchi rasm chizish birinchi master-klassda talabalar, hatto ilgari hech qachon rasm chizmagan bo'lsalar ham, mustaqil ravishda chiroyli rasm chizishlari mumkin! Bu meni hayratlanarli darajada ilhomlantiradi va chizishni o'rganishni davom ettirishga va ijodiy qobiliyatimni yanada rivojlantirishga undaydi. Har bir dars bilan u yaxshilanadi va yaxshilanadi!",
+  "paint_50" : "50.000 so'm",
+  "child_title" : "Bolalar va o'smirlar uchun rasm chizish va rasm chizish kurslari",
+  "child_desc" : "Bizning dasturlarimiz o'xshashi yo'q va har yili yangilanadi.",
+  "child_bold" : " 6 yosh va undan katta bolalar uchun."
 }

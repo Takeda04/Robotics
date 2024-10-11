@@ -79,7 +79,7 @@ export default function PaintingOlderPage() {
           </div>
           <Image
             alt="home robot"
-            className="w-[303px] h-[253.5px] -mt-[56px] md:mt-0 -mr-5 md:-mr-[450px] md:w-[500px] md:h-[605px] rounded-br-3xl md:rounded-none "
+            className="relative w-[303px] h-[253.5px] -mt-[56px] md:mt-0 -right-5 md:-right-[250px] md:w-[500px] md:h-[605px] rounded-br-3xl md:rounded-none "
             height={500}
             src={older}
             width={500}
