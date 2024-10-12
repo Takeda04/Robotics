@@ -3,20 +3,120 @@
 import Image from "next/image";
 import { Input } from "@nextui-org/input";
 import { Button, Select, SelectItem } from "@nextui-org/react";
-import { useEffect, useState } from "react";
 
 import { fontTektur } from "@/config/fonts";
 import borderimg from "@/assets/icons/cardbottom.png";
 import older from "@/assets/images/olders.png";
-import CustomCarousel from "@/components/carousel";
-import FootCard from "@/components/robotics/foot-card";
 import HeadCard from "@/components/robotics/head-card";
 import call from "@/assets/images/call.png";
 import ChildCard from "@/components/children/child-card";
 import CarouselOlders from "@/components/carousel/Carouselolders";
+import { useTranslation } from "../i18n/client";
+import RobotCarousel from "@/components/carousel/CarouselRobot";
 
-export default function PaintingOlderPage() {
+import olders1 from "@/assets/olders/IMG_1971.jpg";
+import olders2 from "@/assets/olders/IMG_1977.jpg";
+import olders3 from "@/assets/olders/IMG_2947.jpg";
+import olders4 from "@/assets/olders/IMG_2948.jpg";
+import olders5 from "@/assets/olders/IMG_2949.jpg";
+import olders6 from "@/assets/olders/IMG_2959.jpg";
+import olders7 from "@/assets/olders/IMG_2966.jpg";
+import CustomCarousel from "@/components/carousel";
 
+import home from "@/assets/images/home.png";
+import home2 from "@/assets/images/home2.png";
+import home3 from "@/assets/images/home3.png";
+import home4 from "@/assets/images/home4.png";
+import home5 from "@/assets/images/home5.png";
+import { getCookie } from "cookies-next";
+
+export default function PaintingOlderPage({
+  params: { lng },
+}: {
+  params: { lng: string };
+}) {
+  const { t } = useTranslation(lng, "translation", {});
+  const lang = getCookie("i18next");
+  const videoSrc = "/videos/older1.mp4";
+  const posterSrc = "";
+
+  const courses = [
+    { drop: t("drop1") },
+    { drop: t("drop2") },
+    { drop: t("drop3") },
+    { drop: t("drop4") },
+    { drop: t("drop5") },
+  ];
+
+  const edu_card = [
+    { text: t("why"), subText: t("older_edu_text1") },
+    { text: t("why"), subText: t("older_edu_text2") },
+    { text: t("why"), subText: t("older_edu_text3") },
+    { text: t("why"), subText: t("older_edu_text4") },
+    { text: t("why"), subText: t("older_edu_text5") },
+    { text: t("why"), subText: t("older_edu_text6") },
+  ];
+
+  const images = [
+    olders1,
+    olders2,
+    olders3,
+    olders4,
+    olders5,
+    olders6,
+    olders7,
+  ];
+
+  const videos = [
+    {
+      poster: "",
+      video: "/videos/older1.mp4",
+    },
+    {
+      poster: "",
+      video: "/videos/older2.mp4",
+    },
+    {
+      poster: "",
+      video: "/videos/older3.mp4",
+    },
+    {
+      poster: "",
+      video: "/videos/older4.mp4",
+    }
+  ];
+  const CardContent = [
+    {
+      image: home,
+      text: t("home1"),
+      link: `/${lang}/robotic`,
+      btn: t("home_btn"),
+    },
+    {
+      image: home2,
+      text: t("home2"),
+      link: `/${lang}/painting_children`,
+      btn: t("home_btn"),
+    },
+    {
+      image: home3,
+      text: t("home3"),
+      link: `/${lang}/painting_olders`,
+      btn: t("home_btn"),
+    },
+    {
+      image: home4,
+      text: t("home4"),
+      link: `/${lang}/english`,
+      btn: t("home_btn"),
+    },
+    {
+      image: home5,
+      text: t("home5"),
+      link: `/${lang}/chess`,
+      btn: t("home_btn"),
+    },
+  ];
   return (
     <div className="realtive">
       <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 flex md:overflow-hidden">
@@ -25,22 +125,20 @@ export default function PaintingOlderPage() {
             <p
               className={`absolute -top-10 md:top-0 ${fontTektur.variable}  font-tektur text-[#FFDE00] text-[26px] md:text-[84px] font-bold w-[300px] md:w-[800px]`}
             >
-              Живопись для взрослых
+              {t("older_title")}
             </p>
             <p
               className={`absolute md:relative top-10 mt-0 md:mt-[60px] ${fontTektur.variable} font-tektur font-normal text-[#FFFFFF] text-[14px] md:text-[24px]`}
             >
-              практический курс пробуждающий интерес к робототехнике и физике у
-              вашего ребенка
-              <strong> от 5 до 18 лет</strong>
+              {t("older_desc")}
             </p>
 
             <div className="relative">
               <p
                 className={`absolute md:relative w-[300px] md:w-[500px] md:top-20 ${fontTektur.variable} font-tektur font-bold text-[#FFE001] text-[14px] md:text-[24px]`}
               >
-                Получи первый урок{" "}
-                <strong className="line-through">100.000 сум</strong>
+                {t("robot_price")}{" "}
+                <strong className="line-through">{t("robot_cost")}</strong>
               </p>
               <div
                 className="absolute text-[11px] md:text-[24px] -top-[15] left-[170px] md:top-[50px] md:left-[300px] text-black font-bold flex items-center justify-center w-[80px] h-[20px] rounded-xl md:w-[167px] md:h-[40px] bg-[#FFE001]"
@@ -50,19 +148,19 @@ export default function PaintingOlderPage() {
                   transform: "rotate(10deg)",
                 }}
               >
-                50.000 сум
+                {t("paint_50")}
               </div>
             </div>
             <div className="absolute flex mt-[50px] md:mt-[100px] gap-2 md:gap-10 w-[300px] md:w-full">
               <Input
                 className="w-[100px] sm:w-[240px] h-[35px] md:h-[55px]" // Full width on smaller screens
-                label="Ваше имя"
+                label={t("form_name")}
                 type="name"
                 variant="flat"
               />
               <Input
                 className="w-[100px] sm:w-[240px] h-[35px] md:h-[55px]"
-                label="Номер телефона"
+                label={t("form_phone")}
                 type="phone"
                 variant="flat"
               />
@@ -73,18 +171,19 @@ export default function PaintingOlderPage() {
                     "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
                 }}
               >
-                Получить
+                {t("form_btn")}
               </Button>
             </div>
           </div>
-          <Image
-            alt="home robot"
-            className="relative w-[303px] h-[253.5px] -mt-[56px] md:mt-0 -right-5 md:-right-[250px] md:w-[500px] md:h-[605px] rounded-br-3xl md:rounded-none "
-            height={500}
-            src={older}
-            width={500}
-          />
+          <div className="relative w-[303px] h-[253.5px] -mt-[56px] md:mt-0 -right-5 md:-right-[150px] md:w-[500px] md:h-[605px] rounded-br-3xl md:rounded-none "></div>
         </div>
+        <Image
+          alt="home robot"
+          className="absolute z-40 w-[303px] h-[253.5px] -mt-[56px] md:mt-0 -right-5 md:-right-[100px] md:w-[500px] md:h-[605px] rounded-br-3xl md:rounded-none "
+          height={500}
+          src={older}
+          width={500}
+        />
         <Image
           alt="border image"
           className="absolute bottom-0 right-0"
@@ -95,7 +194,7 @@ export default function PaintingOlderPage() {
         />
       </div>
       <section className="container mx-auto max-w-7xl flex items-center justify-between my-10 px-2 md:px-0 gap-5 md:gap-0">
-        <HeadCard />
+        <HeadCard videoSrc={videoSrc} posterSrc={posterSrc} />
         <div
           className="w-[228px] h-[149px] min-w-[228px] min-h-[149px] md:w-[582px] md:h-[320px]"
           style={{
@@ -105,12 +204,7 @@ export default function PaintingOlderPage() {
           <p
             className={`${fontTektur.variable} font-tektur font-normal text-[#FFFFFF] text-[11px] md:text-[23px]`}
           >
-            Откройте для себя увлекательный мир технологий! Наш курс
-            робототехники предназначен для детей и подростков, которые хотят
-            узнать основы программирования и сборки роботов. Под руководством
-            опытных преподавателей, учащиеся научатся создавать и
-            программировать собственных роботов, развивая при этом логическое
-            мышление и инженерные навыки.
+            {t("older_main_text")}
           </p>
         </div>
       </section>
@@ -118,11 +212,11 @@ export default function PaintingOlderPage() {
         <p
           className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] md:text-[96px] text-center font-bold`}
         >
-          Обучения
+          {t("education")}
         </p>
         <div className="flex flex-wrap items-center justify-between gap-y-7 p-3 md:p-0 transition-all duration-300 ease-in-out">
-          {[1, 2, 3, 4, 5, 6].map((item) => (
-            <ChildCard key={item} />
+          {edu_card.map(({ text, subText }, idx) => (
+            <ChildCard key={idx} text={text} subText={subText} />
           ))}
         </div>
       </section>
@@ -138,13 +232,13 @@ export default function PaintingOlderPage() {
           <p
             className={`${fontTektur.variable} w-[306px] md:w-[872px] font-tektur text-[#FFFFFF] text-[15px] md:text-[32px] text-center font-bold`}
           >
-            Приглашаем на первый бесплатный урок
+            {t("sub_main_card")}
           </p>
           <Button
             className="bg-[#FFE000] text-[#000] w-[208px] h-[25px] md:w-[530px] md:h-[51px] text-[15px] md:text-[32px]"
             variant="bordered"
           >
-            Записаться
+            {t("record_btn")}
           </Button>
         </div>
       </section>
@@ -154,10 +248,10 @@ export default function PaintingOlderPage() {
           <p
             className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] text-center font-bold`}
           >
-            ФОТОГАЛЕРЕЯ
+            {t("foto")}
           </p>
 
-          <CarouselOlders />
+          <CarouselOlders images={images} />
         </div>
       </section>
 
@@ -166,23 +260,23 @@ export default function PaintingOlderPage() {
           <p
             className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] md:text-[32px] font-bold text-center md:text-start`}
           >
-            отзывы
+            {t("advices")}
           </p>
-          <CustomCarousel />
+          <CustomCarousel videos={videos}/>
         </div>
 
         <div className="container mx-auto max-w-7xl">
           <p
             className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] text-center font-bold`}
           >
-            Получите бесплатный первый урок
+            {t("sub_main_card")}
           </p>
         </div>
 
         <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5">
           <Input
             className="w-full sm:w-[240px]"
-            label="Ваше имя"
+            label={t("form_name")}
             labelPlacement="outside"
             placeholder="John Doe"
             type="email"
@@ -191,7 +285,7 @@ export default function PaintingOlderPage() {
 
           <Input
             className="w-full sm:w-[240px]" // Full width on smaller screens
-            label="Номер телефона"
+            label={t("form_phone")}
             labelPlacement="outside"
             placeholder="+9998901234567"
             type="phone"
@@ -199,24 +293,18 @@ export default function PaintingOlderPage() {
           />
           <Select
             className="w-full sm:w-[240px]" // Full width on smaller screens
-            label="Выберете курс"
+            label={t("form_course")}
             labelPlacement="outside"
             placeholder="Robotics"
             variant="flat"
           >
-            {[
-              "Robotics",
-              "English",
-              "Chess",
-              "Painting for children",
-              "Painting for olders",
-            ].map((course, index) => (
-              <SelectItem key={index}>{course}</SelectItem>
+            {courses.map((course, idx) => (
+              <SelectItem key={idx}>{course.drop}</SelectItem>
             ))}
           </Select>
           <Input
             className="w-full sm:w-[240px]" // Full width on smaller screens
-            label="Возраст"
+            label={t("form_age")}
             labelPlacement="outside"
             placeholder="10"
             type="age"
@@ -229,13 +317,11 @@ export default function PaintingOlderPage() {
                 "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
             }}
           >
-            Получить
+            {t("form_btn")}
           </Button>
         </div>
-        <div className="flex items-center gap-[10px] justify-between sm:justify-center md:gap-[28px] my-10 py-0 md:py-5 px-2 md:px-0 overflow-x-scroll">
-          {[1, 2, 3].map((idx) => (
-            <FootCard key={idx} />
-          ))}
+        <div className="container mx-auto max-w-7xl my-5 overflow-hidden">
+          <RobotCarousel CardContent={CardContent}/>
         </div>
       </section>
     </div>

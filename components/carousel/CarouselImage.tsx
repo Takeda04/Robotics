@@ -2,12 +2,8 @@ import React from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
 import Image from "next/image";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
-import slider2 from "@/assets/images/slider2.png";
-import slider3 from "@/assets/images/slider3.png";
-import slider4 from "@/assets/images/slider4.png";
-import slider5 from "@/assets/images/slider5.png";
-import slider from "@/assets/images/child_big.png";
 
 const CarouselContainer = styled.div`
   .slick-slide {
@@ -77,21 +73,21 @@ const CarouselContainer = styled.div`
   }
 `;
 
-const ImageCarousel = () => {
-  const images = [slider, slider2, slider3, slider4, slider5];
+const ImageCarousel = ({images}:{images:any}) => {
+
 
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 1500,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     responsive: [
       {
         breakpoint: 1024, // Tablet and small desktop
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
@@ -115,14 +111,14 @@ const ImageCarousel = () => {
   return (
     <CarouselContainer>
       <Slider {...settings}>
-        {images.map((image, index) => (
+        {images.map((image: string | StaticImport, index: React.Key | null | undefined) => (
           <div
             key={index}
             className="min-w-[200px] w-[200px] h-[150px] md:w-[1200px] md:h-[602px] px-5"
           >
             <Image
               alt="First image"
-              className="min-w-[200px] w-[200px] h-[150px] md:w-[1400px] md:h-[602px] object-cover rounded-lg shadow-lg"
+              className="min-w-[200px] w-[200px] h-[150px] md:w-[1400px] md:h-[602px] object-contain rounded-lg shadow-lg"
               src={image}
             />
           </div>

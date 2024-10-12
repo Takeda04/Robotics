@@ -8,6 +8,7 @@ import slider3 from "@/assets/images/slider3.png";
 import slider4 from "@/assets/images/slider4.png";
 import slider5 from "@/assets/images/slider5.png";
 import slider from "@/assets/images/child_big.png";
+import { StaticImport } from "next/dist/shared/lib/get-img-props";
 
 const CarouselContainer = styled.div`
   .slick-slide {
@@ -77,21 +78,21 @@ const CarouselContainer = styled.div`
   }
 `;
 
-const CarouselOlders = () => {
-  const images = [slider, slider2, slider3, slider4, slider5];
+const CarouselOlders = ({images}: {images:any}) => {
+
 
   const settings = {
     dots: true,
     infinite: true,
     speed: 1500,
-    slidesToShow: 1,
+    slidesToShow: 3,
     slidesToScroll: 1,
     autoplay: true,
     responsive: [
       {
         breakpoint: 1024, // Tablet and small desktop
         settings: {
-          slidesToShow: 1,
+          slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
@@ -115,14 +116,14 @@ const CarouselOlders = () => {
   return (
     <CarouselContainer>
       <Slider {...settings}>
-        {images.map((image, index) => (
+        {images.map((image: string | StaticImport, index: React.Key | null | undefined) => (
           <div
             key={index}
             className="min-w-[200px] w-[200px] h-[150px] md:w-[1200px] md:h-[602px] px-5"
           >
             <Image
               alt="First image"
-              className="min-w-[200px] w-[200px] h-[150px] md:w-[1400px] md:h-[602px] object-cover rounded-lg shadow-lg"
+              className="min-w-[200px] w-[200px] h-[150px] md:w-[1400px] md:h-[602px] object-contain rounded-2xl shadow-lg"
               src={image}
             />
           </div>

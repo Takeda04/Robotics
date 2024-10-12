@@ -2,7 +2,7 @@ import React from "react";
 
 import { fontTektur } from "@/config/fonts";
 
-const ChildCard = () => {
+const ChildCard = ({ text, subText }: { text: string; subText: string }) => {
   return (
     <div
       className="flex flex-col w-[390px] h-[160px] md:w-[410px] md:h-[230px] rounded-3xl bg-[#FFDE00] py-[25px] px-[16px] md:px-[25px]"
@@ -11,16 +11,14 @@ const ChildCard = () => {
       }}
     >
       <p
-        className={`${fontTektur.variable} font-tektur text-[#000] text-[15px] md:text-[32px] text-start font-bold`}
+        className={`${fontTektur.variable} font-tektur text-[#000] text-[15px] md:text-[26px] text-start font-bold`}
       >
-        Lorem ipsum dolor
+        {text}
       </p>
       <p
         className={`${fontTektur.variable} font-tektur text-[#000] text-[13px] md:text-[18px] text-start`}
       >
-        Lorem ipsum dolor sit amet consectetur, adipisicing elit. Magni
-        consequuntur culpa quo dolores, inventore expedita ut deleniti sint
-        animi sequi!
+        {subText}
       </p>
     </div>
   );

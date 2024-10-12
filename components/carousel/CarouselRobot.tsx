@@ -2,13 +2,6 @@ import React from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
 
-
-
-import slider from "@/assets/images/slider.png";
-import slider2 from "@/assets/images/slider2.png";
-import slider3 from "@/assets/images/slider3.png";
-import slider4 from "@/assets/images/slider4.png";
-import slider5 from "@/assets/images/slider5.png";
 import FootCard from "../robotics/foot-card";
 
 const CarouselContainer = styled.div`
@@ -79,18 +72,10 @@ const CarouselContainer = styled.div`
   }
 `;
 
-const RobotCarousel = () => {
-  const images = [
-    slider,
-    slider2,
-    slider3,
-    slider4,
-    slider5,
-  ];
-
+const RobotCarousel = ({ CardContent }: any) => {
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -123,8 +108,8 @@ const RobotCarousel = () => {
   return (
     <CarouselContainer>
       <Slider {...settings}>
-        {images.map((image, index) => (
-          <FootCard key={index} />
+        {CardContent.map((content: { text: any; link: any; btn: any; image: any; }, index: any) => (
+          <FootCard key={index} text={content.text} link={content.link} btn={content.btn} image={content.image}/>
         ))}
       </Slider>
     </CarouselContainer>

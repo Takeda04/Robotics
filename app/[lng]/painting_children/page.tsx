@@ -8,22 +8,34 @@ import { fontTektur } from "@/config/fonts";
 import borderimg from "@/assets/icons/cardbottom.png";
 import child from "@/assets/images/child.png";
 import CustomCarousel from "@/components/carousel";
-import FootCard from "@/components/robotics/foot-card";
 import HeadCard from "@/components/robotics/head-card";
 import ChildCard from "@/components/children/child-card";
 import ImageCarousel from "@/components/carousel/CarouselImage";
 import RobotCarousel from "@/components/carousel/CarouselRobot";
 import { useTranslation } from "../i18n/client";
 
+import home from "@/assets/images/home.png";
+import home2 from "@/assets/images/home2.png";
+import home3 from "@/assets/images/home3.png";
+import home4 from "@/assets/images/home4.png";
+import home5 from "@/assets/images/home5.png";
+import { getCookie } from "cookies-next";
+
+import children1 from "@/assets/children/IMG_0864.jpg";
+import children2 from "@/assets/children/IMG_1542.jpg";
+import children3 from "@/assets/children/IMG_1548.jpg";
+import children4 from "@/assets/children/IMG_2373.jpg";
+import children5 from "@/assets/children/IMG_2698.jpg";
+import children6 from "@/assets/children/IMG_2699.jpg";
+import children7 from "@/assets/children/IMG_2710.jpg";
+
 export default function PaintingChildrenPage({
   params: { lng },
 }: {
   params: { lng: string };
 }) {
-
-
-
   const { t } = useTranslation(lng, "translation", {});
+  const lang = getCookie("i18next");
 
   const courses = [
     { drop: t("drop1") },
@@ -32,8 +44,86 @@ export default function PaintingChildrenPage({
     { drop: t("drop4") },
     { drop: t("drop5") },
   ];
+  const videos = [
+    {
+      poster: "",
+      video: "/videos/children1.mp4",
+    },
+    {
+      poster: "",
+      video: "/videos/children2.mp4",
+    },
+    {
+      poster: "",
+      video: "/videos/children3.mp4",
+    },
+    {
+      poster: "",
+      video: "/videos/children4.mp4",
+    },
+    {
+      poster: "",
+      video: "/videos/children5.mp4",
+    },
+    {
+      poster: "",
+      video: "/videos/children6.mp4",
+    },
+  ];
 
+  const edu_card = [
+    { text: t("why"), subText: t("child_edu_text1") },
+    { text: t("why"), subText: t("child_edu_text2") },
+    { text: t("why"), subText: t("child_edu_text3") },
+    { text: t("why"), subText: t("child_edu_text4") },
+    { text: t("why"), subText: t("child_edu_text5") },
+    { text: t("why"), subText: t("child_edu_text6") },
+  ];
+  const CardContent = [
+    {
+      image: home,
+      text: t("home1"),
+      link: `/${lang}/robotic`,
+      btn: t("home_btn"),
+    },
+    {
+      image: home2,
+      text: t("home2"),
+      link: `/${lang}/painting_children`,
+      btn: t("home_btn"),
+    },
+    {
+      image: home3,
+      text: t("home3"),
+      link: `/${lang}/painting_olders`,
+      btn: t("home_btn"),
+    },
+    {
+      image: home4,
+      text: t("home4"),
+      link: `/${lang}/english`,
+      btn: t("home_btn"),
+    },
+    {
+      image: home5,
+      text: t("home5"),
+      link: `/${lang}/chess`,
+      btn: t("home_btn"),
+    },
+  ];
 
+  const images = [
+    children1,
+    children2,
+    children3,
+    children4,
+    children5,
+    children6,
+    children7,
+  ];
+
+  const videoSrc = "/videos/children1.mp4";
+  const posterSrc = "";
 
   return (
     <div className="realtive">
@@ -112,7 +202,7 @@ export default function PaintingChildrenPage({
         />
       </div>
       <section className="container mx-auto max-w-7xl flex items-center justify-between my-10 px-2 md:px-0 gap-5 md:gap-0">
-        <HeadCard />
+        <HeadCard videoSrc={videoSrc} posterSrc={posterSrc} />
         <div
           className="w-[228px] h-[149px] min-w-[228px] min-h-[149px] md:w-[582px] md:h-[320px]"
           style={{
@@ -130,11 +220,11 @@ export default function PaintingChildrenPage({
         <p
           className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] md:text-[96px] text-center font-bold`}
         >
-          {t('education')}
+          {t("education")}
         </p>
         <div className="flex flex-wrap items-center justify-between gap-y-7 p-2 md:p-0">
-          {[1, 2, 3, 4, 5, 6].map((item) => (
-            <ChildCard key={item} />
+          {edu_card.map(({ text, subText }, idx) => (
+            <ChildCard key={idx} text={text} subText={subText} />
           ))}
         </div>
       </section>
@@ -147,7 +237,7 @@ export default function PaintingChildrenPage({
             {t("foto")}
           </p>
 
-          <ImageCarousel />
+          <ImageCarousel images={images} />
         </div>
       </section>
 
@@ -158,7 +248,7 @@ export default function PaintingChildrenPage({
           >
             {t("advices")}
           </p>
-          <CustomCarousel />
+          <CustomCarousel videos={videos} />
         </div>
 
         <div className="container mx-auto max-w-7xl">
@@ -170,7 +260,7 @@ export default function PaintingChildrenPage({
         </div>
 
         <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5">
-        <Input
+          <Input
             className="w-full sm:w-[240px]"
             label={t("form_name")}
             labelPlacement="outside"
@@ -217,7 +307,7 @@ export default function PaintingChildrenPage({
           </Button>
         </div>
         <div className="container mx-auto max-w-7xl my-5 overflow-hidden">
-          <RobotCarousel/>
+          <RobotCarousel CardContent={CardContent} />
         </div>
       </section>
     </div>

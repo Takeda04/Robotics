@@ -8,13 +8,19 @@ import { fontTektur } from "@/config/fonts";
 import borderimg from "@/assets/icons/cardbottom.png";
 import chess from "@/assets/images/chess.png";
 import CustomCarousel from "@/components/carousel";
-import FootCard from "@/components/robotics/foot-card";
 import HeadCard from "@/components/robotics/head-card";
 import call from "@/assets/images/chess_child.png";
 import ChildCard from "@/components/children/child-card";
 import CarouselChess from "@/components/carousel/CarouselChess";
 import RobotCarousel from "@/components/carousel/CarouselRobot";
 import { useTranslation } from "../i18n/client";
+
+import home from "@/assets/images/home.png";
+import home2 from "@/assets/images/home2.png";
+import home3 from "@/assets/images/home3.png";
+import home4 from "@/assets/images/home4.png";
+import home5 from "@/assets/images/home5.png";
+import { getCookie } from "cookies-next";
 
 export default function ChessPage({
   params: { lng },
@@ -25,6 +31,12 @@ export default function ChessPage({
 
 
   const { t } = useTranslation(lng, "translation", {});
+  const lang = getCookie("i18next");
+
+  const videoSrc = "/videos/chess1.mp4";
+  const posterSrc = "";
+
+
 
   const courses = [
     { drop: t("drop1") },
@@ -32,6 +44,56 @@ export default function ChessPage({
     { drop: t("drop3") },
     { drop: t("drop4") },
     { drop: t("drop5") },
+  ];
+  const CardContent = [
+    {
+      image: home,
+      text: t("home1"),
+      link: `/${lang}/robotic`,
+      btn: t("home_btn"),
+    },
+    {
+      image: home2,
+      text: t("home2"),
+      link: `/${lang}/painting_children`,
+      btn: t("home_btn"),
+    },
+    {
+      image: home3,
+      text: t("home3"),
+      link: `/${lang}/painting_olders`,
+      btn: t("home_btn"),
+    },
+    {
+      image: home4,
+      text: t("home4"),
+      link: `/${lang}/english`,
+      btn: t("home_btn"),
+    },
+    {
+      image: home5,
+      text: t("home5"),
+      link: `/${lang}/chess`,
+      btn: t("home_btn"),
+    },
+  ];
+  const edu_card = [
+    { text: t("why"), subText: t("child_edu_text1") },
+    { text: t("why"), subText: t("child_edu_text2") },
+    { text: t("why"), subText: t("child_edu_text3") },
+    { text: t("why"), subText: t("child_edu_text4") },
+    { text: t("why"), subText: t("child_edu_text5") },
+    { text: t("why"), subText: t("child_edu_text6") },
+  ];
+  const videos = [
+    {
+      poster: "/",
+      video: "/videos/chess1.mp4",
+    },
+    {
+      poster: "",
+      video: "/videos/chess2.mp4",
+    }
   ];
 
 
@@ -112,7 +174,7 @@ export default function ChessPage({
         />
       </div>
       <section className="container mx-auto max-w-7xl flex items-center justify-between my-10 px-2 md:px-0 gap-5 md:gap-0">
-        <HeadCard />
+        <HeadCard videoSrc={videoSrc} posterSrc={posterSrc} />
         <div
           className="w-[228px] h-[149px] min-w-[228px] min-h-[149px] md:w-[582px] md:h-[320px]"
           style={{
@@ -134,8 +196,8 @@ export default function ChessPage({
         </p>
         <div className="flex flex-wrap items-center justify-between gap-y-7 p-3 md:p-0 transition-all duration-300 ease-in-out">
           {/* Render only the visible cards */}
-          {[1, 2, 3, 4, 5, 6].map((item) => (
-            <ChildCard key={item} />
+          {edu_card.map(({ text, subText }, idx) => (
+            <ChildCard key={idx} text={text} subText={subText} />
           ))}
         </div>
       </section>
@@ -170,7 +232,7 @@ export default function ChessPage({
              {t("foto")}
           </p>
 
-          <CarouselChess />
+          {/* <CarouselChess /> */}
         </div>
       </section>
 
@@ -181,7 +243,7 @@ export default function ChessPage({
           >
            {t("advices")}
           </p>
-          <CustomCarousel />
+          <CustomCarousel videos={videos}/>
         </div>
 
         <div className="container mx-auto max-w-7xl">
@@ -240,7 +302,7 @@ export default function ChessPage({
           </Button>
         </div>
         <div className="container mx-auto max-w-7xl my-5 overflow-hidden">
-          <RobotCarousel/>
+          <RobotCarousel CardContent={CardContent}/>
         </div>
       </section>
     </div>

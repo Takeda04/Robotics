@@ -8,14 +8,21 @@ import { fontTektur } from "@/config/fonts";
 import borderimg from "@/assets/icons/cardbottom.png";
 import english from "@/assets/images/english.png";
 import CustomCarousel from "@/components/carousel";
-import FootCard from "@/components/robotics/foot-card";
 import HeadCard from "@/components/robotics/head-card";
-import firstimage from "@/assets/images/english1.png";
-import secondimage from "@/assets/images/english2.png";
-import thirdimage from "@/assets/images/english3.png";
-import fourthimage from "@/assets/images/english4.png";
+import firstimage from "@/assets/english/IMG_4298.jpg";
+import secondimage from "@/assets/english/IMG_4304.jpg";
+import thirdimage from "@/assets/english/IMG_4299.jpg";
+import fourthimage from "@/assets/english/IMG_4309.jpg";
+
 import { useTranslation } from "../i18n/client";
 import RobotCarousel from "@/components/carousel/CarouselRobot";
+
+import home from "@/assets/images/home.png";
+import home2 from "@/assets/images/home2.png";
+import home3 from "@/assets/images/home3.png";
+import home4 from "@/assets/images/home4.png";
+import home5 from "@/assets/images/home5.png";
+import { getCookie } from "cookies-next";
 
 export default function RoboticsPage({
   params: { lng },
@@ -26,6 +33,9 @@ export default function RoboticsPage({
 
 
   const { t } = useTranslation(lng, "translation", {});
+  const lang = getCookie("i18next");
+  const videoSrc = "/videos/english1.mp4";
+  const posterSrc = "/posters/mine.JPG";
 
   const courses = [
     { drop: t("drop1") },
@@ -33,6 +43,50 @@ export default function RoboticsPage({
     { drop: t("drop3") },
     { drop: t("drop4") },
     { drop: t("drop5") },
+  ];
+
+  const videos = [
+    {
+      poster: "/posters/mine.JPG",
+      video: "/videos/english1.mp4",
+    },
+    {
+      poster: "/posters/mine.JPG",
+      video: "/videos/english2.mp4",
+    },
+  ];
+
+  const CardContent = [
+    {
+      image: home,
+      text: t("home1"),
+      link: `/${lang}/robotic`,
+      btn: t("home_btn"),
+    },
+    {
+      image: home2,
+      text: t("home2"),
+      link: `/${lang}/painting_children`,
+      btn: t("home_btn"),
+    },
+    {
+      image: home3,
+      text: t("home3"),
+      link: `/${lang}/painting_olders`,
+      btn: t("home_btn"),
+    },
+    {
+      image: home4,
+      text: t("home4"),
+      link: `/${lang}/english`,
+      btn: t("home_btn"),
+    },
+    {
+      image: home5,
+      text: t("home5"),
+      link: `/${lang}/chess`,
+      btn: t("home_btn"),
+    },
   ];
 
 
@@ -113,7 +167,7 @@ export default function RoboticsPage({
         />
       </div>
       <section className="container mx-auto max-w-7xl flex items-center justify-between my-10 px-2 md:px-0 gap-5 md:gap-0">
-        <HeadCard />
+        <HeadCard videoSrc={videoSrc} posterSrc={posterSrc}/>
         <div
           className="w-[228px] h-[149px] min-w-[228px] min-h-[149px] md:w-[582px] md:h-[320px]"
           style={{
@@ -225,7 +279,7 @@ export default function RoboticsPage({
           >
             {t("advices")}
           </p>
-          <CustomCarousel />
+          <CustomCarousel videos={videos}/>
         </div>
 
         <div className="container mx-auto max-w-7xl">
@@ -284,7 +338,7 @@ export default function RoboticsPage({
           </Button>
         </div>
         <div className="container mx-auto max-w-7xl my-5 overflow-hidden">
-          <RobotCarousel/>
+          <RobotCarousel CardContent={CardContent}/>
         </div>
       </section>
     </div>

@@ -1,14 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import Slider from "react-slick";
 import styled from "styled-components";
 
-import { VideoCard } from "./video";
+import { VideoCard } from "./video/video";
 
-import slider from "@/assets/images/slider.png";
-import slider2 from "@/assets/images/slider2.png";
-import slider3 from "@/assets/images/slider3.png";
-import slider4 from "@/assets/images/slider4.png";
-import slider5 from "@/assets/images/slider5.png";
 
 const CarouselContainer = styled.div`
   .slick-slide {
@@ -78,44 +73,34 @@ const CarouselContainer = styled.div`
   }
 `;
 
-const CustomCarousel = () => {
-  const images = [
-    slider,
-    slider2,
-    slider3,
-    slider4,
-    slider5,
-    slider,
-    slider2,
-    slider3,
-    slider4,
-    slider5,
-  ];
+const CustomCarousel = ({videos}:any) => {
+
+  const [playingVideo, setPlayingVideo] = useState<number | null>(null);
 
   const settings = {
     dots: true,
-    infinite: true,
+    infinite: false,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 2,
     autoplay: false,
     responsive: [
       {
-        breakpoint: 1024, // Tablet and small desktop
+        breakpoint: 1024,
         settings: {
           slidesToShow: 3,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 768, // Mobile landscape
+        breakpoint: 768,
         settings: {
           slidesToShow: 2,
           slidesToScroll: 1,
         },
       },
       {
-        breakpoint: 480, // Mobile portrait
+        breakpoint: 480,
         settings: {
           slidesToShow: 1,
           slidesToScroll: 1,
@@ -124,12 +109,26 @@ const CustomCarousel = () => {
     ],
   };
 
+  const handlePlayPause = (index: number) => {
+    if (playingVideo === index) {
+      setPlayingVideo(null);
+    } else {
+      setPlayingVideo(index);
+    }
+  };
+
   return (
     <CarouselContainer>
       <Slider {...settings}>
-        {images.map((image, index) => (
-          <VideoCard key={index} image={image} />
-        ))}
+      {videos.map((video: { video: string; poster: string; }, index: any) => (
+        <VideoCard
+          key={index}
+          videoSrc={video.video}
+          poster={video.poster}
+          isPlaying={playingVideo === index}
+          onPlayPause={() => handlePlayPause(index)} 
+        />
+      ))}
       </Slider>
     </CarouselContainer>
   );

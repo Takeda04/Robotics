@@ -1,9 +1,13 @@
-import React from "react";
+import VideoPlayer from "../video/VideoPlayer";
 
-const HeadCard = () => {
-  return (
-    <div className="w-[150px] h-[130px] min-w-[150px] min-h-[130px] md:w-[509px] md:h-[389px] rounded-3xl bg-[#FFDE00]" />
-  );
+const HeadCard = ({
+  videoSrc,
+  posterSrc,
+}: {
+  videoSrc: string;
+  posterSrc: string;
+}) => {
+  return <VideoPlayer videoSrc={videoSrc} posterSrc={posterSrc} />;
 };
 
 export default HeadCard;

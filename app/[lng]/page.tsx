@@ -84,6 +84,33 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
     { drop: t("drop4") },
     { drop: t("drop5") },
   ];
+  const videos = [
+    {
+      poster: "/",
+      video: "/videos/video1.mp4",
+    },
+    {
+      poster: "",
+      video: "/videos/video2.mp4",
+    },
+    {
+      poster: "",
+      video: "/videos/video3.mp4",
+    },
+    {
+      poster: "",
+      video: "/videos/video4.mp4",
+    },
+    {
+      poster: "",
+      video: "/videos/video5.mp4",
+    },
+    {
+      poster: "",
+      video: "/videos/video6.mp4",
+    },
+    
+  ];
 
   return (
     <div className="realtive">
@@ -155,7 +182,7 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
           >
             {t("advices")}
           </p>
-          <CustomCarousel />
+          <CustomCarousel videos={videos}/>
         </div>
 
         <div className="container mx-auto max-w-7xl">
