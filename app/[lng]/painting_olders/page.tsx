@@ -2,7 +2,13 @@
 
 import Image from "next/image";
 import { Input } from "@nextui-org/input";
-import { Button, Select, SelectItem } from "@nextui-org/react";
+import {
+  Button,
+ 
+  Select,
+  SelectItem,
+  useDisclosure,
+} from "@nextui-org/react";
 
 import { fontTektur } from "@/config/fonts";
 import borderimg from "@/assets/icons/cardbottom.png";
@@ -23,12 +29,16 @@ import olders6 from "@/assets/olders/IMG_2959.jpg";
 import olders7 from "@/assets/olders/IMG_2966.jpg";
 import CustomCarousel from "@/components/carousel";
 
+import robot from "@/assets/images/modal_robot.png";
+
 import home from "@/assets/images/home.png";
 import home2 from "@/assets/images/home2.png";
 import home3 from "@/assets/images/home3.png";
 import home4 from "@/assets/images/home4.png";
 import home5 from "@/assets/images/home5.png";
 import { getCookie } from "cookies-next";
+import MyModal from "@/components/modal/modal";
+import { useState } from "react";
 
 export default function PaintingOlderPage({
   params: { lng },
@@ -36,6 +46,10 @@ export default function PaintingOlderPage({
   params: { lng: string };
 }) {
   const { t } = useTranslation(lng, "translation", {});
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleModalChange = (open: boolean) => {
+    setIsModalOpen(open);
+  };
   const lang = getCookie("i18next");
   const videoSrc = "/videos/older1.mp4";
   const posterSrc = "";
@@ -83,7 +97,7 @@ export default function PaintingOlderPage({
     {
       poster: "",
       video: "/videos/older4.mp4",
-    }
+    },
   ];
   const CardContent = [
     {
@@ -235,12 +249,20 @@ export default function PaintingOlderPage({
             {t("sub_main_card")}
           </p>
           <Button
+             onClick={() => setIsModalOpen(true)}
             className="bg-[#FFE000] text-[#000] w-[208px] h-[25px] md:w-[530px] md:h-[51px] text-[15px] md:text-[32px]"
             variant="bordered"
           >
             {t("record_btn")}
           </Button>
         </div>
+        <MyModal
+          isOpen={isModalOpen}
+          onOpenChange={handleModalChange}
+          t={t}
+          robot={robot}
+          courses={courses}
+        />
       </section>
 
       <section className="container mx-auto max-w-7xl">
@@ -262,7 +284,7 @@ export default function PaintingOlderPage({
           >
             {t("advices")}
           </p>
-          <CustomCarousel videos={videos}/>
+          <CustomCarousel videos={videos} />
         </div>
 
         <div className="container mx-auto max-w-7xl">
@@ -321,7 +343,7 @@ export default function PaintingOlderPage({
           </Button>
         </div>
         <div className="container mx-auto max-w-7xl my-5 overflow-hidden">
-          <RobotCarousel CardContent={CardContent}/>
+          <RobotCarousel CardContent={CardContent} />
         </div>
       </section>
     </div>

@@ -23,9 +23,14 @@ import home4 from "@/assets/images/home4.png";
 import home5 from "@/assets/images/home5.png";
 
 import { getCookie } from "cookies-next";
+import { useState } from "react";
 
 export default function Home({ params: { lng } }: { params: { lng: string } }) {
   const { t } = useTranslation(lng, "translation", {});
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const handleModalChange = (open: boolean) => {
+    setIsModalOpen(open);
+  };
 
   const lang = getCookie("i18next");
 

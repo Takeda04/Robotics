@@ -88,5 +88,10 @@
   "child_bold" : " 6 yosh va undan katta bolalar uchun.",
   "older_title" : "Kattalar uchun rasm chizish",
   "older_desc" : "Chizmachilik kurslari - bu rassom bo'lish imkoniyati",
-  "older_main_text" : "Ko'pgina kattalar chizishni o'rganishni xohlashadi, lekin ularda jasorat, vaqt yoki ko'nikma etishmaydi. Moskvadagi rasm chizish kurslarimiz aynan shunday odamlar uchun yaratilgan. Noyob metodologiyadan foydalangan holda mashg'ulotlar qisqa vaqt ichida sezilarli muvaffaqiyatlarga erishish imkonini beradi. Chizish siz uchun, masalan, o'qish kabi tabiiy bo'ladi!"
+  "older_main_text" : "Ko'pgina kattalar chizishni o'rganishni xohlashadi, lekin ularda jasorat, vaqt yoki ko'nikma etishmaydi. Moskvadagi rasm chizish kurslarimiz aynan shunday odamlar uchun yaratilgan. Noyob metodologiyadan foydalangan holda mashg'ulotlar qisqa vaqt ichida sezilarli muvaffaqiyatlarga erishish imkonini beradi. Chizish siz uchun, masalan, o'qish kabi tabiiy bo'ladi!",
+  "modal_title" : "Sizni birinchi darsimizga taklif qilamiz!",
+  "modal_name" : "Ismingizni kiriting",
+  "modal_surename" : "Familiyangizni kiriting",
+  "back" : "Orqaga"
+
 }

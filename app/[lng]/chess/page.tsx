@@ -2,7 +2,17 @@
 
 import Image from "next/image";
 import { Input } from "@nextui-org/input";
-import { Button, Select, SelectItem } from "@nextui-org/react";
+import {
+  Button,
+  Modal,
+  ModalBody,
+  ModalContent,
+  ModalFooter,
+  ModalHeader,
+  Select,
+  SelectItem,
+  useDisclosure,
+} from "@nextui-org/react";
 
 import { fontTektur } from "@/config/fonts";
 import borderimg from "@/assets/icons/cardbottom.png";
@@ -15,28 +25,43 @@ import CarouselChess from "@/components/carousel/CarouselChess";
 import RobotCarousel from "@/components/carousel/CarouselRobot";
 import { useTranslation } from "../i18n/client";
 
+import robot from "@/assets/images/modal_robot.png";
+
 import home from "@/assets/images/home.png";
 import home2 from "@/assets/images/home2.png";
 import home3 from "@/assets/images/home3.png";
 import home4 from "@/assets/images/home4.png";
 import home5 from "@/assets/images/home5.png";
 import { getCookie } from "cookies-next";
+import { useState } from "react";
+import MyModal from "@/components/modal/modal";
+
+interface FormData {
+  name: string;
+  surname: string;
+  phone: string;
+  age: string;
+  course: string;
+}
+
+interface FormErrors {
+  name?: string;
+  surname?: string;
+  phone?: string;
+  age?: string;
+  course?: string;
+}
 
 export default function ChessPage({
   params: { lng },
 }: {
   params: { lng: string };
 }) {
-
-
-
   const { t } = useTranslation(lng, "translation", {});
   const lang = getCookie("i18next");
 
   const videoSrc = "/videos/chess1.mp4";
   const posterSrc = "";
-
-
 
   const courses = [
     { drop: t("drop1") },
@@ -93,9 +118,14 @@ export default function ChessPage({
     {
       poster: "",
       video: "/videos/chess2.mp4",
-    }
+    },
   ];
 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+
+  const handleModalChange = (open: boolean) => {
+    setIsModalOpen(open);
+  };
 
   return (
     <div className="realtive">
@@ -192,7 +222,7 @@ export default function ChessPage({
         <p
           className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] md:text-[96px] text-center font-bold`}
         >
-          {t('education')}
+          {t("education")}
         </p>
         <div className="flex flex-wrap items-center justify-between gap-y-7 p-3 md:p-0 transition-all duration-300 ease-in-out">
           {/* Render only the visible cards */}
@@ -213,15 +243,24 @@ export default function ChessPage({
           <p
             className={`${fontTektur.variable} w-[306px] md:w-[872px] font-tektur text-[#FFFFFF] text-[15px] md:text-[32px] text-center font-bold`}
           >
-           {t("sub_main_card")}
+            {t("sub_main_card")}
           </p>
           <Button
+             onClick={() => setIsModalOpen(true)}
             className="bg-[#FFE000] text-[#000] w-[208px] h-[25px] md:w-[530px] md:h-[51px] text-[15px] md:text-[32px]"
             variant="bordered"
           >
             {t("record_btn")}
           </Button>
         </div>
+
+        <MyModal
+          isOpen={isModalOpen}
+          onOpenChange={handleModalChange}
+          t={t}
+          robot={robot}
+          courses={courses}
+        />
       </section>
 
       <section className="container mx-auto max-w-7xl">
@@ -229,7 +268,7 @@ export default function ChessPage({
           <p
             className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] text-center font-bold`}
           >
-             {t("foto")}
+            {t("foto")}
           </p>
 
           {/* <CarouselChess /> */}
@@ -241,21 +280,21 @@ export default function ChessPage({
           <p
             className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] md:text-[32px] font-bold text-center md:text-start`}
           >
-           {t("advices")}
+            {t("advices")}
           </p>
-          <CustomCarousel videos={videos}/>
+          <CustomCarousel videos={videos} />
         </div>
 
         <div className="container mx-auto max-w-7xl">
           <p
             className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] sm:text-[48px] md:text-[64px] lg:text-[96px] text-center font-bold`}
           >
-             {t("sub_main_card")}
+            {t("sub_main_card")}
           </p>
         </div>
 
         <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5">
-        <Input
+          <Input
             className="w-full sm:w-[240px]"
             label={t("form_name")}
             labelPlacement="outside"
@@ -302,7 +341,7 @@ export default function ChessPage({
           </Button>
         </div>
         <div className="container mx-auto max-w-7xl my-5 overflow-hidden">
-          <RobotCarousel CardContent={CardContent}/>
+          <RobotCarousel CardContent={CardContent} />
         </div>
       </section>
     </div>
