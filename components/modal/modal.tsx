@@ -56,7 +56,7 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onOpenChange, t, robot, cours
     setErrors({});
 
     try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbyEKeUQW1tjsdCxF2oH3UH2OkpRyL7mFyumVxxW-uVaeo6055DFNquaN0N0eH2P_P3MgQ/exec", {
+      const response = await fetch("https://script.google.com/macros/s/AKfycbwrTmCS4_580bQb105Kn1Ifqxw5qTD0IP6rwU59xENgg1bTjt0IazMWLufGbXQH_0dNDQ/exec", {
         method: "POST",
         body: JSON.stringify(formData),
         headers: {
@@ -103,6 +103,7 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onOpenChange, t, robot, cours
                       onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                       isInvalid={!!errors.name}
                       errorMessage={errors.name}
+                      name="first_name"
                     />
                     <Input
                       label={t("modal_surename")}
@@ -113,6 +114,7 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onOpenChange, t, robot, cours
                       onChange={(e) => setFormData({ ...formData, surname: e.target.value })}
                       isInvalid={!!errors.surname}
                       errorMessage={errors.surname}
+                      name="last_name"
                     />
                     <Input
                       label={t("form_phone")}
@@ -124,6 +126,7 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onOpenChange, t, robot, cours
                       onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
                       isInvalid={!!errors.phone}
                       errorMessage={errors.phone}
+                      name="phone"
                     />
                     <div className="flex w-full gap-5">
                       <Input
@@ -137,6 +140,7 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onOpenChange, t, robot, cours
                         onChange={(e) => setFormData({ ...formData, age: e.target.value })}
                         isInvalid={!!errors.age}
                         errorMessage={errors.age}
+                        name="age"
                       />
                       <Select
                         className="w-full sm:w-[240px]"
@@ -147,6 +151,7 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onOpenChange, t, robot, cours
                         onChange={(value) => setFormData({ ...formData, course: value.target.value })}
                         isInvalid={!!errors.course}
                         errorMessage={errors.course}
+                        name="course"
                       >
                         {courses.map((course, index) => (
                           <SelectItem key={index} value={course.drop}>

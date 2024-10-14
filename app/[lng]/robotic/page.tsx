@@ -224,7 +224,7 @@ export default function RoboticsPage({
           {t("robot_step")}
         </p>
 
-        <div className="flex flex-col items-center gap-y-5">
+        <div className="flex flex-col items-center gap-y-5 overflow-hidden">
           <Accordion variant="splitted" className="w-full sm:w-1/2">
             <AccordionItem
               key="1"
@@ -249,7 +249,7 @@ export default function RoboticsPage({
             </AccordionItem>
           </Accordion>
           <Button
-            className={`w-full sm:w-1/2 ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[55px] text-[24px]`}
+            className={`w-full mb-4 sm:w-1/2 ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[55px] text-[24px]`}
             style={{
               boxShadow:
                 "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
