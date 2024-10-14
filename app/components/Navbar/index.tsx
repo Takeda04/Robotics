@@ -70,7 +70,7 @@ export const Navbar = ({ lng }: { lng: string }) => {
 
   return (
     <NextUINavbar
-      className="h-[100px] sm:h-[157px] relative py-5 sm:absolute border-t-[10px] border-b-[10px] border-[#F0D625]"
+      className={`h-[100px] sm:h-[157px] relative py-5 sm:absolute border-t-[10px] border-b-[10px] border-[#F0D625]`}
       isMenuOpen={isOpen} // Control menu open state
       maxWidth="xl"
       onMenuOpenChange={setIsOpen} // Handle menu open change
@@ -215,7 +215,7 @@ export const Navbar = ({ lng }: { lng: string }) => {
 
       {/* Mobile version */}
       {isMobile && (
-        <NavbarContent className="custom-lg:hidden" justify="end">
+        <NavbarContent className="custom-lg:hidden " justify="end">
           <ButtonGroup className="flex">
             <Button
               className={`${fontTektur.variable} font-tektur text-[24px]`}
@@ -272,7 +272,7 @@ export const Navbar = ({ lng }: { lng: string }) => {
         </NavbarContent>
       )}
 
-      <NavbarMenu className="mt-[100px] gap-y-5">
+      <NavbarMenu className="mt-[30px] gap-y-5">
         <NavbarItem>
           <Link
             className={`${fontTektur.variable} font-tektur text-[24px]`}
