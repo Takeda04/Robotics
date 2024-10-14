@@ -10,13 +10,13 @@ const ChildCard = ({ text, subText }: { text: string; subText: string }) => {
         boxShadow: "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
       }}
     >
-      <p
+      {/* <p
         className={`${fontTektur.variable} font-tektur text-[#000] text-[15px] md:text-[26px] text-start font-bold`}
       >
         {text}
-      </p>
+      </p> */}
       <p
-        className={`${fontTektur.variable} font-tektur text-[#000] text-[13px] md:text-[18px] text-start`}
+        className={`${fontTektur.variable} font-tektur text-[#000] text-[14px] md:text-[20px] text-start`}
       >
         {subText}
       </p>

@@ -220,7 +220,7 @@ export default function PaintingChildrenPage({
         <p
           className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] md:text-[96px] text-center font-bold`}
         >
-          {t("education")}
+          {t("why")}
         </p>
         <div className="flex flex-wrap items-center justify-between gap-y-7 p-2 md:p-0">
           {edu_card.map(({ text, subText }, idx) => (

@@ -2,7 +2,13 @@
 
 import Image from "next/image";
 import { Input } from "@nextui-org/input";
-import { Accordion, AccordionItem, Button, Select, SelectItem } from "@nextui-org/react";
+import {
+  Accordion,
+  AccordionItem,
+  Button,
+  Select,
+  SelectItem,
+} from "@nextui-org/react";
 
 import { fontTektur } from "@/config/fonts";
 import borderimg from "@/assets/icons/cardbottom.png";
@@ -23,15 +29,13 @@ import home3 from "@/assets/images/home3.png";
 import home4 from "@/assets/images/home4.png";
 import home5 from "@/assets/images/home5.png";
 import { getCookie } from "cookies-next";
+import { FaCircleArrowLeft } from "react-icons/fa6";
 
 export default function RoboticsPage({
   params: { lng },
 }: {
   params: { lng: string };
 }) {
-
-
-
   const { t } = useTranslation(lng, "translation", {});
   const lang = getCookie("i18next");
   const videoSrc = "/videos/english1.mp4";
@@ -89,6 +93,11 @@ export default function RoboticsPage({
     },
   ];
 
+  const CustomIndicator = ({ isOpen }: any) => (
+    <FaCircleArrowLeft
+      style={{ color: isOpen ? "#FFDE00" : "#FFF", fontSize: "24px" }}
+    />
+  );
 
   return (
     <div className="realtive">
@@ -104,7 +113,9 @@ export default function RoboticsPage({
               className={`absolute md:relative top-10 mt-0 md:mt-[60px] ${fontTektur.variable} font-tektur font-normal text-[#FFFFFF] text-[14px] md:text-[24px]`}
             >
               {t("english_desc")}
-              <strong className={`${lng === "uz" ? "hidden" : ""}`}>{t("english_bold")}</strong>
+              <strong className={`${lng === "uz" ? "hidden" : ""}`}>
+                {t("english_bold")}
+              </strong>
             </p>
 
             <div className="relative mt-16 md:mt-0">
@@ -126,7 +137,7 @@ export default function RoboticsPage({
               </div>
             </div>
             <div className="absolute flex mt-8 md:mt-[100px] gap-2 md:gap-10 w-[300px] md:w-full">
-            <Input
+              <Input
                 className="w-[100px] sm:w-[240px] h-[35px] md:h-[55px]" // Full width on smaller screens
                 label={t("robot_placeholder1")}
                 type="name"
@@ -167,7 +178,7 @@ export default function RoboticsPage({
         />
       </div>
       <section className="container mx-auto max-w-7xl flex items-center justify-between my-10 px-2 md:px-0 gap-5 md:gap-0">
-        <HeadCard videoSrc={videoSrc} posterSrc={posterSrc}/>
+        <HeadCard videoSrc={videoSrc} posterSrc={posterSrc} />
         <div
           className="w-[228px] h-[149px] min-w-[228px] min-h-[149px] md:w-[582px] md:h-[320px]"
           style={{
@@ -190,11 +201,12 @@ export default function RoboticsPage({
         </p>
 
         <div className="flex flex-col items-center gap-y-5 overflow-hidden">
-        <Accordion variant="splitted" className="w-full sm:w-1/2">
+          <Accordion variant="splitted" className="w-full sm:w-1/2">
             <AccordionItem
               key="1"
               aria-label="Beginner"
               title="Beginner"
+              indicator={CustomIndicator}
             >
               {t("english1_text")}
             </AccordionItem>
@@ -202,6 +214,7 @@ export default function RoboticsPage({
               key="2"
               aria-label="Elementary"
               title="Elementary"
+              indicator={CustomIndicator}
             >
               {t("english2_text")}
             </AccordionItem>
@@ -209,6 +222,7 @@ export default function RoboticsPage({
               key="3"
               aria-label="Intermediate"
               title="Intermediate"
+              indicator={CustomIndicator}
             >
               {t("english3_text")}
             </AccordionItem>
@@ -279,7 +293,7 @@ export default function RoboticsPage({
           >
             {t("advices")}
           </p>
-          <CustomCarousel videos={videos}/>
+          <CustomCarousel videos={videos} />
         </div>
 
         <div className="container mx-auto max-w-7xl">
@@ -291,7 +305,7 @@ export default function RoboticsPage({
         </div>
 
         <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5">
-        <Input
+          <Input
             className="w-full sm:w-[240px]"
             label={t("form_name")}
             labelPlacement="outside"
@@ -338,7 +352,7 @@ export default function RoboticsPage({
           </Button>
         </div>
         <div className="container mx-auto max-w-7xl my-5 overflow-hidden">
-          <RobotCarousel CardContent={CardContent}/>
+          <RobotCarousel CardContent={CardContent} />
         </div>
       </section>
     </div>

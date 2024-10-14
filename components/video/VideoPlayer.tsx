@@ -28,12 +28,12 @@ const VideoPlayer = ({ videoSrc, posterSrc }: { videoSrc: string; posterSrc: str
   };
 
   return (
-    <div  className="relative w-[150px] h-[130px] min-w-[150px] min-h-[130px] md:w-[509px] md:h-[389px] rounded-3xl overflow-hidden">
+    <div  className="relative w-[150px] h-[130px] min-w-[150px] min-h-[130px] md:w-[350px] md:h-[500px] rounded-3xl overflow-hidden">
       <video
         ref={videoRef} // Attach the ref
         src={videoSrc}
         poster={posterSrc}
-        className="w-full h-full rounded-3xl object-cover"
+        className="w-full h-full rounded-3xl object-fill"
         onPlay={handlePlay}
         onPause={handlePause}
         onEnded={handleVideoEnd} // Handle video end

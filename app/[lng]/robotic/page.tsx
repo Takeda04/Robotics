@@ -34,6 +34,7 @@ import home3 from "@/assets/images/home3.png";
 import home4 from "@/assets/images/home4.png";
 import home5 from "@/assets/images/home5.png";
 import { getCookie } from "cookies-next";
+import { FaCircleArrowLeft } from "react-icons/fa6";
 
 
 
@@ -125,6 +126,12 @@ export default function RoboticsPage({
       btn: t("home_btn"),
     },
   ];
+
+  const CustomIndicator = ({ isOpen }: any) => (
+    <FaCircleArrowLeft
+      style={{ color: isOpen ? "#FFDE00" : "#FFF", fontSize: "24px" }}
+    />
+  );
 
   return (
     <div className="realtive">
@@ -230,6 +237,7 @@ export default function RoboticsPage({
               key="1"
               aria-label={t("accordion1_title")}
               title={t("accordion1_title")}
+              indicator={CustomIndicator}
             >
               {t("accordion1_text")}
             </AccordionItem>
@@ -237,6 +245,7 @@ export default function RoboticsPage({
               key="2"
               aria-label={t("accordion2_title")}
               title={t("accordion2_title")}
+              indicator={CustomIndicator}
             >
               {t("accordion2_text")}
             </AccordionItem>
@@ -244,6 +253,7 @@ export default function RoboticsPage({
               key="3"
               aria-label={t("accordion3_title")}
               title={t("accordion3_title")}
+              indicator={CustomIndicator}
             >
               {t("accordion3_text")}
             </AccordionItem>
