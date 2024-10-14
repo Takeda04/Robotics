@@ -1,5 +1,15 @@
 import { useState } from "react";
-import { Modal, ModalHeader, ModalBody, ModalFooter, Input, Button, Select, SelectItem, ModalContent } from "@nextui-org/react"; // Adjust imports based on your library
+import {
+  Modal,
+  ModalHeader,
+  ModalBody,
+  ModalFooter,
+  Input,
+  Button,
+  Select,
+  SelectItem,
+  ModalContent,
+} from "@nextui-org/react"; // Adjust imports based on your library
 import Image from "next/image";
 
 interface MyModalProps {
@@ -26,7 +36,13 @@ interface FormErrors {
   course?: string;
 }
 
-const MyModal: React.FC<MyModalProps> = ({ isOpen, onOpenChange, t, robot, courses }) => {
+const MyModal: React.FC<MyModalProps> = ({
+  isOpen,
+  onOpenChange,
+  t,
+  robot,
+  courses,
+}) => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
     surname: "",
@@ -40,7 +56,8 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onOpenChange, t, robot, cours
   const validateForm = (): FormErrors => {
     const newErrors: FormErrors = {};
     if (!formData.name) newErrors.name = t("modal_name") + " is required";
-    if (!formData.surname) newErrors.surname = t("modal_surename") + " is required";
+    if (!formData.surname)
+      newErrors.surname = t("modal_surename") + " is required";
     if (!formData.phone) newErrors.phone = t("form_phone") + " is required";
     if (!formData.age) newErrors.age = t("form_age") + " is required";
     if (!formData.course) newErrors.course = t("form_course") + " is required";
@@ -56,20 +73,34 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onOpenChange, t, robot, cours
     setErrors({});
 
     try {
-      const response = await fetch("https://script.google.com/macros/s/AKfycbwrTmCS4_580bQb105Kn1Ifqxw5qTD0IP6rwU59xENgg1bTjt0IazMWLufGbXQH_0dNDQ/exec", {
-        method: "POST",
-        body: JSON.stringify(formData),
-        headers: {
-          "Content-Type": "application/json",
-        },
-      });
 
-      if (response.ok) {
-        alert("Form successfully submitted!");
-        onOpenChange(false); // Close modal
-      } else {
-        alert("Failed to submit form");
-      }
+      const newformData = new FormData();
+
+      newformData.append("name", formData.name);
+      newformData.append("surname", formData.surname);
+      newformData.append("phone", formData.phone);
+      newformData.append("age", formData.age);
+      // newformData.append("course", formData.course);
+      newformData.append("course", courses[(formData.course as any)].drop)
+      var xhr = new XMLHttpRequest();
+
+      // Step 2: Open the request with POST method and target URL
+      xhr.open(
+        "POST",
+        "https://script.google.com/macros/s/AKfycbwB6YAFPGK4xkq54TrLRIVON7wRwFvIB7-6bnK-w5CSRlyb2mvp4A_Lz0oFQnE5qh16Kg/exec",
+        true
+      );
+
+      // Step 3: Set up a callback function to handle the response
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          // Successfully completed the request
+          console.log(xhr.responseText);
+          alert("Form successfully submitted!");
+          onOpenChange(false);
+        }
+      };
+      xhr.send(newformData);
     } catch (error) {
       console.error("Error submitting form", error);
     }
@@ -88,9 +119,7 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onOpenChange, t, robot, cours
         {(onClose) => (
           <>
             <div className="flex flex-col items-center">
-              <ModalHeader className="text-2xl">
-                {t("modal_title")}
-              </ModalHeader>
+              <ModalHeader className="text-2xl">{t("modal_title")}</ModalHeader>
               <div className="sm:flex items-center justify-around">
                 <div className="w-[400px]">
                   <ModalBody>
@@ -100,10 +129,12 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onOpenChange, t, robot, cours
                       placeholder="Patrick"
                       variant="bordered"
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
                       isInvalid={!!errors.name}
                       errorMessage={errors.name}
-                      name="first_name"
+                      name="name"
                     />
                     <Input
                       label={t("modal_surename")}
@@ -111,10 +142,12 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onOpenChange, t, robot, cours
                       placeholder="Handsome"
                       variant="bordered"
                       value={formData.surname}
-                      onChange={(e) => setFormData({ ...formData, surname: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, surname: e.target.value })
+                      }
                       isInvalid={!!errors.surname}
                       errorMessage={errors.surname}
-                      name="last_name"
+                      name="surname"
                     />
                     <Input
                       label={t("form_phone")}
@@ -123,7 +156,9 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onOpenChange, t, robot, cours
                       type="tel"
                       variant="bordered"
                       value={formData.phone}
-                      onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, phone: e.target.value })
+                      }
                       isInvalid={!!errors.phone}
                       errorMessage={errors.phone}
                       name="phone"
@@ -137,7 +172,9 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onOpenChange, t, robot, cours
                         type="number"
                         variant="bordered"
                         value={formData.age}
-                        onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+                        onChange={(e) =>
+                          setFormData({ ...formData, age: e.target.value })
+                        }
                         isInvalid={!!errors.age}
                         errorMessage={errors.age}
                         name="age"
@@ -148,7 +185,9 @@ const MyModal: React.FC<MyModalProps> = ({ isOpen, onOpenChange, t, robot, cours
                         labelPlacement="outside"
                         variant="bordered"
                         value={formData.course}
-                        onChange={(value) => setFormData({ ...formData, course: value.target.value })}
+                        onChange={(e) =>
+                          setFormData({ ...formData, course: e.target.value })
+                        }
                         isInvalid={!!errors.course}
                         errorMessage={errors.course}
                         name="course"
