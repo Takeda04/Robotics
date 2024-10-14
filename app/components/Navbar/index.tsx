@@ -37,9 +37,15 @@ export const Navbar = ({ lng }: { lng: string }) => {
   const [isMobile, setIsMobile] = useState(false);
   const router = useRouter();
   const lang = getCookie("i18next");
+  const [showPhoneNumber, setShowPhoneNumber] = useState(false);
+  const phoneNumber = "+998998552572";
 
   const handleToggle = () => {
     setIsOpen((prevState) => !prevState);
+  };
+
+  const handleClick = () => {
+    setShowPhoneNumber((prevShow) => !prevShow); // Toggle the state
   };
 
   const handleLanguageChange = (lang: string) => {
@@ -101,7 +107,7 @@ export const Navbar = ({ lng }: { lng: string }) => {
             <Link
               className={`${fontTektur.variable} font-tektur text-[24px]`}
               color="foreground"
-              href={`/${lang}/`}
+              href="#about"
             >
               {t("about")}
             </Link>
@@ -165,7 +171,7 @@ export const Navbar = ({ lng }: { lng: string }) => {
             <Link
               className={`${fontTektur.variable} font-tektur text-[24px]`}
               color="foreground"
-              href={`/${lang}/`}
+              href='#footer'
             >
               {t("contact")}
             </Link>
@@ -179,9 +185,9 @@ export const Navbar = ({ lng }: { lng: string }) => {
               boxShadow:
                 "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
             }}
-            onClick={() => window.open("tel:+998998552572")}
+            onClick={handleClick}
           >
-            {t("call")}
+            {showPhoneNumber ? phoneNumber : t("call")}
           </Button>
 
           <ButtonGroup className="hidden sm:flex">
@@ -286,7 +292,7 @@ export const Navbar = ({ lng }: { lng: string }) => {
           <Link
             className={`${fontTektur.variable} font-tektur text-[24px]`}
             color="foreground"
-            href={`/${lang}/`}
+            href='#about'
           >
             {t("about")}
           </Link>
@@ -350,7 +356,7 @@ export const Navbar = ({ lng }: { lng: string }) => {
           <Link
             className={`${fontTektur.variable} font-tektur text-[24px]`}
             color="foreground"
-            href={`/${lang}/`}
+            href='#footer'
           >
             {t("contact")}
           </Link>
@@ -364,8 +370,9 @@ export const Navbar = ({ lng }: { lng: string }) => {
             boxShadow:
               "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
           }}
+          onClick={handleClick}
         >
-          {t("call")}
+          {showPhoneNumber ? phoneNumber : t("call")}
         </Button>
       </NavbarMenu>
     </NextUINavbar>

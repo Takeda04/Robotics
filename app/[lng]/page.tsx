@@ -23,14 +23,14 @@ import home4 from "@/assets/images/home4.png";
 import home5 from "@/assets/images/home5.png";
 
 import { getCookie } from "cookies-next";
-import { useState } from "react";
+import { useRef } from "react";
 
 export default function Home({ params: { lng } }: { params: { lng: string } }) {
   const { t } = useTranslation(lng, "translation", {});
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const handleModalChange = (open: boolean) => {
-    setIsModalOpen(open);
-  };
+
+
+  const aboutSectionRef = useRef<HTMLDivElement>(null);
+
 
   const lang = getCookie("i18next");
 
@@ -146,7 +146,7 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
           ))}
         </div>
       </section>
-      <section className="relative w-full h-[486px] bg-white py-[30px] px-[10px]">
+      <section id="about" className="relative w-full h-[486px] bg-white py-[30px] px-[10px]">
         <div className="container mx-auto max-w-7xl flex flex-col items-center justify-center ">
           <p
             className={`${fontTektur.variable} font-tektur text-[#000] text-[14px] sm:text-[18px] md:text-[24px] lg:text-[28px]`}

@@ -6,6 +6,10 @@
 
 
 
+html {
+  scroll-behavior: smooth;
+}
+
 .font-tektur {
     font-family: var(--font-tektur), sans-serif;
 }

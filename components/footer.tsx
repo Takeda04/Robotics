@@ -115,7 +115,7 @@ export const Footer = ({ lng }: { lng: string }) => {
         width="600"
       />
 
-      <footer className="bg-[#FFE000] py-8">
+      <footer id="footer" className="bg-[#FFE000] py-8">
         <div className="container mx-auto max-w-7xl flex flex-col sm:flex-row py-6 gap-y-8 px-4 lg:px-0">
           {/* Logo and Slogan Section */}
           <div className="flex flex-col items-start sm:flex-col">
