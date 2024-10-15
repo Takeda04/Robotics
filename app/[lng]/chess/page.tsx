@@ -203,7 +203,7 @@ export default function ChessPage({
           width={400}
         />
       </div>
-      <section className="container mx-auto max-w-7xl flex items-center justify-between my-10 px-2 md:px-0 gap-5 md:gap-0">
+      <section className="container mx-auto max-w-7xl flex items-center justify-evenly my-10 px-2 md:px-0 gap-5 md:gap-0">
         <HeadCard videoSrc={videoSrc} posterSrc={posterSrc} />
         <div
           className="w-[228px] h-[149px] min-w-[228px] min-h-[149px] md:w-[582px] md:h-[320px]"
@@ -225,7 +225,6 @@ export default function ChessPage({
           {t("education")}
         </p>
         <div className="flex flex-wrap items-center justify-between gap-y-7 p-3 md:p-0 transition-all duration-300 ease-in-out">
-          {/* Render only the visible cards */}
           {edu_card.map(({ text, subText }, idx) => (
             <ChildCard key={idx} text={text} subText={subText} />
           ))}
@@ -234,7 +233,7 @@ export default function ChessPage({
       <section className="relative container mx-auto max-w-7xl my-20">
         <Image
           alt="call image"
-          className="mx-auto w-full" // Center the image
+          className="mx-auto w-full"
           height={500}
           src={call}
           width={500}
@@ -301,6 +300,7 @@ export default function ChessPage({
             placeholder="John Doe"
             type="email"
             variant="flat"
+            size="lg"
           />
 
           <Input
@@ -310,6 +310,7 @@ export default function ChessPage({
             placeholder="+9998901234567"
             type="phone"
             variant="flat"
+            size="lg"
           />
           <Select
             className="w-full sm:w-[240px]" // Full width on smaller screens
@@ -317,6 +318,7 @@ export default function ChessPage({
             labelPlacement="outside"
             placeholder="Robotics"
             variant="flat"
+            size="lg"
           >
             {courses.map((course, idx) => (
               <SelectItem key={idx}>{course.drop}</SelectItem>
@@ -329,9 +331,10 @@ export default function ChessPage({
             placeholder="10"
             type="age"
             variant="flat"
+            size="lg"
           />
           <Button
-            className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[40px] text-[24px]`}
+            className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[50px] text-[24px]`}
             style={{
               boxShadow:
                 "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",

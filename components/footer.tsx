@@ -187,7 +187,7 @@ export const Footer = ({ lng }: { lng: string }) => {
                 <li key={index}>
                   <Link
                     className={`${fontTektur.variable} font-tektur text-black text-[20px]`}
-                    href="#"
+                    href={contact.link}
                   >
                     {contact.soc}
                   </Link>

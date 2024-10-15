@@ -206,6 +206,7 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
             placeholder="John Doe"
             type="email"
             variant="flat"
+            size="lg"
           />
 
           <Input
@@ -215,6 +216,7 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
             placeholder="+9998901234567"
             type="phone"
             variant="flat"
+            size="lg"
           />
           <Select
             className="w-full sm:w-[240px]" // Full width on smaller screens
@@ -222,6 +224,7 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
             labelPlacement="outside"
             placeholder="Robotics"
             variant="flat"
+            size="lg"
           >
             {courses.map((course, idx) => (
               <SelectItem key={idx}>{course.drop}</SelectItem>
@@ -234,9 +237,10 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
             placeholder="10"
             type="age"
             variant="flat"
+            size="lg"
           />
           <Button
-            className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[40px] text-[24px]`}
+            className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[50px] text-[24px]`}
             style={{
               boxShadow:
                 "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",

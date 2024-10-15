@@ -208,7 +208,7 @@ export default function RoboticsPage({
           width={400}
         />
       </div>
-      <section className="container mx-auto max-w-7xl flex items-center justify-between my-10 px-2 md:px-0 gap-5 md:gap-0">
+      <section className="container mx-auto max-w-7xl flex items-center justify-evenly my-10 px-2 md:px-0 gap-5 md:gap-0">
         <HeadCard videoSrc={videoSrc} posterSrc={posterSrc}/>
         <div
           className="w-[228px] h-[149px] min-w-[228px] min-h-[149px] md:w-[582px] md:h-[320px]"
@@ -308,6 +308,7 @@ export default function RoboticsPage({
             placeholder="John Doe"
             type="email"
             variant="flat"
+            size="lg"
           />
 
           <Input
@@ -317,6 +318,7 @@ export default function RoboticsPage({
             placeholder="+9998901234567"
             type="phone"
             variant="flat"
+            size="lg"
           />
           <Select
             className="w-full sm:w-[240px]" // Full width on smaller screens
@@ -324,6 +326,7 @@ export default function RoboticsPage({
             labelPlacement="outside"
             placeholder="Robotics"
             variant="flat"
+            size="lg"
           >
             {courses.map((course, idx) => (
               <SelectItem key={idx}>{course.drop}</SelectItem>
@@ -336,9 +339,10 @@ export default function RoboticsPage({
             placeholder="10"
             type="age"
             variant="flat"
+            size="lg"
           />
           <Button
-            className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[40px] text-[24px]`}
+            className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[50px] text-[24px]`}
             style={{
               boxShadow:
                 "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
