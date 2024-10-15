@@ -38,7 +38,7 @@ export const Navbar = ({ lng }: { lng: string }) => {
   const router = useRouter();
   const lang = getCookie("i18next");
   const [showPhoneNumber, setShowPhoneNumber] = useState(false);
-  const phoneNumber = "+998998552572";
+  const phoneNumber = "+99833-718-44-44";
 
   const handleToggle = () => {
     setIsOpen((prevState) => !prevState);

@@ -258,7 +258,7 @@ export default function RoboticsPage({
               {t("accordion3_text")}
             </AccordionItem>
           </Accordion>
-          <Button
+          {/* <Button
             className={`w-full mb-4 sm:w-1/2 ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[55px] text-[24px]`}
             style={{
               boxShadow:
@@ -266,7 +266,7 @@ export default function RoboticsPage({
             }}
           >
             {t("robot_btn")}
-          </Button>
+          </Button> */}
         </div>
       </section>
       <section className="container mx-auto max-w-7xl my-5">
