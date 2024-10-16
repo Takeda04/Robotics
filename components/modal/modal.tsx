@@ -22,7 +22,6 @@ interface MyModalProps {
 
 interface FormData {
   name: string;
-  surname: string;
   phone: string;
   age: string;
   course: string;
@@ -30,7 +29,6 @@ interface FormData {
 
 interface FormErrors {
   name?: string;
-  surname?: string;
   phone?: string;
   age?: string;
   course?: string;
@@ -45,7 +43,6 @@ const MyModal: React.FC<MyModalProps> = ({
 }) => {
   const [formData, setFormData] = useState<FormData>({
     name: "",
-    surname: "",
     phone: "",
     age: "",
     course: "",
@@ -56,8 +53,6 @@ const MyModal: React.FC<MyModalProps> = ({
   const validateForm = (): FormErrors => {
     const newErrors: FormErrors = {};
     if (!formData.name) newErrors.name = t("modal_name") + " is required";
-    if (!formData.surname)
-      newErrors.surname = t("modal_surename") + " is required";
     if (!formData.phone) newErrors.phone = t("form_phone") + " is required";
     if (!formData.age) newErrors.age = t("form_age") + " is required";
     if (!formData.course) newErrors.course = t("form_course") + " is required";
@@ -77,10 +72,8 @@ const MyModal: React.FC<MyModalProps> = ({
       const newformData = new FormData();
 
       newformData.append("name", formData.name);
-      newformData.append("surname", formData.surname);
       newformData.append("phone", formData.phone);
       newformData.append("age", formData.age);
-      // newformData.append("course", formData.course);
       newformData.append("course", courses[(formData.course as any)].drop)
       var xhr = new XMLHttpRequest();
 
@@ -98,6 +91,12 @@ const MyModal: React.FC<MyModalProps> = ({
           console.log(xhr.responseText);
           alert("Form successfully submitted!");
           onOpenChange(false);
+          setFormData({
+            name: "",
+            phone: "",
+            age: "",
+            course: "",
+          });
         }
       };
       xhr.send(newformData);
@@ -136,19 +135,7 @@ const MyModal: React.FC<MyModalProps> = ({
                       errorMessage={errors.name}
                       name="name"
                     />
-                    <Input
-                      label={t("modal_surename")}
-                      labelPlacement="outside"
-                      placeholder="Handsome"
-                      variant="bordered"
-                      value={formData.surname}
-                      onChange={(e) =>
-                        setFormData({ ...formData, surname: e.target.value })
-                      }
-                      isInvalid={!!errors.surname}
-                      errorMessage={errors.surname}
-                      name="surname"
-                    />
+                    
                     <Input
                       label={t("form_phone")}
                       labelPlacement="outside"
@@ -204,7 +191,7 @@ const MyModal: React.FC<MyModalProps> = ({
                 <div className="flex flex-col items-center justify-between">
                   <Image
                     alt="modal robot"
-                    className="hidden md:flex w-[250px] h-[200px]"
+                    className="hidden md:flex w-[200px] h-[200px]"
                     height={130}
                     src={robot}
                     width={200}

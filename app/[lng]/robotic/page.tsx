@@ -240,6 +240,38 @@ export default function RoboticsPage({
               indicator={CustomIndicator}
             >
               {t("accordion1_text")}
+              <br />
+              <div className="mt-5">{t("accordion1_age")}</div>
+              <br />
+              <div className="mt-3">{t("accordion1_per")}</div>
+              <br />
+              <div className="mt-3">
+                <span>{t("accordion_price_title")}</span> : {t("accordion_price_text")}
+              </div>
+              <br />
+              <div className="mt-3">
+                {t("accordion_per_title")} : <span>{t("accordion1_per_text")}</span>
+              </div>
+            </AccordionItem>
+            <AccordionItem
+              key="4"
+              aria-label={t("accordion4_title")}
+              title={t("accordion4_title")}
+              indicator={CustomIndicator}
+            >
+              {t("accordion4_text")}
+              <br />
+              <div className="mt-5">{t("accordion4_age")}</div>
+              <br />
+              <div className="mt-3">{t("accordion4_per")}</div>
+              <br />
+              <div className="mt-3">
+                <span>{t("accordion_price_title")}</span> : {t("accordion_price_text")}
+              </div>
+              <br />
+              <div className="mt-3">
+                {t("accordion_per_title")} : <span>{t("accordion4_per_text")}</span>
+              </div>
             </AccordionItem>
             <AccordionItem
               key="2"
@@ -248,6 +280,18 @@ export default function RoboticsPage({
               indicator={CustomIndicator}
             >
               {t("accordion2_text")}
+              <br />
+              <div className="mt-5">{t("accordion2_age")}</div>
+              <br />
+              <div className="mt-3">{t("accordion2_per")}</div>
+              <br />
+              <div className="mt-3">
+                <span>{t("accordion_price_title")}</span> : {t("accordion_price_text")}
+              </div>
+              <br />
+              <div className="mt-3">
+                {t("accordion_per_title")} : <span>{t("accordion2_per_text")}</span>
+              </div>
             </AccordionItem>
             <AccordionItem
               key="3"
@@ -256,7 +300,20 @@ export default function RoboticsPage({
               indicator={CustomIndicator}
             >
               {t("accordion3_text")}
+              <br />
+              <div className="mt-5">{t("accordion3_age")}</div>
+              <br />
+              <div className="mt-3">{t("accordion3_per")}</div>
+              <br />
+              <div className="mt-3">
+                <span>{t("accordion_price_title")}</span> : {t("accordion_price_text")}
+              </div>
+              <br />
+              <div className="mt-3">
+                {t("accordion_per_title")} : <span>{t("accordion3_per_text")}</span>
+              </div>
             </AccordionItem>
+            
           </Accordion>
           {/* <Button
             className={`w-full mb-4 sm:w-1/2 ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[55px] text-[24px]`}

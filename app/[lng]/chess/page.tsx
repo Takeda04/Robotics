@@ -38,7 +38,6 @@ import MyModal from "@/components/modal/modal";
 
 interface FormData {
   name: string;
-  surname: string;
   phone: string;
   age: string;
   course: string;
@@ -46,7 +45,6 @@ interface FormData {
 
 interface FormErrors {
   name?: string;
-  surname?: string;
   phone?: string;
   age?: string;
   course?: string;
@@ -125,6 +123,69 @@ export default function ChessPage({
 
   const handleModalChange = (open: boolean) => {
     setIsModalOpen(open);
+  };
+
+
+
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    phone: "",
+    age: "",
+    course: "",
+  });
+  const [errors, setErrors] = useState<FormErrors>({});
+
+  const validateForm = (): FormErrors => {
+    const newErrors: FormErrors = {};
+    if (!formData.name) newErrors.name = t("modal_name") + " is required";
+    if (!formData.phone) newErrors.phone = t("form_phone") + " is required";
+    if (!formData.age) newErrors.age = t("form_age") + " is required";
+    if (!formData.course) newErrors.course = t("form_course") + " is required";
+    return newErrors;
+  };
+
+  const handleSubmit = async () => {
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+    setErrors({});
+
+    try {
+      const newformData = new FormData();
+
+      newformData.append("name", formData.name);
+      newformData.append("phone", formData.phone);
+      newformData.append("age", formData.age);
+      newformData.append("course", courses[(formData.course as any)].drop)
+      var xhr = new XMLHttpRequest();
+
+      // Step 2: Open the request with POST method and target URL
+      xhr.open(
+        "POST",
+        "https://script.google.com/macros/s/AKfycbwB6YAFPGK4xkq54TrLRIVON7wRwFvIB7-6bnK-w5CSRlyb2mvp4A_Lz0oFQnE5qh16Kg/exec",
+        true
+      );
+
+      // Step 3: Set up a callback function to handle the response
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          // Successfully completed the request
+          console.log(xhr.responseText, "askjdaskdskajhd");
+          alert("Form successfully submitted!");
+          setFormData({
+            name: "",
+            phone: "",
+            age: "",
+            course: "",
+          });
+        }
+      };
+      xhr.send(newformData);
+    } catch (error) {
+      console.error("Error submitting form", error);
+    }
   };
 
   return (
@@ -301,6 +362,11 @@ export default function ChessPage({
             type="email"
             variant="flat"
             size="lg"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            isInvalid={!!errors.name}
+            errorMessage={errors.name}
+            name="name"
           />
 
           <Input
@@ -311,6 +377,13 @@ export default function ChessPage({
             type="phone"
             variant="flat"
             size="lg"
+            value={formData.phone}
+            onChange={(e) =>
+              setFormData({ ...formData, phone: e.target.value })
+            }
+            isInvalid={!!errors.phone}
+            errorMessage={errors.phone}
+            name="phone"
           />
           <Select
             className="w-full sm:w-[240px]" // Full width on smaller screens
@@ -319,9 +392,18 @@ export default function ChessPage({
             placeholder="Robotics"
             variant="flat"
             size="lg"
+            value={formData.course}
+            onChange={(e) =>
+              setFormData({ ...formData, course: e.target.value })
+            }
+            isInvalid={!!errors.course}
+            errorMessage={errors.course}
+            name="course"
           >
             {courses.map((course, idx) => (
-              <SelectItem key={idx}>{course.drop}</SelectItem>
+              <SelectItem key={idx} value={course.drop}>
+                {course.drop}
+              </SelectItem>
             ))}
           </Select>
           <Input
@@ -332,8 +414,14 @@ export default function ChessPage({
             type="age"
             variant="flat"
             size="lg"
+            value={formData.age}
+            onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+            isInvalid={!!errors.age}
+            errorMessage={errors.age}
+            name="age"
           />
           <Button
+            onClick={handleSubmit}
             className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[50px] text-[24px]`}
             style={{
               boxShadow:

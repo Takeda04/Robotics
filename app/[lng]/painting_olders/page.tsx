@@ -3,8 +3,9 @@
 import Image from "next/image";
 import { Input } from "@nextui-org/input";
 import {
+  Accordion,
+  AccordionItem,
   Button,
- 
   Select,
   SelectItem,
   useDisclosure,
@@ -39,6 +40,21 @@ import home5 from "@/assets/images/home5.png";
 import { getCookie } from "cookies-next";
 import MyModal from "@/components/modal/modal";
 import { useState } from "react";
+import { FaCircleArrowLeft } from "react-icons/fa6";
+
+interface FormData {
+  name: string;
+  phone: string;
+  age: string;
+  course: string;
+}
+
+interface FormErrors {
+  name?: string;
+  phone?: string;
+  age?: string;
+  course?: string;
+}
 
 export default function PaintingOlderPage({
   params: { lng },
@@ -53,6 +69,11 @@ export default function PaintingOlderPage({
   const lang = getCookie("i18next");
   const videoSrc = "/videos/older1.mp4";
   const posterSrc = "";
+  const CustomIndicator = ({ isOpen }: any) => (
+    <FaCircleArrowLeft
+      style={{ color: isOpen ? "#FFDE00" : "#FFF", fontSize: "24px" }}
+    />
+  );
 
   const courses = [
     { drop: t("drop1") },
@@ -131,6 +152,70 @@ export default function PaintingOlderPage({
       btn: t("home_btn"),
     },
   ];
+
+
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    phone: "",
+    age: "",
+    course: "",
+  });
+  const [errors, setErrors] = useState<FormErrors>({});
+
+  const validateForm = (): FormErrors => {
+    const newErrors: FormErrors = {};
+    if (!formData.name) newErrors.name = t("modal_name") + " is required";
+    if (!formData.phone) newErrors.phone = t("form_phone") + " is required";
+    if (!formData.age) newErrors.age = t("form_age") + " is required";
+    if (!formData.course) newErrors.course = t("form_course") + " is required";
+    return newErrors;
+  };
+
+  const handleSubmit = async () => {
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+    setErrors({});
+
+    try {
+      const newformData = new FormData();
+
+      newformData.append("name", formData.name);
+      newformData.append("phone", formData.phone);
+      newformData.append("age", formData.age);
+      newformData.append("course", courses[(formData.course as any)].drop)
+      var xhr = new XMLHttpRequest();
+
+      // Step 2: Open the request with POST method and target URL
+      xhr.open(
+        "POST",
+        "https://script.google.com/macros/s/AKfycbwB6YAFPGK4xkq54TrLRIVON7wRwFvIB7-6bnK-w5CSRlyb2mvp4A_Lz0oFQnE5qh16Kg/exec",
+        true
+      );
+
+      // Step 3: Set up a callback function to handle the response
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          // Successfully completed the request
+          console.log(xhr.responseText, "askjdaskdskajhd");
+          alert("Form successfully submitted!");
+          setFormData({
+            name: "",
+            phone: "",
+            age: "",
+            course: "",
+          });
+        }
+      };
+      xhr.send(newformData);
+    } catch (error) {
+      console.error("Error submitting form", error);
+    }
+  };
+
+
   return (
     <div className="realtive">
       <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 flex md:overflow-hidden">
@@ -222,6 +307,40 @@ export default function PaintingOlderPage({
           </p>
         </div>
       </section>
+      <div className="flex flex-col items-center gap-y-5 overflow-hidden">
+        <Accordion variant="splitted" className="w-full sm:w-1/2">
+          <AccordionItem
+            key="1"
+            aria-label={t("paint_older")}
+            title={t("paint_older")}
+            indicator={CustomIndicator}
+          >
+            {t("paint_older_text")}
+
+            <div className="mt-5">{t("paint_older_age")}</div>
+            <br />
+            <div className="mt-3">{t("accordion1_per")}</div>
+            <br />
+            <div className="mt-3">
+              <span>{t("accordion_price_title")}</span> :{" "}
+              {t("paint_older_price")}
+            </div>
+            <br />
+            <div className="mt-3">
+              {t("accordion_per_title")} : <span>{t("paint_older_time")}</span>
+            </div>
+          </AccordionItem>
+        </Accordion>
+        {/* <Button
+            className={`w-full mb-4 sm:w-1/2 ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[55px] text-[24px]`}
+            style={{
+              boxShadow:
+                "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
+            }}
+          >
+            {t("robot_btn")}
+          </Button> */}
+      </div>
       <section className="container mx-auto max-w-7xl">
         <p
           className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[32px] md:text-[96px] text-center font-bold`}
@@ -249,7 +368,7 @@ export default function PaintingOlderPage({
             {t("sub_main_card")}
           </p>
           <Button
-             onClick={() => setIsModalOpen(true)}
+            onClick={() => setIsModalOpen(true)}
             className="bg-[#FFE000] text-[#000] w-[208px] h-[25px] md:w-[530px] md:h-[51px] text-[15px] md:text-[32px]"
             variant="bordered"
           >
@@ -304,6 +423,11 @@ export default function PaintingOlderPage({
             type="email"
             variant="flat"
             size="lg"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            isInvalid={!!errors.name}
+            errorMessage={errors.name}
+            name="name"
           />
 
           <Input
@@ -314,6 +438,13 @@ export default function PaintingOlderPage({
             type="phone"
             variant="flat"
             size="lg"
+            value={formData.phone}
+            onChange={(e) =>
+              setFormData({ ...formData, phone: e.target.value })
+            }
+            isInvalid={!!errors.phone}
+            errorMessage={errors.phone}
+            name="phone"
           />
           <Select
             className="w-full sm:w-[240px]" // Full width on smaller screens
@@ -322,9 +453,18 @@ export default function PaintingOlderPage({
             placeholder="Robotics"
             variant="flat"
             size="lg"
+            value={formData.course}
+            onChange={(e) =>
+              setFormData({ ...formData, course: e.target.value })
+            }
+            isInvalid={!!errors.course}
+            errorMessage={errors.course}
+            name="course"
           >
             {courses.map((course, idx) => (
-              <SelectItem key={idx}>{course.drop}</SelectItem>
+              <SelectItem key={idx} value={course.drop}>
+                {course.drop}
+              </SelectItem>
             ))}
           </Select>
           <Input
@@ -335,8 +475,14 @@ export default function PaintingOlderPage({
             type="age"
             variant="flat"
             size="lg"
+            value={formData.age}
+            onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+            isInvalid={!!errors.age}
+            errorMessage={errors.age}
+            name="age"
           />
           <Button
+            onClick={handleSubmit}
             className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[50px] text-[24px]`}
             style={{
               boxShadow:
