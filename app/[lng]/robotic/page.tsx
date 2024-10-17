@@ -63,7 +63,7 @@ export default function RoboticsPage({
       video: "/videos/video1.mp4",
     },
     {
-      poster: "/posters/robotics/poster2.jpg",
+      poster: "/posters/robotics/poster3.jpg",
       video: "/videos/video2.mp4",
     },
     {
@@ -75,7 +75,7 @@ export default function RoboticsPage({
       video: "/videos/video4.mp4",
     },
     {
-      poster: "/posters/robotics/poster3.jpg",
+      poster: "/posters/robotics/poster2.jpg",
       video: "/videos/video5.mp4",
     },
     {
