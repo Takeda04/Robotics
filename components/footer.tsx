@@ -33,8 +33,8 @@ export const Footer = ({ lng }: { lng: string }) => {
   ];
   const socials = [
     { soc: t("footer_soc1"), link: `/${lang}/` },
-    { soc: t("footer_soc2"), link: `/https://www.instagram.com/just.robotics/?hl=ru` },
-    { soc: t("footer_soc3"), link: `www.youtube.com/@JustRobotics-vt1hu` },
+    { soc: t("footer_soc2"), link: `https://www.instagram.com/just.robotics/?hl=ru` },
+    { soc: t("footer_soc3"), link: `https://www.youtube.com/@JustRobotics-vt1hu` },
     { soc: t("footer_soc4"), link: `/${lang}/` },
   ];
 
@@ -137,17 +137,20 @@ export const Footer = ({ lng }: { lng: string }) => {
               <Link
                 aria-label="Telegram"
                 href="https://t.me/+998 33-718-44-44"
+                target="_blank"
               >
                 <FaTelegramPlane className="text-black text-2xl" />
               </Link>
               <Link
                 aria-label="YouTube"
-                href="www.youtube.com/@JustRobotics-vt1hu"
+                target="_blank"
+                href="https://www.youtube.com/@JustRobotics-vt1hu"
               >
                 <FaYoutube className="text-black text-2xl" />
               </Link>
               <Link
                 aria-label="Instagram"
+                target="_blank"
                 href="https://www.instagram.com/just.robotics/?hl=ru"
               >
                 <FaInstagram className="text-black text-2xl" />
@@ -187,6 +190,7 @@ export const Footer = ({ lng }: { lng: string }) => {
               {socials.map((contact, index) => (
                 <li key={index}>
                   <Link
+                  target="_blank"
                     className={`${fontTektur.variable} font-tektur text-black text-[20px]`}
                     href={contact.link}
                   >
