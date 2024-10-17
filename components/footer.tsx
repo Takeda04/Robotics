@@ -9,7 +9,7 @@ import { useRouter } from "next/navigation";
 
 import { fontTektur } from "@/config/fonts";
 import { ClockIcon, LocationIcon, PhoneIcon } from "@/assets/icons/icons";
-import dark_logo from "@/assets/icons/dark_logo.png";
+import dark_logo from "@/assets/images/dark_logo.png";
 import { useTranslation } from "@/app/[lng]/i18n/client";
 import { getCookie } from "cookies-next";
 
