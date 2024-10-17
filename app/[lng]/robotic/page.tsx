@@ -21,12 +21,12 @@ import RobotCarousel from "@/components/carousel/CarouselRobot";
 
 //images
 
-import image1 from "@/assets/robotic/IMG_3422.jpg"
-import image2 from "@/assets/robotic/IMG_3405.jpg"
-import image3 from "@/assets/robotic/IMG_3420.jpg"
-import image4 from "@/assets/robotic/IMG_3427.jpg"
-import image5 from "@/assets/robotic/IMG_4904.jpg"
-import image6 from "@/assets/robotic/IMG_4895.jpg"
+import image1 from "@/assets/robotic/IMG_3422.jpg";
+import image2 from "@/assets/robotic/IMG_3405.jpg";
+import image3 from "@/assets/robotic/IMG_3420.jpg";
+import image4 from "@/assets/robotic/IMG_3427.jpg";
+import image5 from "@/assets/robotic/IMG_4904.jpg";
+import image6 from "@/assets/robotic/IMG_4895.jpg";
 
 import home from "@/assets/images/home.png";
 import home2 from "@/assets/images/home2.png";
@@ -35,8 +35,21 @@ import home4 from "@/assets/images/home4.png";
 import home5 from "@/assets/images/home5.png";
 import { getCookie } from "cookies-next";
 import { FaCircleArrowLeft } from "react-icons/fa6";
+import { useState } from "react";
 
+interface FormData {
+  name: string;
+  phone: string;
+  age: string;
+  course: string;
+}
 
+interface FormErrors {
+  name?: string;
+  phone?: string;
+  age?: string;
+  course?: string;
+}
 
 export default function RoboticsPage({
   params: { lng },
@@ -82,17 +95,16 @@ export default function RoboticsPage({
       poster: "/posters/robotics/poster2.jpg",
       video: "/videos/video6.mp4",
     },
-    
   ];
 
   const images = [
-    {image: image1},
-    {image: image2},
-    {image: image3},
-    {image: image4},
-    {image: image5},
-    {image: image6},
-  ]
+    { image: image1 },
+    { image: image2 },
+    { image: image3 },
+    { image: image4 },
+    { image: image5 },
+    { image: image6 },
+  ];
 
   const CardContent = [
     {
@@ -132,6 +144,67 @@ export default function RoboticsPage({
       style={{ color: isOpen ? "#FFDE00" : "#FFF", fontSize: "24px" }}
     />
   );
+
+  const [formData, setFormData] = useState<FormData>({
+    name: "",
+    phone: "",
+    age: "",
+    course: "",
+  });
+  const [errors, setErrors] = useState<FormErrors>({});
+
+  const validateForm = (): FormErrors => {
+    const newErrors: FormErrors = {};
+    if (!formData.name) newErrors.name = t("modal_name") + " is required";
+    if (!formData.phone) newErrors.phone = t("form_phone") + " is required";
+    if (!formData.age) newErrors.age = t("form_age") + " is required";
+    if (!formData.course) newErrors.course = t("form_course") + " is required";
+    return newErrors;
+  };
+
+  const handleSubmit = async () => {
+    const validationErrors = validateForm();
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+    setErrors({});
+
+    try {
+      const newformData = new FormData();
+
+      newformData.append("name", formData.name);
+      newformData.append("phone", formData.phone);
+      newformData.append("age", formData.age);
+      newformData.append("course", courses[formData.course as any].drop);
+      var xhr = new XMLHttpRequest();
+
+      // Step 2: Open the request with POST method and target URL
+      xhr.open(
+        "POST",
+        "https://script.google.com/macros/s/AKfycbwB6YAFPGK4xkq54TrLRIVON7wRwFvIB7-6bnK-w5CSRlyb2mvp4A_Lz0oFQnE5qh16Kg/exec",
+        true
+      );
+
+      // Step 3: Set up a callback function to handle the response
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 4 && xhr.status === 200) {
+          // Successfully completed the request
+          console.log(xhr.responseText, "askjdaskdskajhd");
+          alert("Form successfully submitted!");
+          setFormData({
+            name: "",
+            phone: "",
+            age: "",
+            course: "",
+          });
+        }
+      };
+      xhr.send(newformData);
+    } catch (error) {
+      console.error("Error submitting form", error);
+    }
+  };
 
   return (
     <div className="realtive">
@@ -173,14 +246,29 @@ export default function RoboticsPage({
                 label={t("robot_placeholder1")}
                 type="name"
                 variant="flat"
+                // value={formData.name}
+                // onChange={(e) =>
+                //   setFormData({ ...formData, name: e.target.value })
+                // }
+                // isInvalid={!!errors.name}
+                // errorMessage={errors.name}
+                // name="name"
               />
               <Input
                 className="w-[100px] sm:w-[240px] h-[35px] md:h-[55px]"
                 label={t("robot_placeholder2")}
                 type="phone"
                 variant="flat"
+                // value={formData.phone}
+                // onChange={(e) =>
+                //   setFormData({ ...formData, phone: e.target.value })
+                // }
+                // isInvalid={!!errors.phone}
+                // errorMessage={errors.phone}
+                // name="phone"
               />
               <Button
+                // onClick={handleSubmit}
                 className={`${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[35px] md:h-[55px] text-[14px] md:text-[24px] w-[80px] md:w-[200px]`}
                 style={{
                   boxShadow:
@@ -209,7 +297,7 @@ export default function RoboticsPage({
         />
       </div>
       <section className="container mx-auto max-w-7xl flex items-center justify-evenly my-10 px-2 md:px-0 gap-5 md:gap-0">
-        <HeadCard videoSrc={videoSrc} posterSrc={posterSrc}/>
+        <HeadCard videoSrc={videoSrc} posterSrc={posterSrc} />
         <div
           className="w-[228px] h-[149px] min-w-[228px] min-h-[149px] md:w-[582px] md:h-[320px]"
           style={{
@@ -246,11 +334,13 @@ export default function RoboticsPage({
               <div className="mt-3">{t("accordion1_per")}</div>
               <br />
               <div className="mt-3">
-                <span>{t("accordion_price_title")}</span> : {t("accordion_price_text")}
+                <span>{t("accordion_price_title")}</span> :{" "}
+                {t("accordion_price_text")}
               </div>
               <br />
               <div className="mt-3">
-                {t("accordion_per_title")} : <span>{t("accordion1_per_text")}</span>
+                {t("accordion_per_title")} :{" "}
+                <span>{t("accordion1_per_text")}</span>
               </div>
             </AccordionItem>
             <AccordionItem
@@ -266,11 +356,13 @@ export default function RoboticsPage({
               <div className="mt-3">{t("accordion4_per")}</div>
               <br />
               <div className="mt-3">
-                <span>{t("accordion_price_title")}</span> : {t("accordion_price_text")}
+                <span>{t("accordion_price_title")}</span> :{" "}
+                {t("accordion_price_text")}
               </div>
               <br />
               <div className="mt-3">
-                {t("accordion_per_title")} : <span>{t("accordion4_per_text")}</span>
+                {t("accordion_per_title")} :{" "}
+                <span>{t("accordion4_per_text")}</span>
               </div>
             </AccordionItem>
             <AccordionItem
@@ -286,11 +378,13 @@ export default function RoboticsPage({
               <div className="mt-3">{t("accordion2_per")}</div>
               <br />
               <div className="mt-3">
-                <span>{t("accordion_price_title")}</span> : {t("accordion_price_text")}
+                <span>{t("accordion_price_title")}</span> :{" "}
+                {t("accordion_price_text")}
               </div>
               <br />
               <div className="mt-3">
-                {t("accordion_per_title")} : <span>{t("accordion2_per_text")}</span>
+                {t("accordion_per_title")} :{" "}
+                <span>{t("accordion2_per_text")}</span>
               </div>
             </AccordionItem>
             <AccordionItem
@@ -306,14 +400,15 @@ export default function RoboticsPage({
               <div className="mt-3">{t("accordion3_per")}</div>
               <br />
               <div className="mt-3">
-                <span>{t("accordion_price_title")}</span> : {t("accordion_price_text")}
+                <span>{t("accordion_price_title")}</span> :{" "}
+                {t("accordion_price_text")}
               </div>
               <br />
               <div className="mt-3">
-                {t("accordion_per_title")} : <span>{t("accordion3_per_text")}</span>
+                {t("accordion_per_title")} :{" "}
+                <span>{t("accordion3_per_text")}</span>
               </div>
             </AccordionItem>
-            
           </Accordion>
           {/* <Button
             className={`w-full mb-4 sm:w-1/2 ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[55px] text-[24px]`}
@@ -334,7 +429,7 @@ export default function RoboticsPage({
         </p>
         <div className="flex md:flex-wrap items-center gap-5 md:gap-7 sm:justify-center px-2 md:px-0 my-10 overflow-x-scroll">
           {images.map((item, index) => (
-            <HubCard key={index} image={item.image}/>
+            <HubCard key={index} image={item.image} />
           ))}
         </div>
       </section>
@@ -366,6 +461,11 @@ export default function RoboticsPage({
             type="email"
             variant="flat"
             size="lg"
+            value={formData.name}
+            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            isInvalid={!!errors.name}
+            errorMessage={errors.name}
+            name="name"
           />
 
           <Input
@@ -376,6 +476,13 @@ export default function RoboticsPage({
             type="phone"
             variant="flat"
             size="lg"
+            value={formData.phone}
+            onChange={(e) =>
+              setFormData({ ...formData, phone: e.target.value })
+            }
+            isInvalid={!!errors.phone}
+            errorMessage={errors.phone}
+            name="phone"
           />
           <Select
             className="w-full sm:w-[240px]" // Full width on smaller screens
@@ -384,9 +491,18 @@ export default function RoboticsPage({
             placeholder="Robotics"
             variant="flat"
             size="lg"
+            value={formData.course}
+            onChange={(e) =>
+              setFormData({ ...formData, course: e.target.value })
+            }
+            isInvalid={!!errors.course}
+            errorMessage={errors.course}
+            name="course"
           >
             {courses.map((course, idx) => (
-              <SelectItem key={idx}>{course.drop}</SelectItem>
+              <SelectItem key={idx} value={course.drop}>
+                {course.drop}
+              </SelectItem>
             ))}
           </Select>
           <Input
@@ -397,8 +513,14 @@ export default function RoboticsPage({
             type="age"
             variant="flat"
             size="lg"
+            value={formData.age}
+            onChange={(e) => setFormData({ ...formData, age: e.target.value })}
+            isInvalid={!!errors.age}
+            errorMessage={errors.age}
+            name="age"
           />
           <Button
+            onClick={handleSubmit}
             className={`w-full sm:w-[240px] ${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[50px] text-[24px]`}
             style={{
               boxShadow:
@@ -409,7 +531,7 @@ export default function RoboticsPage({
           </Button>
         </div>
         <div className="container mx-auto max-w-7xl my-5 overflow-hidden">
-          <RobotCarousel CardContent={CardContent}/>
+          <RobotCarousel CardContent={CardContent} />
         </div>
       </section>
     </div>
