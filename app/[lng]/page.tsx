@@ -103,24 +103,24 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
   ];
   const videos = [
     {
-      poster: "/",
+      poster: "/posters/main/poster1.jpg",
       video: "/videos/video1.mp4",
     },
     {
-      poster: "",
+      poster: "/posters/main/poster2.jpg",
       video: "/videos/video2.mp4",
     },
     {
-      poster: "",
-      video: "/videos/video3.mp4",
+      poster: "/posters/main/poster3.jpg",
+      video: "/posters/main/3-video.mp4",
     },
     {
       poster: "",
       video: "/videos/video4.mp4",
     },
     {
-      poster: "",
-      video: "/videos/video5.mp4",
+      poster: "/posters/main/poster5.jpg",
+      video: "/posters/main/5-video.MP4",
     },
     {
       poster: "",

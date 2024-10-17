@@ -108,15 +108,15 @@ export default function PaintingOlderPage({
       video: "/videos/older1.mp4",
     },
     {
-      poster: "",
+      poster: "/posters/olders/poster1.jpg",
       video: "/videos/older2.mp4",
     },
     {
-      poster: "",
+      poster: "/posters/olders/poster2.jpg",
       video: "/videos/older3.mp4",
     },
     {
-      poster: "",
+      poster: "/posters/olders/poster3.jpg",
       video: "/videos/older4.mp4",
     },
   ];

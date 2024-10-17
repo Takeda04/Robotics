@@ -67,11 +67,11 @@ export default function RoboticsPage({
 
   const videos = [
     {
-      poster: "/posters/mine.JPG",
+      poster: "/posters/english/poster1.jpg",
       video: "/videos/english1.mp4",
     },
     {
-      poster: "/posters/mine.JPG",
+      poster: "/posters/english/poster2.jpg",
       video: "/videos/english2.mp4",
     },
   ];

@@ -71,7 +71,7 @@ export default function PaintingChildrenPage({
       video: "/videos/children2.mp4",
     },
     {
-      poster: "",
+      poster: "/posters/children/poster1.jpg",
       video: "/videos/children3.mp4",
     },
     {
@@ -79,12 +79,8 @@ export default function PaintingChildrenPage({
       video: "/videos/children4.mp4",
     },
     {
-      poster: "",
+      poster: "/posters/children/poster2.jpg",
       video: "/videos/children5.mp4",
-    },
-    {
-      poster: "",
-      video: "/videos/children6.mp4",
     },
   ];
 

@@ -74,8 +74,9 @@ export const Footer = ({ lng }: { lng: string }) => {
           {t("footer_btn2")}
         </Button>
       </div>
+      <div className="my-[30px]"></div>
 
-      <div className="container mx-auto max-w-7xl flex flex-wrap items-center justify-evenly my-[80px] gap-[20px] sm:gap-[56px]">
+      {/* <div className="container mx-auto max-w-7xl flex flex-wrap items-center justify-evenly my-[80px] gap-[20px] sm:gap-[56px]">
         <span className="flex items-center justify-start gap-x-[50px] w-[350px]">
           <PhoneIcon />
           <p
@@ -100,7 +101,7 @@ export const Footer = ({ lng }: { lng: string }) => {
             {t("footer_plan")}
           </p>
         </span>
-      </div>
+      </div> */}
       <iframe
         height="450"
         loading="lazy"

@@ -110,11 +110,11 @@ export default function ChessPage({
   ];
   const videos = [
     {
-      poster: "/",
+      poster: "/posters/chess/poster1.jpg",
       video: "/videos/chess1.mp4",
     },
     {
-      poster: "",
+      poster: "/posters/chess/poster2.jpg",
       video: "/videos/chess2.mp4",
     },
   ];
