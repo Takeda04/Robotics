@@ -215,6 +215,41 @@ export default function PaintingOlderPage({
     }
   };
 
+  const handleSubmit2 = async () => {
+
+    try {
+      const newformData = new FormData();
+
+      newformData.append("name", formData.name);
+      newformData.append("phone", formData.phone);
+      var xhr = new XMLHttpRequest();
+
+      // Step 2: Open the request with POST method and target URL
+      xhr.open(
+        "POST",
+        "https://script.google.com/macros/s/AKfycbwB6YAFPGK4xkq54TrLRIVON7wRwFvIB7-6bnK-w5CSRlyb2mvp4A_Lz0oFQnE5qh16Kg/exec",
+        true
+      );
+
+      // Step 3: Set up a callback function to handle the response
+      xhr.onreadystatechange = function () {
+        if (xhr.readyState === 2 && xhr.status === 200) {
+          // Successfully completed the request
+          console.log(xhr.responseText);
+          alert("Form successfully submitted!");
+          const newLocal = {
+            name: "",
+            phone: ""
+          };
+          setFormData(newLocal as any);
+        }
+      };
+      xhr.send(newformData);
+    } catch (error) {
+      console.error("Error submitting form", error);
+    }
+  };
+
 
   return (
     <div className="realtive">
@@ -256,14 +291,29 @@ export default function PaintingOlderPage({
                 label={t("form_name")}
                 type="name"
                 variant="flat"
+                value={formData.name}
+                onChange={(e) =>
+                  setFormData({ ...formData, name: e.target.value })
+                }
+                isInvalid={!!errors.name}
+                errorMessage={errors.name}
+                name="name"
               />
               <Input
                 className="w-[100px] sm:w-[240px] h-[35px] md:h-[55px]"
                 label={t("form_phone")}
                 type="phone"
                 variant="flat"
+                value={formData.phone}
+                onChange={(e) =>
+                  setFormData({ ...formData, phone: e.target.value })
+                }
+                isInvalid={!!errors.phone}
+                errorMessage={errors.phone}
+                name="phone"
               />
               <Button
+              onClick={handleSubmit2}
                 className={`${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[35px] md:h-[55px] text-[14px] md:text-[24px] w-[80px] md:w-[200px]`}
                 style={{
                   boxShadow:
