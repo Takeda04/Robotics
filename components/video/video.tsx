@@ -29,7 +29,7 @@ export const VideoCard: React.FC<VideoCardProps> = ({
 
   return (
     <div
-      className="relative w-[220px] h-[310px] flex items-center justify-center bg-gray-500 m-2 cursor-pointer"
+      className="relative  w-[280px] h-[350px] md:w-[220px] md:h-[310px] flex items-center justify-center bg-gray-500 m-2 cursor-pointer"
       style={{
         boxShadow: "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
         borderRadius: "12px",

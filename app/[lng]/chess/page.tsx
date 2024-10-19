@@ -228,7 +228,7 @@ export default function ChessPage({
         <div className="absolute md:relative mt-0 md:mt-36 -top-[93px] md:-top-20 z-50 p-1 container mx-auto max-w-7xl flex items-center justify-between ">
           <div className="w-full">
             <p
-              className={`absolute -top-10 md:top-0 ${fontTektur.variable}  font-tektur text-[#FFDE00] text-[26px] md:text-[84px] font-bold w-[300px] md:w-[1100px]`}
+              className={`absolute -top-10 md:top-0 ${fontTektur.variable}  font-tektur text-[#FFDE00] text-[24px] md:text-[84px] font-bold w-[300px] md:w-[1100px]`}
             >
               {t("chess_title")}
             </p>
@@ -316,11 +316,7 @@ export default function ChessPage({
       <section className="container mx-auto max-w-7xl flex items-center justify-evenly my-10 px-2 md:px-0 gap-5 md:gap-0">
         <HeadCard videoSrc={videoSrc} posterSrc={posterSrc} />
         <div
-          className="w-[228px] h-[149px] min-w-[228px] min-h-[149px] md:w-[582px] md:h-[320px]"
-          style={{
-            boxSizing: "border-box",
-          }}
-        >
+          className="w-[180px] h-[230px] min-w-[168px] min-h-[149px] md:w-[582px] md:h-[320px] overflow-hidden text-ellipsis break-words">
           <p
             className={`${fontTektur.variable} font-tektur font-normal text-[#FFFFFF] text-[11px] md:text-[23px]`}
           >

@@ -80,7 +80,7 @@ const ImageCarousel = ({images}:{images:any}) => {
     dots: true,
     infinite: false,
     speed: 1500,
-    slidesToShow: 3,
+    slidesToShow: 4,
     slidesToScroll: 1,
     autoplay: true,
     responsive: [
@@ -114,11 +114,11 @@ const ImageCarousel = ({images}:{images:any}) => {
         {images.map((image: string | StaticImport, index: React.Key | null | undefined) => (
           <div
             key={index}
-            className="min-w-[200px] w-[200px] h-[150px] md:w-[1200px] md:h-[602px] px-5"
+            className="md:w-[1200px] px-5"
           >
             <Image
               alt="First image"
-              className="min-w-[200px] w-[200px] h-[150px] md:w-[1400px] md:h-[602px] object-contain rounded-lg shadow-lg"
+              className="min-w-[300px] w-[300px] h-[350px] md:h-[402px] rounded-[20px] shadow-lg"
               src={image}
             />
           </div>

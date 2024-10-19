@@ -28,7 +28,7 @@ const VideoPlayer = ({ videoSrc, posterSrc }: { videoSrc: string; posterSrc: str
   };
 
   return (
-    <div  className="relative w-[150px] h-[130px] min-w-[150px] min-h-[130px] md:w-[350px] md:h-[500px] rounded-3xl overflow-hidden">
+    <div  className="relative w-[150px] h-[220px] min-w-[150px] min-h-[130px] md:w-[350px] md:h-[500px] rounded-3xl overflow-hidden">
       <video
         ref={videoRef} // Attach the ref
         src={videoSrc}

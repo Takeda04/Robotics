@@ -120,7 +120,7 @@ const MyModal: React.FC<MyModalProps> = ({
             <div className="flex flex-col items-center">
               <ModalHeader className="text-2xl">{t("modal_title")}</ModalHeader>
               <div className="sm:flex items-center justify-around">
-                <div className="w-[400px]">
+                <div className="w-[330px]">
                   <ModalBody>
                     <Input
                       label={t("modal_name")}

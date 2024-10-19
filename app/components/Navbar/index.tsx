@@ -85,7 +85,7 @@ export const Navbar = ({ lng }: { lng: string }) => {
         <Link href={`/${lang}/`}>
           <Image
             alt="website logo"
-            className="sm:w-[111px] md:min-w-[100px]"
+            className="sm:w-[111px] min-w-[70px] md:min-w-[100px]"
             height={70}
             src={logo}
             width={70}

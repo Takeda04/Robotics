@@ -15,7 +15,7 @@ const FootCard = ({ text, link, btn, image }: any) => {
 
   return (
     <div
-      className="flex flex-col justify-between  bg-[#FFDE00]  w-[200px] h-[250px] md:w-[400px] md:h-[508px] rounded-3xl p-[20px] md:p-[40px]"
+      className="flex flex-col justify-between  bg-[#FFDE00]  w-[170px] h-[200px] min-w-[160px] md:w-[400px] md:h-[508px] rounded-3xl p-[20px] md:p-[40px]"
       style={
         {
           // boxShadow: "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
@@ -40,7 +40,7 @@ const FootCard = ({ text, link, btn, image }: any) => {
       </span>
       <div className="flex items-end justify-end mb-0">
         <Button
-          className="w-full bg-black rounded-full text-white text-[16px] md:text-2xl"
+          className="w-full bg-black rounded-full text-white text-[12px] md:text-2xl"
           endContent={<GrFormNextLink className="" />}
           onClick={() => navigator(link)}
         >

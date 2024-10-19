@@ -328,7 +328,7 @@ export default function PaintingOlderPage({
         </div>
         <Image
           alt="home robot"
-          className="absolute z-40 w-[303px] h-[253.5px] -mt-[56px] md:mt-0 -right-5 md:-right-[100px] md:w-[500px] md:h-[605px] rounded-br-3xl md:rounded-none "
+          className="absolute z-40 w-[253px] h-[253.5px] -mt-[146px] md:mt-0 -right-5 md:-right-[100px] md:w-[500px] md:h-[605px] rounded-br-3xl md:rounded-none "
           height={500}
           src={older}
           width={500}
@@ -345,7 +345,7 @@ export default function PaintingOlderPage({
       <section className="container mx-auto max-w-7xl flex items-center justify-evenly my-10 px-2 md:px-0 gap-5 md:gap-0">
         <HeadCard videoSrc={videoSrc} posterSrc={posterSrc} />
         <div
-          className="w-[228px] h-[149px] min-w-[228px] min-h-[149px] md:w-[582px] md:h-[320px]"
+          className="w-[180px] h-[230px] min-w-[168px] min-h-[149px] md:w-[582px] md:h-[320px] overflow-hidden text-ellipsis break-words"
           style={{
             boxSizing: "border-box",
           }}

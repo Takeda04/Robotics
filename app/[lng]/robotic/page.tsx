@@ -206,7 +206,6 @@ export default function RoboticsPage({
     }
   };
   const handleSubmit2 = async () => {
-
     try {
       const newformData = new FormData();
 
@@ -229,7 +228,7 @@ export default function RoboticsPage({
           alert("Form successfully submitted!");
           const newLocal = {
             name: "",
-            phone: ""
+            phone: "",
           };
           setFormData(newLocal as any);
         }
@@ -264,7 +263,7 @@ export default function RoboticsPage({
                 <strong className="line-through">{t("robot_cost")}</strong>
               </p>
               <div
-                className="absolute text-[11px] md:text-[24px] -top-[15] left-[170px] md:top-[50px] md:left-[300px] text-black font-bold flex items-center justify-center w-[80px] h-[20px] rounded-xl md:w-[167px] md:h-[40px] bg-[#FFE001]"
+                className="absolute text-[11px] md:text-[24px] -top-[20] left-[170px] md:top-[50px] md:left-[300px] text-black font-bold flex items-center justify-center w-[80px] h-[20px] rounded-xl md:w-[167px] md:h-[40px] bg-[#FFE001]"
                 style={{
                   boxShadow:
                     "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
@@ -332,14 +331,9 @@ export default function RoboticsPage({
       </div>
       <section className="container mx-auto max-w-7xl flex items-center justify-evenly my-10 px-2 md:px-0 gap-5 md:gap-0">
         <HeadCard videoSrc={videoSrc} posterSrc={posterSrc} />
-        <div
-          className="w-[228px] h-[149px] min-w-[228px] min-h-[149px] md:w-[582px] md:h-[320px]"
-          style={{
-            boxSizing: "border-box",
-          }}
-        >
+        <div className="w-[180px] h-[220px] min-w-[168px] min-h-[149px] md:w-[582px] md:h-[320px] overflow-hidden text-ellipsis break-words">
           <p
-            className={`${fontTektur.variable} font-tektur font-normal text-[#FFFFFF] text-[11px] md:text-[23px]`}
+            className={`${fontTektur.variable} font-tektur font-normal text-[#FFFFFF] text-[12px] md:text-[23px]`}
           >
             {t("robot_main_text")}
           </p>
