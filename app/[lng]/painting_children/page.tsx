@@ -5,8 +5,8 @@ import { Input } from "@nextui-org/input";
 import { Accordion, AccordionItem, Button, Select, SelectItem } from "@nextui-org/react";
 
 import { fontTektur } from "@/config/fonts";
-import borderimg from "@/assets/icons/cardbottom.png";
-import child from "@/assets/images/child.png";
+
+
 import CustomCarousel from "@/components/carousel";
 import HeadCard from "@/components/robotics/head-card";
 import ChildCard from "@/components/children/child-card";
@@ -14,20 +14,7 @@ import ImageCarousel from "@/components/carousel/CarouselImage";
 import RobotCarousel from "@/components/carousel/CarouselRobot";
 import { useTranslation } from "../i18n/client";
 
-import home from "@/assets/images/home.png";
-import home2 from "@/assets/images/home2.png";
-import home3 from "@/assets/images/home3.png";
-import home4 from "@/assets/images/home4.png";
-import home5 from "@/assets/images/home5.png";
 import { getCookie } from "cookies-next";
-
-import children1 from "@/assets/children/IMG_0864.jpg";
-import children2 from "@/assets/children/IMG_1542.jpg";
-import children3 from "@/assets/children/IMG_1548.jpg";
-import children4 from "@/assets/children/IMG_2373.jpg";
-import children5 from "@/assets/children/IMG_2698.jpg";
-import children6 from "@/assets/children/IMG_2699.jpg";
-import children7 from "@/assets/children/IMG_2710.jpg";
 import { FaCircleArrowLeft } from "react-icons/fa6";
 import { useState } from "react";
 
@@ -94,31 +81,25 @@ export default function PaintingChildrenPage({
   ];
   const CardContent = [
     {
-      image: home,
+      image: "/page/home.png",
       text: t("home1"),
       link: `/${lang}/robotic`,
       btn: t("home_btn"),
     },
     {
-      image: home2,
-      text: t("home2"),
-      link: `/${lang}/painting_children`,
-      btn: t("home_btn"),
-    },
-    {
-      image: home3,
+      image: "/page/home3.png",
       text: t("home3"),
       link: `/${lang}/painting_olders`,
       btn: t("home_btn"),
     },
     {
-      image: home4,
+      image: "/page/home4.png",
       text: t("home4"),
       link: `/${lang}/english`,
       btn: t("home_btn"),
     },
     {
-      image: home5,
+      image: "/page/home5.png",
       text: t("home5"),
       link: `/${lang}/chess`,
       btn: t("home_btn"),
@@ -126,13 +107,13 @@ export default function PaintingChildrenPage({
   ];
 
   const images = [
-    children1,
-    children2,
-    children3,
-    children4,
-    children5,
-    children6,
-    children7,
+    "/children/IMG_0864.jpg",
+    "/children/IMG_1542.jpg",
+    "/children/IMG_1548.jpg",
+    "/children/IMG_2373.jpg",
+    "/children/IMG_2698.jpg",
+    "/children/IMG_2699.jpg",
+    "/children/IMG_2710.jpg",
   ];
 
   const videoSrc = "/videos/children1.mp4";
@@ -267,7 +248,7 @@ export default function PaintingChildrenPage({
                 <strong className="line-through"> {t("robot_cost")}</strong>
               </p>
               <div
-                className="absolute text-[11px] md:text-[24px]  -top-[40] left-[170px] md:top-[50px] md:left-[300px] text-black font-bold flex items-center justify-center w-[80px] h-[20px] rounded-xl md:w-[167px] md:h-[40px] bg-[#FFE001]"
+                className="absolute text-[11px] md:text-[24px]  -top-[12px] left-[170px] md:top-[50px] md:left-[300px] text-black font-bold flex items-center justify-center w-[80px] h-[20px] rounded-xl md:w-[167px] md:h-[40px] bg-[#FFE001]"
                 style={{
                   boxShadow:
                     "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
@@ -320,7 +301,7 @@ export default function PaintingChildrenPage({
             alt="home robot"
             className="w-[303px] h-[213.5px] md:w-[800px] md:h-[605px] rounded-br-3xl md:rounded-none"
             height={500}
-            src={child}
+            src="/children/child.png"
             width={500}
           />
         </div>
@@ -328,15 +309,15 @@ export default function PaintingChildrenPage({
           alt="border image"
           className="absolute bottom-0 right-0"
           height={400}
-          src={borderimg}
+          src="/robotics/cardbottom.png"
           style={{ borderBottomRightRadius: "30px" }}
           width={400}
         />
       </div>
-      <section className="container mx-auto max-w-7xl flex items-center justify-evenly my-10 px-2 md:px-0 gap-5 md:gap-0">
+      <section className="container mx-auto max-w-7xl flex items-start md:items-center justify-evenly my-10 px-2 md:px-0 gap-5 md:gap-0">
         <HeadCard videoSrc={videoSrc} posterSrc={posterSrc} />
         <div
-          className="w-[180px] h-[220px] min-w-[168px] min-h-[149px] md:w-[582px] md:h-[320px] overflow-hidden text-ellipsis break-words"
+          className="w-[180px] h-[250px] min-w-[168px] min-h-[149px] md:w-[582px] md:h-[320px] overflow-hidden text-ellipsis break-words"
           style={{
             boxSizing: "border-box",
           }}

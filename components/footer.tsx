@@ -33,8 +33,14 @@ export const Footer = ({ lng }: { lng: string }) => {
   ];
   const socials = [
     { soc: t("footer_soc1"), link: `/${lang}/` },
-    { soc: t("footer_soc2"), link: `https://www.instagram.com/just.robotics/?hl=ru` },
-    { soc: t("footer_soc3"), link: `https://www.youtube.com/@JustRobotics-vt1hu` },
+    {
+      soc: t("footer_soc2"),
+      link: `https://www.instagram.com/just.robotics/?hl=ru`,
+    },
+    {
+      soc: t("footer_soc3"),
+      link: `https://www.youtube.com/@JustRobotics-vt1hu`,
+    },
     { soc: t("footer_soc4"), link: `/${lang}/` },
   ];
 
@@ -121,13 +127,25 @@ export const Footer = ({ lng }: { lng: string }) => {
         <div className="container mx-auto max-w-7xl flex flex-col sm:flex-row py-6 gap-y-8 px-4 lg:px-0">
           {/* Logo and Slogan Section */}
           <div className="flex flex-col items-start sm:flex-col">
-            <Image
-              alt="Company Logo"
-              className="mb-4"
-              height={70}
-              src={dark_logo}
-              width={70}
-            />
+            <div
+              style={{
+                backgroundColor: "black",
+                borderRadius: "50%",
+                width: "100px",
+                height: "100px",
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                marginBottom: "20px"
+              }}
+            >
+              <Image
+                alt="Company Logo"
+                height={90} // Slightly reduce the size of the image so it fits within the circle
+                src="/icon/logotip.svg"
+                width={90}
+              />
+            </div>
             <p
               className={`${fontTektur.variable} font-tektur text-black font-bold text-[14px] max-w-[248px]`}
             >
@@ -190,7 +208,7 @@ export const Footer = ({ lng }: { lng: string }) => {
               {socials.map((contact, index) => (
                 <li key={index}>
                   <Link
-                  target="_blank"
+                    target="_blank"
                     className={`${fontTektur.variable} font-tektur text-black text-[20px]`}
                     href={contact.link}
                   >

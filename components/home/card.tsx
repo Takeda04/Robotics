@@ -1,20 +1,9 @@
 import { Button } from "@nextui-org/button";
-import {
-  Input,
-  Modal,
-  ModalBody,
-  ModalContent,
-  ModalFooter,
-  ModalHeader,
-  Select,
-  SelectItem,
-  useDisclosure,
-} from "@nextui-org/react";
-import Image from "next/image";
+
+
 import React, { useState } from "react";
 
 import { fontTektur } from "@/config/fonts";
-import robot from "@/assets/images/modal_robot.png";
 import { useTranslation } from "@/app/[lng]/i18n/client";
 import MyModal from "../modal/modal";
 
@@ -67,7 +56,6 @@ const Card = ({ lng }: { lng: string }) => {
           isOpen={isModalOpen}
           onOpenChange={handleModalChange}
           t={t}
-          robot={robot}
           courses={courses}
         />
     </>

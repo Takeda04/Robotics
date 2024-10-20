@@ -11,8 +11,6 @@ import {
 } from "@nextui-org/react";
 
 import { fontTektur } from "@/config/fonts";
-import borderimg from "@/assets/icons/cardbottom.png";
-import robot from "@/assets/images/robo-robot.png";
 import CustomCarousel from "@/components/carousel";
 import HubCard from "@/components/robotics/hub";
 import HeadCard from "@/components/robotics/head-card";
@@ -21,18 +19,9 @@ import RobotCarousel from "@/components/carousel/CarouselRobot";
 
 //images
 
-import image1 from "@/assets/robotic/IMG_3422.jpg";
-import image2 from "@/assets/robotic/IMG_3405.jpg";
-import image3 from "@/assets/robotic/IMG_3420.jpg";
-import image4 from "@/assets/robotic/IMG_3427.jpg";
-import image5 from "@/assets/robotic/IMG_4904.jpg";
-import image6 from "@/assets/robotic/IMG_4895.jpg";
 
-import home from "@/assets/images/home.png";
-import home2 from "@/assets/images/home2.png";
-import home3 from "@/assets/images/home3.png";
-import home4 from "@/assets/images/home4.png";
-import home5 from "@/assets/images/home5.png";
+
+
 import { getCookie } from "cookies-next";
 import { FaCircleArrowLeft } from "react-icons/fa6";
 import { useState } from "react";
@@ -98,41 +87,35 @@ export default function RoboticsPage({
   ];
 
   const images = [
-    { image: image1 },
-    { image: image2 },
-    { image: image3 },
-    { image: image4 },
-    { image: image5 },
-    { image: image6 },
+    { image: "/robotics/IMG_3398.jpg" },
+    { image: "/robotics/IMG_3441.jpg" },
+    { image: "/robotics/IMG_3448.jpg" },
+    { image: "/robotics/IMG_3406.jpg" },
+    { image: "/robotics/IMG_3427.jpg" },
+    { image: "/robotics/IMG_4890.jpg" },
   ];
 
   const CardContent = [
     {
-      image: home,
-      text: t("home1"),
-      link: `/${lang}/robotic`,
-      btn: t("home_btn"),
-    },
-    {
-      image: home2,
+      image: "/page/home2.png",
       text: t("home2"),
       link: `/${lang}/painting_children`,
       btn: t("home_btn"),
     },
     {
-      image: home3,
+      image: "/page/home3.png",
       text: t("home3"),
       link: `/${lang}/painting_olders`,
       btn: t("home_btn"),
     },
     {
-      image: home4,
+      image: "/page/home4.png",
       text: t("home4"),
       link: `/${lang}/english`,
       btn: t("home_btn"),
     },
     {
-      image: home5,
+      image: "/page/home5.png",
       text: t("home5"),
       link: `/${lang}/chess`,
       btn: t("home_btn"),
@@ -263,7 +246,7 @@ export default function RoboticsPage({
                 <strong className="line-through">{t("robot_cost")}</strong>
               </p>
               <div
-                className="absolute text-[11px] md:text-[24px] -top-[40] left-[170px] md:top-[50px] md:left-[300px] text-black font-bold flex items-center justify-center w-[80px] h-[20px] rounded-xl md:w-[167px] md:h-[40px] bg-[#FFE001]"
+                className="absolute text-[11px] md:text-[24px] -top-[16px] left-[170px] md:top-[50px] md:left-[300px] text-black font-bold flex items-center justify-center w-[80px] h-[20px] rounded-xl md:w-[167px] md:h-[40px] bg-[#FFE001]"
                 style={{
                   boxShadow:
                     "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
@@ -316,7 +299,7 @@ export default function RoboticsPage({
             alt="home robot"
             className="w-[203px] h-[213.5px] md:w-[650px] md:h-[605px]"
             height={500}
-            src={robot}
+            src='/robotics/robo-robot.png'
             width={500}
           />
         </div>
@@ -324,14 +307,14 @@ export default function RoboticsPage({
           alt="border image"
           className="absolute bottom-0 right-0"
           height={400}
-          src={borderimg}
+          src='/robotics/cardbottom.png'
           style={{ borderBottomRightRadius: "30px" }}
           width={400}
         />
       </div>
-      <section className="container mx-auto max-w-7xl flex items-center justify-evenly my-10 px-2 md:px-0 gap-5 md:gap-0">
+      <section className="container mx-auto max-w-7xl flex items-start md:items-center justify-evenly my-10 px-2 md:px-0 gap-5 md:gap-0">
         <HeadCard videoSrc={videoSrc} posterSrc={posterSrc} />
-        <div className="w-[180px] h-[220px] min-w-[168px] min-h-[149px] md:w-[582px] md:h-[320px] overflow-hidden text-ellipsis break-words">
+        <div className="w-[180px] h-[350px] min-w-[140px] min-h-[189px] md:w-[582px] md:h-[320px] overflow-hidden text-ellipsis break-words">
           <p
             className={`${fontTektur.variable} font-tektur font-normal text-[#FFFFFF] text-[12px] md:text-[23px]`}
           >

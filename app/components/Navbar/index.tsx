@@ -26,7 +26,6 @@ import { useRouter } from "next/navigation";
 
 import { fontTektur } from "@/config/fonts";
 import { ChevronDown } from "@/assets/icons/icons";
-import logo from "@/assets/icons/logo.png";
 import ToggleIcon from "@/assets/icons/toggleModal.png";
 import { useTranslation } from "@/app/[lng]/i18n/client";
 import { getCookie } from "cookies-next";
@@ -87,7 +86,7 @@ export const Navbar = ({ lng }: { lng: string }) => {
             alt="website logo"
             className="sm:w-[111px] min-w-[70px] md:min-w-[100px]"
             height={70}
-            src={logo}
+            src="/icon/logotip.svg"
             width={70}
           />
         </Link>

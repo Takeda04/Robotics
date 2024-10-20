@@ -8,35 +8,19 @@ import {
   Button,
   Select,
   SelectItem,
-  useDisclosure,
 } from "@nextui-org/react";
 
 import { fontTektur } from "@/config/fonts";
-import borderimg from "@/assets/icons/cardbottom.png";
-import older from "@/assets/images/olders.png";
+
 import HeadCard from "@/components/robotics/head-card";
-import call from "@/assets/images/call.png";
+
 import ChildCard from "@/components/children/child-card";
 import CarouselOlders from "@/components/carousel/Carouselolders";
 import { useTranslation } from "../i18n/client";
 import RobotCarousel from "@/components/carousel/CarouselRobot";
 
-import olders1 from "@/assets/olders/IMG_1971.jpg";
-import olders2 from "@/assets/olders/IMG_1977.jpg";
-import olders3 from "@/assets/olders/IMG_2947.jpg";
-import olders4 from "@/assets/olders/IMG_2948.jpg";
-import olders5 from "@/assets/olders/IMG_2949.jpg";
-import olders6 from "@/assets/olders/IMG_2959.jpg";
-import olders7 from "@/assets/olders/IMG_2966.jpg";
 import CustomCarousel from "@/components/carousel";
 
-import robot from "@/assets/images/modal_robot.png";
-
-import home from "@/assets/images/home.png";
-import home2 from "@/assets/images/home2.png";
-import home3 from "@/assets/images/home3.png";
-import home4 from "@/assets/images/home4.png";
-import home5 from "@/assets/images/home5.png";
 import { getCookie } from "cookies-next";
 import MyModal from "@/components/modal/modal";
 import { useState } from "react";
@@ -93,13 +77,13 @@ export default function PaintingOlderPage({
   ];
 
   const images = [
-    olders1,
-    olders2,
-    olders3,
-    olders4,
-    olders5,
-    olders6,
-    olders7,
+    "/olders/IMG_1971.jpg",
+    "/olders/IMG_1977.jpg",
+    "/olders/IMG_2947.jpg",
+    "/olders/IMG_2948.jpg",
+    "/olders/IMG_2949.jpg",
+    "/olders/IMG_2959.jpg",
+    "/olders/IMG_2966.jpg",
   ];
 
   const videos = [
@@ -122,37 +106,30 @@ export default function PaintingOlderPage({
   ];
   const CardContent = [
     {
-      image: home,
+      image: "/page/home.png",
       text: t("home1"),
       link: `/${lang}/robotic`,
       btn: t("home_btn"),
     },
     {
-      image: home2,
+      image: "/page/home2.png",
       text: t("home2"),
       link: `/${lang}/painting_children`,
       btn: t("home_btn"),
     },
     {
-      image: home3,
-      text: t("home3"),
-      link: `/${lang}/painting_olders`,
-      btn: t("home_btn"),
-    },
-    {
-      image: home4,
+      image: "/page/home4.png",
       text: t("home4"),
       link: `/${lang}/english`,
       btn: t("home_btn"),
     },
     {
-      image: home5,
+      image: "/page/home5.png",
       text: t("home5"),
       link: `/${lang}/chess`,
       btn: t("home_btn"),
     },
   ];
-
 
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -185,7 +162,7 @@ export default function PaintingOlderPage({
       newformData.append("name", formData.name);
       newformData.append("phone", formData.phone);
       newformData.append("age", formData.age);
-      newformData.append("course", courses[(formData.course as any)].drop)
+      newformData.append("course", courses[formData.course as any].drop);
       var xhr = new XMLHttpRequest();
 
       // Step 2: Open the request with POST method and target URL
@@ -216,7 +193,6 @@ export default function PaintingOlderPage({
   };
 
   const handleSubmit2 = async () => {
-
     try {
       const newformData = new FormData();
 
@@ -239,7 +215,7 @@ export default function PaintingOlderPage({
           alert("Form successfully submitted!");
           const newLocal = {
             name: "",
-            phone: ""
+            phone: "",
           };
           setFormData(newLocal as any);
         }
@@ -250,9 +226,8 @@ export default function PaintingOlderPage({
     }
   };
 
-
   return (
-    <div className="realtive">
+    <div className="realtive overflow-hidden">
       <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 flex md:overflow-hidden">
         <div className="absolute md:relative mt-0 md:mt-36 -top-[93px] md:-top-20 z-50 p-1 container mx-auto max-w-7xl flex items-center justify-between">
           <div className="w-full">
@@ -275,7 +250,7 @@ export default function PaintingOlderPage({
                 <strong className="line-through">{t("robot_cost")}</strong>
               </p>
               <div
-                className="absolute text-[11px] md:text-[24px]  -top-[40] left-[170px] md:top-[50px] md:left-[300px] text-black font-bold flex items-center justify-center w-[80px] h-[20px] rounded-xl md:w-[167px] md:h-[40px] bg-[#FFE001]"
+                className="absolute text-[11px] md:text-[24px]  -top-[12px] left-[170px] md:top-[50px] md:left-[300px] text-black font-bold flex items-center justify-center w-[80px] h-[20px] rounded-xl md:w-[167px] md:h-[40px] bg-[#FFE001]"
                 style={{
                   boxShadow:
                     "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
@@ -313,7 +288,7 @@ export default function PaintingOlderPage({
                 name="phone"
               />
               <Button
-              onClick={handleSubmit2}
+                onClick={handleSubmit2}
                 className={`${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[35px] md:h-[55px] text-[14px] md:text-[24px] w-[80px] md:w-[200px]`}
                 style={{
                   boxShadow:
@@ -330,14 +305,14 @@ export default function PaintingOlderPage({
           alt="home robot"
           className="absolute z-40 w-[253px] h-[253.5px] -mt-[146px] md:mt-0 -right-5 md:-right-[100px] md:w-[500px] md:h-[605px] rounded-br-3xl md:rounded-none "
           height={500}
-          src={older}
+          src="/olders/olders.png"
           width={500}
         />
         <Image
           alt="border image"
           className="absolute bottom-0 right-0"
           height={400}
-          src={borderimg}
+          src="/robotics/cardbottom.png"
           style={{ borderBottomRightRadius: "30px" }}
           width={400}
         />
@@ -408,7 +383,7 @@ export default function PaintingOlderPage({
           alt="call image"
           className="w-full"
           height={500}
-          src={call}
+          src="/olders/call.png"
           width={500}
         />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center space-y-0 md:space-y-10">
@@ -429,9 +404,8 @@ export default function PaintingOlderPage({
           isOpen={isModalOpen}
           onOpenChange={handleModalChange}
           t={t}
-          robot={robot}
           courses={courses}
-        />
+          />
       </section>
 
       <section className="container mx-auto max-w-7xl">

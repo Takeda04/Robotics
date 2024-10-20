@@ -16,7 +16,6 @@ interface MyModalProps {
   isOpen: boolean;
   onOpenChange: (isOpen: boolean) => void;
   t: (key: string) => string; // Assuming you are using i18n for translation
-  robot: any;
   courses: { drop: string }[];
 }
 
@@ -38,7 +37,6 @@ const MyModal: React.FC<MyModalProps> = ({
   isOpen,
   onOpenChange,
   t,
-  robot,
   courses,
 }) => {
   const [formData, setFormData] = useState<FormData>({
@@ -193,7 +191,7 @@ const MyModal: React.FC<MyModalProps> = ({
                     alt="modal robot"
                     className="hidden md:flex w-[200px] h-[200px]"
                     height={130}
-                    src={robot}
+                    src="/olders/modal_robot.png"
                     width={200}
                   />
                   <ModalFooter className="m-0  md:mt-14 ml-0 md:ml-8">

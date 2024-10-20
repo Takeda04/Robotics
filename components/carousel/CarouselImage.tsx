@@ -120,6 +120,9 @@ const ImageCarousel = ({images}:{images:any}) => {
               alt="First image"
               className="min-w-[300px] w-[300px] h-[350px] md:h-[402px] rounded-[20px] shadow-lg"
               src={image}
+              width={300}
+              height={300}
+              loading="lazy"
             />
           </div>
         ))}

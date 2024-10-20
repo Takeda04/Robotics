@@ -11,27 +11,16 @@ import {
 } from "@nextui-org/react";
 
 import { fontTektur } from "@/config/fonts";
-import borderimg from "@/assets/icons/cardbottom.png";
-import english from "@/assets/images/english.png";
+
 import CustomCarousel from "@/components/carousel";
 import HeadCard from "@/components/robotics/head-card";
-import firstimage from "@/assets/english/IMG_4298.jpg";
-import secondimage from "@/assets/english/IMG_4304.jpg";
-import thirdimage from "@/assets/english/IMG_4299.jpg";
-import fourthimage from "@/assets/english/IMG_4309.jpg";
 
 import { useTranslation } from "../i18n/client";
 import RobotCarousel from "@/components/carousel/CarouselRobot";
 
-import home from "@/assets/images/home.png";
-import home2 from "@/assets/images/home2.png";
-import home3 from "@/assets/images/home3.png";
-import home4 from "@/assets/images/home4.png";
-import home5 from "@/assets/images/home5.png";
 import { getCookie } from "cookies-next";
 import { FaCircleArrowLeft } from "react-icons/fa6";
 import { useState } from "react";
-
 
 interface FormData {
   name: string;
@@ -78,31 +67,25 @@ export default function RoboticsPage({
 
   const CardContent = [
     {
-      image: home,
+      image: "/page/home.png",
       text: t("home1"),
       link: `/${lang}/robotic`,
       btn: t("home_btn"),
     },
     {
-      image: home2,
+      image: "/page/home2.png",
       text: t("home2"),
       link: `/${lang}/painting_children`,
       btn: t("home_btn"),
     },
     {
-      image: home3,
+      image: "/page/home3.png",
       text: t("home3"),
       link: `/${lang}/painting_olders`,
       btn: t("home_btn"),
     },
     {
-      image: home4,
-      text: t("home4"),
-      link: `/${lang}/english`,
-      btn: t("home_btn"),
-    },
-    {
-      image: home5,
+      image: "/page/home5.png",
       text: t("home5"),
       link: `/${lang}/chess`,
       btn: t("home_btn"),
@@ -114,9 +97,6 @@ export default function RoboticsPage({
       style={{ color: isOpen ? "#FFDE00" : "#FFF", fontSize: "24px" }}
     />
   );
-
-
-
 
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -149,7 +129,7 @@ export default function RoboticsPage({
       newformData.append("name", formData.name);
       newformData.append("phone", formData.phone);
       newformData.append("age", formData.age);
-      newformData.append("course", courses[(formData.course as any)].drop)
+      newformData.append("course", courses[formData.course as any].drop);
       var xhr = new XMLHttpRequest();
 
       // Step 2: Open the request with POST method and target URL
@@ -180,7 +160,6 @@ export default function RoboticsPage({
   };
 
   const handleSubmit2 = async () => {
-
     try {
       const newformData = new FormData();
 
@@ -203,7 +182,7 @@ export default function RoboticsPage({
           alert("Form successfully submitted!");
           const newLocal = {
             name: "",
-            phone: ""
+            phone: "",
           };
           setFormData(newLocal as any);
         }
@@ -214,9 +193,8 @@ export default function RoboticsPage({
     }
   };
 
-
-
   return (
+    
     <div className="realtive">
       <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 flex">
         <div className="absolute md:relative mt-0 md:mt-36 -top-[93px] md:-top-20 z-50 p-1 container mx-auto max-w-7xl flex items-center justify-between ">
@@ -243,7 +221,7 @@ export default function RoboticsPage({
                 <strong className="line-through">{t("english_cost")}</strong>
               </p>
               <div
-                className="absolute text-[11px] md:text-[24px]  -top-[40] left-[170px] md:top-[50px] md:left-[300px] text-black font-bold flex items-center justify-center w-[80px] h-[20px] rounded-xl md:w-[167px] md:h-[40px] bg-[#FFE001]"
+                className="absolute text-[11px] md:text-[24px]  -top-[12px] left-[170px] md:top-[50px] md:left-[300px] text-black font-bold flex items-center justify-center w-[80px] h-[20px] rounded-xl md:w-[167px] md:h-[40px] bg-[#FFE001]"
                 style={{
                   boxShadow:
                     "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
@@ -281,7 +259,7 @@ export default function RoboticsPage({
                 name="phone"
               />
               <Button
-              onClick={handleSubmit2}
+                onClick={handleSubmit2}
                 className={`${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[35px] md:h-[55px] text-[14px] md:text-[24px] w-[80px] md:w-[200px]`}
                 style={{
                   boxShadow:
@@ -296,7 +274,7 @@ export default function RoboticsPage({
             alt="home robot"
             className="w-[203px] h-[213.5px] md:w-[650px] md:h-[605px] rounded-br-3xl md:rounded-none"
             height={500}
-            src={english}
+            src="/english/english.png"
             width={500}
           />
         </div>
@@ -304,15 +282,15 @@ export default function RoboticsPage({
           alt="border image"
           className="absolute bottom-0 right-0"
           height={400}
-          src={borderimg}
+          src="/robotics/cardbottom.png"
           style={{ borderBottomRightRadius: "30px" }}
           width={400}
         />
       </div>
-      <section className="container mx-auto max-w-7xl flex items-center justify-evenly my-10 px-2 md:px-0 gap-5 md:gap-0">
+      <section className="container mx-auto max-w-7xl flex items-start md:items-center justify-evenly my-10 px-2 md:px-0 gap-5 md:gap-0">
         <HeadCard videoSrc={videoSrc} posterSrc={posterSrc} />
         <div
-          className="w-[180px] h-[220px] min-w-[168px] min-h-[149px] md:w-[582px] md:h-[320px] overflow-hidden text-ellipsis break-words"
+          className="w-[180px] h-[250px] min-w-[148px] min-h-[189px] md:w-[582px] md:h-[320px] overflow-hidden text-ellipsis break-words"
           style={{
             boxSizing: "border-box",
           }}
@@ -419,36 +397,48 @@ export default function RoboticsPage({
           {/* First large image */}
           <div className="min-w-[200px] w-[200px] h-[150px] md:w-[714px] md:h-[602px]">
             <Image
+              width={100}
+              height={100}
+              loading="lazy"
               alt="First image"
               className="w-full h-full object-cover rounded-lg shadow-lg"
-              src={firstimage}
+              src="/english/IMG_4309.jpg"
             />
           </div>
 
           {/* Second smaller image */}
           <div className="min-w-[200px] w-[200px] h-[150px] md:w-[545px] md:h-[456px]">
             <Image
+              width={100}
+              height={100}
+              loading="lazy"
               alt="Second image"
               className="w-full h-full object-cover rounded-lg shadow-lg"
-              src={secondimage}
+              src="/english/IMG_4304.jpg"
             />
           </div>
 
           {/* Third smaller image */}
           <div className="min-w-[200px] w-[200px] h-[150px] md:w-[714px] md:h-[311px]">
             <Image
+              width={100}
+              height={100}
+              loading="lazy"
               alt="Third image"
               className="w-full h-full object-cover rounded-lg shadow-lg"
-              src={thirdimage}
+              src="/english/IMG_4298.jpg"
             />
           </div>
 
           {/* Fourth large image */}
           <div className="min-w-[200px] w-[200px] h-[150px] md:w-[545px] md:h-[456px] translate-y-0 md:translate-y-[-145px]">
             <Image
+              width={100}
+              height={100}
+              loading="lazy"
               alt="Fourth image"
               className="w-full h-full object-cover rounded-lg shadow-lg"
-              src={fourthimage}
+              src="/english/IMG_9908.jpg"
             />
           </div>
         </div>

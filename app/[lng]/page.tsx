@@ -11,18 +11,10 @@ import { useTranslation } from "./i18n/client";
 import HomeCard from "@/components/home-card";
 import { fontTektur } from "@/config/fonts";
 import StatCard from "@/components/home/home-card";
-import borderimg from "@/assets/icons/cardbottom.png";
-import robot from "@/assets/icons/home_robot.png";
 import Card from "@/components/home/card";
 import CustomCarousel from "@/components/carousel";
 
-// images
 
-import home from "@/assets/images/home.png";
-import home2 from "@/assets/images/home2.png";
-import home3 from "@/assets/images/home3.png";
-import home4 from "@/assets/images/home4.png";
-import home5 from "@/assets/images/home5.png";
 
 import { getCookie } from "cookies-next";
 import { useRef, useState } from "react";
@@ -63,31 +55,31 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
 
   const images = [
     {
-      image: home,
+      image: "/page/home.png",
       text: t("home1"),
       link: `${lang}/robotic`,
       btn: t("home_btn"),
     },
     {
-      image: home2,
+      image: "/page/home2.png",
       text: t("home2"),
       link: `${lang}/painting_children`,
       btn: t("home_btn"),
     },
     {
-      image: home3,
+      image: "/page/home3.png",
       text: t("home3"),
       link: `${lang}/painting_olders`,
       btn: t("home_btn"),
     },
     {
-      image: home4,
+      image: "/page/home4.png",
       text: t("home4"),
       link: `${lang}/english`,
       btn: t("home_btn"),
     },
     {
-      image: home5,
+      image: "/page/home5.png",
       text: t("home5"),
       link: `${lang}/chess`,
       btn: t("home_btn"),
@@ -190,6 +182,7 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
   };
 
   return (
+    
     <div className="realtive">
       <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 flex">
         <div className="absolute md:relative mt-0 md:mt-36 -top-[93px] md:-top-20 z-50 p-1 container mx-auto max-w-7xl flex items-center justify-between ">
@@ -198,7 +191,7 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
             alt="home robot"
             className="w-[166px] h-[201px] md:w-[600px] md:h-[600px]"
             height={500}
-            src={robot}
+            src='/robotics/home_robot.png'
             width={500}
           />
         </div>
@@ -206,7 +199,7 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
           alt="border image"
           className="absolute bottom-0 right-0"
           height={400}
-          src={borderimg}
+          src='/robotics/cardbottom.png'
           style={{ borderBottomRightRadius: "30px" }}
           width={400}
         />
@@ -353,5 +346,6 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
         </div>
       </section>
     </div>
+
   );
 }
