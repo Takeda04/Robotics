@@ -4,6 +4,7 @@ import { Metadata, Viewport } from "next";
 import clsx from "clsx";
 
 import { Navbar } from "../components/Navbar";
+import { Analytics } from "@vercel/analytics/react";
 
 import { Providers } from "./providers";
 import { languages } from "./i18n/settings";
@@ -50,7 +51,7 @@ export default function RootLayout({
       <body
         className={clsx(
           "min-h-screen bg-background font-sans antialiased",
-          fontSans.variable,
+          fontSans.variable
         )}
       >
         <ParticlesComponent id="particles" />
@@ -62,6 +63,7 @@ export default function RootLayout({
             <Footer lng={lng} />
           </div>
         </Providers>
+        <Analytics />
       </body>
     </html>
   );
