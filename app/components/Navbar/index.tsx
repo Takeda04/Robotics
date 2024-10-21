@@ -44,7 +44,7 @@ export const Navbar = ({ lng }: { lng: string }) => {
   };
 
   const handleClick = () => {
-    setShowPhoneNumber((prevShow) => !prevShow); // Toggle the state
+    setShowPhoneNumber((prevShow) => !prevShow);
   };
 
   const handleLanguageChange = (lang: string) => {
@@ -61,7 +61,7 @@ export const Navbar = ({ lng }: { lng: string }) => {
   };
 
   const checkScreenSize = () => {
-    setIsMobile(window.innerWidth <= 1000);
+    setIsMobile(window.innerWidth <= 1200);
   };
 
   useEffect(() => {
@@ -76,9 +76,9 @@ export const Navbar = ({ lng }: { lng: string }) => {
   return (
     <NextUINavbar
       className={`h-[100px] sm:h-[157px] relative py-5 sm:absolute border-t-[10px] border-b-[10px] border-[#F0D625]`}
-      isMenuOpen={isOpen} // Control menu open state
+      isMenuOpen={isOpen}
       maxWidth="xl"
-      onMenuOpenChange={setIsOpen} // Handle menu open change
+      onMenuOpenChange={setIsOpen}
     >
       <NavbarBrand>
         <Link href={`/${lang}/`}>
@@ -277,9 +277,10 @@ export const Navbar = ({ lng }: { lng: string }) => {
         </NavbarContent>
       )}
 
-      <NavbarMenu className="mt-[30px] gap-y-5">
+      <NavbarMenu className="mt-[30px] sm:mt-[30px] md:mt-[90px] lg:mt-[90px] gap-y-5 ">
         <NavbarItem>
           <Link
+          onPress={handleToggle}
             className={`${fontTektur.variable} font-tektur text-[24px]`}
             color="foreground"
             href={`/${lang}/`}
@@ -289,6 +290,7 @@ export const Navbar = ({ lng }: { lng: string }) => {
         </NavbarItem>
         <NavbarItem>
           <Link
+          onPress={handleToggle}
             className={`${fontTektur.variable} font-tektur text-[24px]`}
             color="foreground"
             href='#about'
@@ -319,30 +321,35 @@ export const Navbar = ({ lng }: { lng: string }) => {
             }}
           >
             <DropdownItem
+            onPress={handleToggle}
               className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
               href={`/${lang}/robotic`}
             >
               {t("drop1")}
             </DropdownItem>
             <DropdownItem
+            onPress={handleToggle}
               className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
               href={`/${lang}/english`}
             >
               {t("drop2")}
             </DropdownItem>
             <DropdownItem
+            onPress={handleToggle}
               className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
               href={`/${lang}/painting_children`}
             >
               {t("drop3")}
             </DropdownItem>
             <DropdownItem
+            onPress={handleToggle}
               className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
               href={`/${lang}/painting_olders`}
             >
               {t("drop4")}
             </DropdownItem>
             <DropdownItem
+            onPress={handleToggle}
               className={`${fontTektur.variable} font-tektur text-[#F0D625] text-[24px] border-b border-[#F0D625] py-2`}
               href={`/${lang}/chess`}
             >
@@ -353,6 +360,7 @@ export const Navbar = ({ lng }: { lng: string }) => {
 
         <NavbarItem>
           <Link
+          onPress={handleToggle}
             className={`${fontTektur.variable} font-tektur text-[24px]`}
             color="foreground"
             href='#footer'

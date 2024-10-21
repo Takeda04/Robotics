@@ -14,8 +14,6 @@ import StatCard from "@/components/home/home-card";
 import Card from "@/components/home/card";
 import CustomCarousel from "@/components/carousel";
 
-
-
 import { getCookie } from "cookies-next";
 import { useRef, useState } from "react";
 
@@ -151,7 +149,7 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
       newformData.append("name", formData.name);
       newformData.append("phone", formData.phone);
       newformData.append("age", formData.age);
-      newformData.append("course", courses[(formData.course as any)].drop)
+      newformData.append("course", courses[formData.course as any].drop);
       var xhr = new XMLHttpRequest();
 
       // Step 2: Open the request with POST method and target URL
@@ -182,24 +180,23 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
   };
 
   return (
-    
     <div className="realtive">
-      <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 flex">
+      <div className="relative z-20 w-full h-[125px] md:h-[390px] lg:h-[590px] rounded-b-3xl mt-36 sm:mt-64 md:mt-36 lg:mt-42 flex">
         <div className="absolute md:relative mt-0 md:mt-36 -top-[93px] md:-top-20 z-50 p-1 container mx-auto max-w-7xl flex items-center justify-between ">
           <Card lng={lng} />
           <Image
             alt="home robot"
-            className="w-[166px] h-[201px] md:w-[600px] md:h-[600px]"
-            height={500}
-            src='/robotics/home_robot.png'
-            width={500}
+            className={`w-[166px] h-[201px] md:w-[250px] md:h-[250px] lg:w-[450px] lg:h-[450px] xl:w-[600px] xl:h-[600px] object-contain`}
+            height={100}
+            src="/robotics/home_robot.png"
+            width={100}
           />
         </div>
         <Image
           alt="border image"
           className="absolute bottom-0 right-0"
           height={400}
-          src='/robotics/cardbottom.png'
+          src="/robotics/cardbottom.png"
           style={{ borderBottomRightRadius: "30px" }}
           width={400}
         />
@@ -237,7 +234,7 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
         >
           {t("author")}
         </p>
-        <div className="flex md:flex-wrap items-center gap-[20px] sm:justify-center md:gap-[58px] my-10 overflow-x-scroll">
+        <div className="flex md:flex-wrap items-center gap-[20px] sm:justify-center md:gap-[58px] my-10 overflow-x-auto scrollbar-hide">
           {images.map(({ image, text, link, btn }) => (
             <HomeCard
               key={link}
@@ -346,6 +343,5 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
         </div>
       </section>
     </div>
-
   );
 }

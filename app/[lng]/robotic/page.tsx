@@ -224,11 +224,11 @@ export default function RoboticsPage({
 
   return (
     <div className="realtive">
-      <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 flex">
-        <div className="absolute md:relative mt-0 md:mt-36 -top-[93px] md:-top-20 z-50 p-1 container mx-auto max-w-7xl flex items-center justify-between ">
+      <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 sm:mt-[300px] md:mt-36 lg:mt-42 flex">
+        <div className="absolute md:relative mt-0 md:mt-36 -top-[93px] md:-top-20 z-50 p-1 container mx-auto max-w-7xl flex items-center justify-between">
           <div className="w-full">
             <p
-              className={`absolute -top-10 md:top-0 ${fontTektur.variable}  font-tektur text-[#FFDE00] text-[26px] md:text-[84px] font-bold`}
+              className={`absolute -top-10 md:top-0 ${fontTektur.variable}  font-tektur text-[#FFDE00] text-[26px] md:text-[60px] lg:text-[84px] font-bold`}
             >
               {t("robot_title")}
             </p>
@@ -297,7 +297,7 @@ export default function RoboticsPage({
           </div>
           <Image
             alt="home robot"
-            className="w-[203px] h-[213.5px] md:w-[650px] md:h-[605px]"
+            className="w-[166px] h-[201px] sm:w-[200px] sm:h-[240px] md:w-[300px] md:h-[320px] lg:w-[450px] lg:h-[450px] xl:w-[600px] xl:h-[600px] mt-[10px] sm:-mt-[27px] md:mt-[285px] lg:mt-[155px] xl:mt-[8px] rounded-ee-2xl"
             height={500}
             src='/robotics/robo-robot.png'
             width={500}

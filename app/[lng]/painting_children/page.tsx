@@ -224,12 +224,12 @@ export default function PaintingChildrenPage({
   };
 
   return (
-    <div className="realtive">
-      <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 flex">
+    <div className="realtive overflow-hidden">
+      <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 sm:mt-[300px] md:mt-36 lg:mt-42 flex">
         <div className="absolute md:relative mt-0 md:mt-36 -top-[93px] md:-top-20 z-50 p-1 container mx-auto max-w-7xl flex items-center justify-between ">
           <div className="w-full">
             <p
-              className={`absolute -top-10 md:top-0 ${fontTektur.variable}  font-tektur text-[#FFDE00] text-[20px] md:text-[70px] font-bold`}
+              className={`absolute -top-10 md:top-0 ${fontTektur.variable}  font-tektur text-[#FFDE00] text-[20px] md:text-[40px] lg:text-[55px] xl:text-[70px] font-bold`}
             >
               {t("child_title")}
             </p>
@@ -299,7 +299,7 @@ export default function PaintingChildrenPage({
           </div>
           <Image
             alt="home robot"
-            className="w-[303px] h-[213.5px] md:w-[800px] md:h-[605px] rounded-br-3xl md:rounded-none"
+            className="w-[303px] h-[213.5px] sm:w-[330px] sm:h-[240px] md:w-[400px] md:h-[305px] lg:w-[500px] lg:h-[405px] xl:w-[700px] xl:h-[505px] mt-[0px] sm:-mt-[27px] md:mt-[300px] lg:mt-[200px] xl:mt-[100px] rounded-ee-3xl md:rounded-none lg:rounded-none xl:rounded-none"
             height={500}
             src="/children/child.png"
             width={500}
@@ -314,7 +314,7 @@ export default function PaintingChildrenPage({
           width={400}
         />
       </div>
-      <section className="container mx-auto max-w-7xl flex items-start md:items-center justify-evenly my-10 px-2 md:px-0 gap-5 md:gap-0">
+      <section className="container mx-auto max-w-7xl flex items-start md:items-center justify-around my-10 px-2 md:px-0 gap-5 md:gap-5">
         <HeadCard videoSrc={videoSrc} posterSrc={posterSrc} />
         <div
           className="w-[180px] h-[250px] min-w-[168px] min-h-[149px] md:w-[582px] md:h-[320px] overflow-hidden text-ellipsis break-words"
@@ -369,7 +369,7 @@ export default function PaintingChildrenPage({
         >
           {t("why")}
         </p>
-        <div className="flex flex-wrap items-center justify-between gap-y-7 p-2 md:p-0">
+        <div className="flex flex-wrap items-center justify-around gap-y-7 p-2 md:p-0">
           {edu_card.map(({ text, subText }, idx) => (
             <ChildCard key={idx} text={text} subText={subText} />
           ))}

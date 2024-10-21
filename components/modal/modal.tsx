@@ -189,7 +189,7 @@ const MyModal: React.FC<MyModalProps> = ({
                 <div className="flex flex-col items-center justify-between">
                   <Image
                     alt="modal robot"
-                    className="hidden md:flex w-[200px] h-[200px]"
+                    className="hidden sm:flex md:flex lg:flex w-[200px] h-[200px]"
                     height={130}
                     src="/olders/modal_robot.png"
                     width={200}

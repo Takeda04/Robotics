@@ -15,7 +15,7 @@ const HomeCard = ({ image, text, link, btn }: any) => {
 
   return (
     <div
-      className="flex flex-col justify-between md:w-[551px] min-w-[300px] md:h-[508px] md:bg-[#F0D625] w-[250px] h-[315px] bg-[#181818] px-[15px] py-[15px]  md:px-[51px] md:py-[43px]"
+      className="flex flex-col justify-between md:w-[551px] min-w-[300px] md:bg-[#F0D625] w-[250px]  bg-[#181818] px-[15px] py-[15px]  md:px-[51px] md:py-[43px]"
       style={{
         borderRadius: "30px",
       }}
@@ -23,14 +23,15 @@ const HomeCard = ({ image, text, link, btn }: any) => {
       <span>
         <Image
           alt="website slider image"
-          className="w-[300px] h-[191px] md:w-[449px] md:h-[211px]"
+          className="w-[300px] h-[191px] md:w-[449px] md:h-[211px] object-cover rounded-3xl"
           height={211}
           src={image}
           width={449}
+
         />
 
         <p
-          className={`${fontTektur.variable} font-tektur  text-white md:text-[#000] text-[22px] sm:text-[30px] md:text-[35px] lg:text-[40px] text-start font-bold my-[21px]`}
+          className={`${fontTektur.variable} font-tektur  text-white md:text-[#000] text-[20px] sm:text-[30px] md:text-[35px] lg:text-[40px] text-start font-bold my-[21px]`}
         >
           {text}
         </p>

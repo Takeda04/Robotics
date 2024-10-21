@@ -44,7 +44,7 @@ export default function RoboticsPage({
   const { t } = useTranslation(lng, "translation", {});
   const lang = getCookie("i18next");
   const videoSrc = "/videos/english1.mp4";
-  const posterSrc = "/posters/mine.JPG";
+  const posterSrc = "/posters/english/poster1.jpg";
 
   const courses = [
     { drop: t("drop1") },
@@ -195,8 +195,8 @@ export default function RoboticsPage({
 
   return (
     
-    <div className="realtive">
-      <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 flex">
+    <div className="realtive overflow-hidden">
+      <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 sm:mt-[300px] md:mt-36 lg:mt-42 flex">
         <div className="absolute md:relative mt-0 md:mt-36 -top-[93px] md:-top-20 z-50 p-1 container mx-auto max-w-7xl flex items-center justify-between ">
           <div className="w-full">
             <p
@@ -272,7 +272,7 @@ export default function RoboticsPage({
           </div>
           <Image
             alt="home robot"
-            className="w-[203px] h-[213.5px] md:w-[650px] md:h-[605px] rounded-br-3xl md:rounded-none"
+            className="w-[303px] h-[213.5px] sm:w-[330px] sm:h-[240px] md:w-[400px] md:h-[305px] lg:w-[500px] lg:h-[405px] xl:w-[700px] xl:h-[505px] mt-[0px] sm:-mt-[27px] md:mt-[300px] lg:mt-[200px] xl:mt-[100px] rounded-ee-3xl"
             height={500}
             src="/english/english.png"
             width={500}

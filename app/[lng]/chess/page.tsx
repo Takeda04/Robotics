@@ -200,12 +200,12 @@ export default function ChessPage({
   };
 
   return (
-    <div className="realtive">
-      <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 flex">
+    <div className="realtive overflow-hidden">
+      <div className="relative z-20 w-full h-[125px] md:h-[590px] rounded-b-3xl mt-36 sm:mt-[300px] md:mt-36 lg:mt-42 flex">
         <div className="absolute md:relative mt-0 md:mt-36 -top-[93px] md:-top-20 z-50 p-1 container mx-auto max-w-7xl flex items-center justify-between ">
           <div className="w-full">
             <p
-              className={`absolute -top-10 md:top-0 ${fontTektur.variable}  font-tektur text-[#FFDE00] text-[24px] md:text-[84px] font-bold w-[300px] md:w-[1100px]`}
+              className={`absolute -top-10 md:top-0 ${fontTektur.variable}  font-tektur text-[#FFDE00] text-[20px] md:text-[30px] lg:text-[52px] xl:text-[70px] font-bold w-[300px] md:w-[1100px]`}
             >
               {t("chess_title")}
             </p>
@@ -275,7 +275,7 @@ export default function ChessPage({
           </div>
           <Image
             alt="home robot"
-            className="w-[170px] h-[170px] md:w-[628px] md:h-[628px] rounded-br-3xl md:rounded-none "
+            className="w-[303px] h-[213.5px] sm:w-[330px] sm:h-[240px] md:w-[400px] md:h-[305px] lg:w-[500px] lg:h-[405px] xl:w-[700px] xl:h-[505px] rounded-br-3xl md:rounded-none "
             height={500}
             src='/chess/chess.png'
             width={500}
