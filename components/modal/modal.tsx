@@ -78,7 +78,7 @@ const MyModal: React.FC<MyModalProps> = ({
       // Step 2: Open the request with POST method and target URL
       xhr.open(
         "POST",
-        "https://script.google.com/macros/s/AKfycbwB6YAFPGK4xkq54TrLRIVON7wRwFvIB7-6bnK-w5CSRlyb2mvp4A_Lz0oFQnE5qh16Kg/exec",
+        "https://script.google.com/macros/s/AKfycbwqCmg8x--QN5gIelVgzYnJhUnwXXVX_G2sb10v-YI2cpFWn4xf1EDr4WMyPlo8czipTw/exec",
         true
       );
 
