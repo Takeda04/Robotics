@@ -181,7 +181,7 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
   };
 
   return (
-    <div className="realtive">
+    <div className="realtive overflow-hidden">
       <div className="relative z-20 w-full h-[125px] md:h-[390px] lg:h-[590px] rounded-b-3xl mt-36 sm:mt-64 md:mt-36 lg:mt-42 flex">
         <div className="absolute md:relative mt-0 md:mt-36 -top-[93px] md:-top-20 z-50 p-1 container mx-auto max-w-7xl flex items-center justify-between ">
           <Card lng={lng} />

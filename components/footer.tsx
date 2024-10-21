@@ -6,24 +6,28 @@ import { FaInstagram, FaTelegramPlane, FaYoutube } from "react-icons/fa";
 import { Link } from "@nextui-org/link";
 import { Button } from "@nextui-org/button";
 import { useRouter } from "next/navigation";
-
 import { fontTektur } from "@/config/fonts";
-import { ClockIcon, LocationIcon, PhoneIcon } from "@/assets/icons/icons";
-import dark_logo from "@/assets/images/dark_logo.png";
 import { useTranslation } from "@/app/[lng]/i18n/client";
 import { getCookie } from "cookies-next";
 
 export const Footer = ({ lng }: { lng: string }) => {
   const { t } = useTranslation(lng, "translation", {});
-  const [activeLanguage, setActiveLanguage] = useState("S1");
+  const [activeLocation, setActiveLocation] = useState("S1");
   const router = useRouter();
   const lang = getCookie("i18next");
 
-  const handleLanguageChange = (position: string, map: string) => {
-    setActiveLanguage(position);
-    router.push(map);
+  // Initial Yandex map state with the first location
+  const [mapSrc, setMapSrc] = useState(
+    "https://yandex.uz/map-widget/v1/?ll=69.222182%2C41.350681&z=13&mode=search&text=justrobotics"
+  );
+
+  // Function to handle button clicks and update Yandex map to the respective place
+  const handleLocationChange = (location: string, mapUrl: string) => {
+    setActiveLocation(location);
+    setMapSrc(mapUrl);
   };
 
+  // Courses
   const courses = [
     { drop: t("drop1"), link: `/${lang}/robotic` },
     { drop: t("drop2"), link: `/${lang}/english` },
@@ -31,6 +35,8 @@ export const Footer = ({ lng }: { lng: string }) => {
     { drop: t("drop4"), link: `/${lang}/painting_olders` },
     { drop: t("drop5"), link: `/${lang}/chess` },
   ];
+
+  // Socials
   const socials = [
     { soc: t("footer_soc1"), link: `/${lang}/` },
     {
@@ -50,15 +56,18 @@ export const Footer = ({ lng }: { lng: string }) => {
         <Button
           className={`${fontTektur.variable} font-tektur py-5 sm:py-[20px] h-[50px] sm:h-[78px] px-9 sm:px-[64px] text-[16px] sm:text-[30px]`}
           style={{
-            background: activeLanguage === "S1" ? "#F0D625" : "#ffffff",
+            background: activeLocation === "S1" ? "#F0D625" : "#ffffff",
             color: "#000000",
             boxShadow:
-              activeLanguage === "S1"
+              activeLocation === "S1"
                 ? "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625"
                 : "",
           }}
           onClick={() =>
-            handleLanguageChange("S1", "https://yandex.uz/maps/-/CDXeEHMG")
+            handleLocationChange(
+              "S1",
+              "https://yandex.uz/map-widget/v1/?ll=69.222182%2C41.350681&z=13&mode=search&text=justrobotics"
+            )
           }
         >
           {t("footer_btn1")}
@@ -66,60 +75,39 @@ export const Footer = ({ lng }: { lng: string }) => {
         <Button
           className={`${fontTektur.variable} font-tektur py-5 sm:py-[20px] h-[50px] sm:h-[78px] px-9 sm:px-[64px] text-[16px] sm:text-[30px] ml-[20px] sm:ml-[60px]`}
           style={{
-            background: activeLanguage === "BERUNIY" ? "#F0D625" : "#ffffff",
+            background: activeLocation === "BERUNIY" ? "#F0D625" : "#ffffff",
             color: "#000000",
             boxShadow:
-              activeLanguage === "BERUNIY"
+              activeLocation === "BERUNIY"
                 ? "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625"
                 : "",
           }}
           onClick={() =>
-            handleLanguageChange("BERUNIY", "https://yandex.uz/maps/-/CDXeI49L")
+            handleLocationChange(
+              "BERUNIY",
+              "https://yandex.uz/map-widget/v1/?ll=69.278434%2C41.318463&z=13&mode=search&text=justrobotics"
+            )
           }
         >
           {t("footer_btn2")}
         </Button>
       </div>
+
       <div className="my-[30px]"></div>
 
-      {/* <div className="container mx-auto max-w-7xl flex flex-wrap items-center justify-evenly my-[80px] gap-[20px] sm:gap-[56px]">
-        <span className="flex items-center justify-start gap-x-[50px] w-[350px]">
-          <PhoneIcon />
-          <p
-            className={`${fontTektur.variable} font-tektur text-white text-[24px]`}
-          >
-            {t("footer_phone")}
-          </p>
-        </span>
-        <span className="flex items-center justify-start gap-x-[50px] w-[350px]">
-          <LocationIcon />
-          <p
-            className={`${fontTektur.variable} font-tektur text-white text-[24px]`}
-          >
-            {t("footer_location")}
-          </p>
-        </span>
-        <span className="flex items-center justify-start gap-x-[50px] w-[350px]">
-          <ClockIcon />
-          <p
-            className={`${fontTektur.variable} font-tektur text-white text-[24px]`}
-          >
-            {t("footer_plan")}
-          </p>
-        </span>
-      </div> */}
+      {/* Embed Yandex Map */}
       <iframe
         height="450"
         loading="lazy"
         referrerPolicy="no-referrer-when-downgrade"
-        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d5758.997039052575!2d69.27864672431006!3d41.31862378008828!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x38ae8b981e0fe325%3A0xa6fc38e83861c109!2sJust%20Robotics%20Wyndham!5e1!3m2!1suz!2s!4v1728532818798!5m2!1suz!2s"
+        src={mapSrc}
         style={{
           height: "320px",
           border: "0",
           width: "100%",
           marginBottom: "80px",
         }}
-        title="Google Maps - Just Robotics Wyndham Location"
+        title="Yandex Maps - Just Robotics Location"
         width="600"
       />
 
@@ -136,12 +124,12 @@ export const Footer = ({ lng }: { lng: string }) => {
                 display: "flex",
                 alignItems: "center",
                 justifyContent: "center",
-                marginBottom: "20px"
+                marginBottom: "20px",
               }}
             >
               <Image
                 alt="Company Logo"
-                height={90} // Slightly reduce the size of the image so it fits within the circle
+                height={90}
                 src="/icon/logotip.svg"
                 width={90}
               />
