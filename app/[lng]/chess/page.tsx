@@ -2,11 +2,7 @@
 
 import Image from "next/image";
 import { Input } from "@nextui-org/input";
-import {
-  Button,
-  Select,
-  SelectItem,
-} from "@nextui-org/react";
+import { Button, Select, SelectItem } from "@nextui-org/react";
 
 import { fontTektur } from "@/config/fonts";
 import CustomCarousel from "@/components/carousel";
@@ -18,6 +14,7 @@ import { useTranslation } from "../i18n/client";
 import { getCookie } from "cookies-next";
 import { useState } from "react";
 import MyModal from "@/components/modal/modal";
+import { toastError, toastSuccess } from "@/app/components/toast";
 
 interface FormData {
   name: string;
@@ -75,7 +72,7 @@ export default function ChessPage({
       text: t("home4"),
       link: `/${lang}/english`,
       btn: t("home_btn"),
-    }
+    },
   ];
   const edu_card = [
     { text: t("why"), subText: t("child_edu_text1") },
@@ -101,8 +98,6 @@ export default function ChessPage({
   const handleModalChange = (open: boolean) => {
     setIsModalOpen(open);
   };
-
-
 
   const [formData, setFormData] = useState<FormData>({
     name: "",
@@ -136,7 +131,7 @@ export default function ChessPage({
       newformData.append("name", formData.name);
       newformData.append("phone", formData.phone);
       newformData.append("age", formData.age);
-      newformData.append("course", courses[(formData.course as any)].drop)
+      newformData.append("course", courses[formData.course as any].drop);
       var xhr = new XMLHttpRequest();
 
       // Step 2: Open the request with POST method and target URL
@@ -149,9 +144,8 @@ export default function ChessPage({
       // Step 3: Set up a callback function to handle the response
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-          // Successfully completed the request
-          console.log(xhr.responseText, "askjdaskdskajhd");
-          alert("Form successfully submitted!");
+          toastSuccess("Ваш запрос принят.");
+
           setFormData({
             name: "",
             phone: "",
@@ -162,11 +156,12 @@ export default function ChessPage({
       };
       xhr.send(newformData);
     } catch (error) {
+      toastError("Ошибка отправки");
+
       console.error("Error submitting form", error);
     }
   };
   const handleSubmit2 = async () => {
-
     try {
       const newformData = new FormData();
       newformData.append("page", "Shaxmat sahifa");
@@ -184,18 +179,18 @@ export default function ChessPage({
       // Step 3: Set up a callback function to handle the response
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 2 && xhr.status === 200) {
-          // Successfully completed the request
-          console.log(xhr.responseText);
-          alert("Form successfully submitted!");
+          toastSuccess("Ваш запрос принят.");
           const newLocal = {
             name: "",
-            phone: ""
+            phone: "",
           };
           setFormData(newLocal as any);
         }
       };
       xhr.send(newformData);
     } catch (error) {
+      toastError("Ошибка отправки");
+
       console.error("Error submitting form", error);
     }
   };
@@ -263,7 +258,7 @@ export default function ChessPage({
                 name="phone"
               />
               <Button
-              onClick={handleSubmit2}
+                onClick={handleSubmit2}
                 className={`${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[35px] md:h-[55px] text-[14px] md:text-[24px] w-[80px] md:w-[200px]`}
                 style={{
                   boxShadow:
@@ -278,7 +273,7 @@ export default function ChessPage({
             alt="home robot"
             className="w-[303px] h-[213.5px] sm:w-[330px] sm:h-[240px] md:w-[400px] md:h-[305px] lg:w-[500px] lg:h-[405px] xl:w-[700px] xl:h-[505px] rounded-br-3xl md:rounded-none "
             height={500}
-            src='/chess/chess.png'
+            src="/chess/chess.png"
             width={500}
           />
         </div>
@@ -293,8 +288,7 @@ export default function ChessPage({
       </div>
       <section className="container mx-auto max-w-7xl flex items-start md:items-center justify-evenly my-10 px-2 md:px-0 gap-5 md:gap-0">
         <HeadCard videoSrc={videoSrc} posterSrc={posterSrc} />
-        <div
-          className="w-[180px] h-[250px] min-w-[148px] min-h-[149px] md:w-[582px] md:h-[320px] overflow-hidden text-ellipsis break-words">
+        <div className="w-[180px] h-[250px] min-w-[148px] min-h-[149px] md:w-[582px] md:h-[320px] overflow-hidden text-ellipsis break-words">
           <p
             className={`${fontTektur.variable} font-tektur font-normal text-[#FFFFFF] text-[11px] md:text-[23px]`}
           >
@@ -319,7 +313,7 @@ export default function ChessPage({
           alt="call image"
           className="mx-auto w-full"
           height={500}
-          src='/chess/chess_child.png'
+          src="/chess/chess_child.png"
           width={500}
         />
         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 flex flex-col items-center space-y-0 md:space-y-10">
@@ -329,7 +323,7 @@ export default function ChessPage({
             {t("sub_main_card")}
           </p>
           <Button
-             onClick={() => setIsModalOpen(true)}
+            onClick={() => setIsModalOpen(true)}
             className="bg-[#FFE000] text-[#000] w-[208px] h-[25px] md:w-[530px] md:h-[51px] text-[15px] md:text-[32px]"
             variant="bordered"
           >
@@ -375,7 +369,7 @@ export default function ChessPage({
           </p>
         </div>
 
-        <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5">
+        <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5 px-3">
           <Input
             className="w-full sm:w-[240px]"
             label={t("form_name")}

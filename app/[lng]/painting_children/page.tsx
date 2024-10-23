@@ -17,6 +17,7 @@ import { useTranslation } from "../i18n/client";
 import { getCookie } from "cookies-next";
 import { FaCircleArrowLeft } from "react-icons/fa6";
 import { useState } from "react";
+import { toastError, toastSuccess } from "@/app/components/toast";
 
 
 interface FormData {
@@ -173,9 +174,7 @@ export default function PaintingChildrenPage({
       // Step 3: Set up a callback function to handle the response
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-          // Successfully completed the request
-          console.log(xhr.responseText, "askjdaskdskajhd");
-          alert("Form successfully submitted!");
+          toastSuccess("Ваш запрос принят.")
           setFormData({
             name: "",
             phone: "",
@@ -186,6 +185,7 @@ export default function PaintingChildrenPage({
       };
       xhr.send(newformData);
     } catch (error) {
+      toastError("Ошибка отправки")
       console.error("Error submitting form", error);
     }
   };
@@ -209,9 +209,7 @@ export default function PaintingChildrenPage({
       // Step 3: Set up a callback function to handle the response
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 2 && xhr.status === 200) {
-          // Successfully completed the request
-          console.log(xhr.responseText);
-          alert("Form successfully submitted!");
+          toastSuccess("Ваш запрос принят.")
           const newLocal = {
             name: "",
             phone: ""
@@ -221,6 +219,7 @@ export default function PaintingChildrenPage({
       };
       xhr.send(newformData);
     } catch (error) {
+      toastError("Ошибка отправки")
       console.error("Error submitting form", error);
     }
   };
@@ -408,7 +407,7 @@ export default function PaintingChildrenPage({
           </p>
         </div>
 
-        <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5">
+        <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5 px-3">
           <Input
             className="w-full sm:w-[240px]"
             label={t("form_name")}

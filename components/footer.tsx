@@ -9,10 +9,12 @@ import { useRouter } from "next/navigation";
 import { fontTektur } from "@/config/fonts";
 import { useTranslation } from "@/app/[lng]/i18n/client";
 import { getCookie } from "cookies-next";
+import { Tooltip } from "@nextui-org/react";
+import { ClockIcon, LocationIcon, PhoneIcon } from "@/assets/icons/icons";
 
 export const Footer = ({ lng }: { lng: string }) => {
   const { t } = useTranslation(lng, "translation", {});
-  const [activeLocation, setActiveLocation] = useState("S1");
+  const [activeLocation, setActiveLocation] = useState("BERUNIY");
   const router = useRouter();
   const lang = getCookie("i18next");
 
@@ -66,7 +68,7 @@ export const Footer = ({ lng }: { lng: string }) => {
           onClick={() =>
             handleLocationChange(
               "S1",
-              "https://yandex.uz/map-widget/v1/?ll=69.222182%2C41.350681&z=13&mode=search&text=justrobotics"
+              "https://yandex.uz/map-widget/v1/?ll=69.278434%2C41.318463&z=13&mode=search&text=justrobotics"
             )
           }
         >
@@ -85,7 +87,7 @@ export const Footer = ({ lng }: { lng: string }) => {
           onClick={() =>
             handleLocationChange(
               "BERUNIY",
-              "https://yandex.uz/map-widget/v1/?ll=69.278434%2C41.318463&z=13&mode=search&text=justrobotics"
+              "https://yandex.uz/map-widget/v1/?ll=69.222182%2C41.350681&z=13&mode=search&text=justrobotics"
             )
           }
         >
@@ -93,7 +95,49 @@ export const Footer = ({ lng }: { lng: string }) => {
         </Button>
       </div>
 
-      <div className="my-[30px]"></div>
+      <div className="container mx-auto max-w-7xl my-[50px] flex items-center justify-center sm:justify-center md:justify-center lg:justify-between xl:justify-between gap-y-5 flex-wrap">
+        <Tooltip
+          content={
+            <div className="px-1 py-2">
+              <div className="text-small font-bold">{t("footer_phone")}</div>
+              <div className="text-tiny">+998 33 718 44 44</div>
+            </div>
+          }
+        >
+          <div className="flex items-center gap-x-5 w-[300px]">
+            <PhoneIcon />
+            <p>{t("footer_phone")}</p>
+          </div>
+        </Tooltip>
+        <Tooltip
+          content={
+            <div className="px-1 py-2">
+              <div className="text-small font-bold">{t("footer_location")}</div>
+              <div className="text-tiny">
+                {`${activeLocation === "BERUNIY" ? "Алмазарский район, ориентир Парк победы" : "Юнусабадский район, ориентир отель Hayat Regency"}`}
+              </div>
+            </div>
+          }
+        >
+          <div className="flex items-center gap-x-5 w-[300px]">
+            <LocationIcon />
+            <p>{t("footer_location")}</p>
+          </div>
+        </Tooltip>
+        <Tooltip
+          content={
+            <div className="px-1 py-2">
+              <div className="text-small font-bold">{t("footer_plan")}</div>
+              <div className="text-tiny">10:00 - 19:00</div>
+            </div>
+          }
+        >
+          <div className="flex items-center gap-x-5 w-[300px]">
+            <ClockIcon />
+            <p>{t("footer_plan")}</p>
+          </div>
+        </Tooltip>
+      </div>
 
       {/* Embed Yandex Map */}
       <iframe
@@ -137,7 +181,7 @@ export const Footer = ({ lng }: { lng: string }) => {
             <p
               className={`${fontTektur.variable} font-tektur text-black font-bold text-[14px] max-w-[248px]`}
             >
-              SLOGAN Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+              {t("slogan")}
             </p>
             <div className="flex gap-5 mt-4">
               <Link
@@ -209,13 +253,13 @@ export const Footer = ({ lng }: { lng: string }) => {
         </div>
 
         {/* Footer Bottom */}
-        <div className="container mx-auto max-w-7xl">
+        {/* <div className="container mx-auto max-w-7xl">
           <div className="font-bold mt-8 text-black text-[14px] text-center sm:text-left">
             <p className={`${fontTektur.variable} font-tektur`}>
               {t("security")}
             </p>
           </div>
-        </div>
+        </div> */}
       </footer>
     </section>
   );

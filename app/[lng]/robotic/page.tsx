@@ -25,6 +25,7 @@ import RobotCarousel from "@/components/carousel/CarouselRobot";
 import { getCookie } from "cookies-next";
 import { FaCircleArrowLeft } from "react-icons/fa6";
 import { useState } from "react";
+import { toastError, toastSuccess } from "@/app/components/toast";
 
 interface FormData {
   name: string;
@@ -174,9 +175,7 @@ export default function RoboticsPage({
       // Step 3: Set up a callback function to handle the response
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-          // Successfully completed the request
-          console.log(xhr.responseText, "askjdaskdskajhd");
-          alert("Form successfully submitted!");
+          toastSuccess("Ваш запрос принят.")
           setFormData({
             name: "",
             phone: "",
@@ -187,6 +186,8 @@ export default function RoboticsPage({
       };
       xhr.send(newformData);
     } catch (error) {
+      toastError("Ошибка отправки")
+
       console.error("Error submitting form", error);
     }
   };
@@ -209,9 +210,7 @@ export default function RoboticsPage({
       // Step 3: Set up a callback function to handle the response
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 2 && xhr.status === 200) {
-          // Successfully completed the request
-          console.log(xhr.responseText);
-          alert("Form successfully submitted!");
+          toastSuccess("Ваш запрос принят.")
           const newLocal = {
             name: "",
             phone: "",
@@ -221,6 +220,7 @@ export default function RoboticsPage({
       };
       xhr.send(newformData);
     } catch (error) {
+      toastError("Ошибка отправки")
       console.error("Error submitting form", error);
     }
   };
@@ -300,7 +300,7 @@ export default function RoboticsPage({
           </div>
           <Image
             alt="home robot"
-            className="w-[166px] h-[201px] sm:w-[200px] sm:h-[240px] md:w-[300px] md:h-[320px] lg:w-[450px] lg:h-[450px] xl:w-[600px] xl:h-[600px] mt-[10px] sm:-mt-[27px] md:mt-[285px] lg:mt-[155px] xl:mt-[8px] rounded-ee-2xl"
+            className="w-[220px] h-[221px] sm:w-[220px] sm:h-[240px] md:w-[300px] md:h-[320px] lg:w-[450px] lg:h-[450px] xl:w-[600px] xl:h-[600px] -mt-[8px] sm:-mt-[27px] md:mt-[285px] lg:mt-[155px] xl:mt-[8px] rounded-ee-3xl"
             height={500}
             src='/robotics/robo-robot.png'
             width={500}
@@ -441,7 +441,7 @@ export default function RoboticsPage({
         >
           {t("foto")}
         </p>
-        <div className="flex md:flex-wrap items-center gap-5 md:gap-7 sm:justify-center px-2 md:px-0 my-10 overflow-x-scroll">
+        <div className="flex md:flex-wrap items-center gap-5 md:gap-7 sm:justify-center px-2 md:px-0 my-10 overflow-x-scroll scrollbar-hide">
           {images.map((item, index) => (
             <HubCard key={index} image={item.image} />
           ))}
@@ -466,7 +466,7 @@ export default function RoboticsPage({
           </p>
         </div>
 
-        <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5">
+        <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5 px-3">
           <Input
             className="w-full sm:w-[240px]"
             label={t("form_name")}

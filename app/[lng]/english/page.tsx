@@ -18,9 +18,15 @@ import HeadCard from "@/components/robotics/head-card";
 import { useTranslation } from "../i18n/client";
 import RobotCarousel from "@/components/carousel/CarouselRobot";
 
+// import image1 from "@/assets/english/IMG_4306.png";
+import image2 from "@/assets/english/IMG_4304.jpg";
+import image3 from "@/assets/english/IMG_4298.jpg";
+import image4 from "@/assets/english/IMG_9908.jpg";
+
 import { getCookie } from "cookies-next";
 import { FaCircleArrowLeft } from "react-icons/fa6";
 import { useState } from "react";
+import { toastError, toastSuccess } from "@/app/components/toast";
 
 interface FormData {
   name: string;
@@ -143,9 +149,7 @@ export default function RoboticsPage({
       // Step 3: Set up a callback function to handle the response
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-          // Successfully completed the request
-          console.log(xhr.responseText, "askjdaskdskajhd");
-          alert("Form successfully submitted!");
+          toastSuccess("Ваш запрос принят.")
           setFormData({
             name: "",
             phone: "",
@@ -156,6 +160,7 @@ export default function RoboticsPage({
       };
       xhr.send(newformData);
     } catch (error) {
+      toastError("Ошибка отправки")
       console.error("Error submitting form", error);
     }
   };
@@ -181,7 +186,7 @@ export default function RoboticsPage({
         if (xhr.readyState === 2 && xhr.status === 200) {
           // Successfully completed the request
           console.log(xhr.responseText);
-          alert("Form successfully submitted!");
+          toastSuccess("Ваш запрос принят.")
           const newLocal = {
             name: "",
             phone: "",
@@ -191,6 +196,7 @@ export default function RoboticsPage({
       };
       xhr.send(newformData);
     } catch (error) {
+      toastError("Ошибка отправки")
       console.error("Error submitting form", error);
     }
   };
@@ -397,14 +403,14 @@ export default function RoboticsPage({
         {/* Photo Gallery Grid */}
         <div className="flex md:flex-wrap px-5 md:px-0 flex-row items-start gap-3 overflow-x-scroll">
           {/* First large image */}
-          <div className="min-w-[200px] w-[200px] h-[150px] md:w-[714px] md:h-[602px]">
+          <div className="min-w-[200px] w-[200px] h-[150px] md:w-[714px] md:h-[502px]">
             <Image
               width={100}
               height={100}
               loading="lazy"
               alt="First image"
-              className="w-full h-full object-cover rounded-lg shadow-lg"
-              src="/english/IMG_4309.jpg"
+              className="w-full h-full object-cover rounded-3xl shadow-lg"
+              src="/svg/IMG_4306.svg"
             />
           </div>
 
@@ -415,8 +421,8 @@ export default function RoboticsPage({
               height={100}
               loading="lazy"
               alt="Second image"
-              className="w-full h-full object-cover rounded-lg shadow-lg"
-              src="/english/IMG_4304.jpg"
+              className="w-full h-full object-cover rounded-3xl shadow-lg"
+              src="/svg/IMG_9911.svg"
             />
           </div>
 
@@ -427,20 +433,20 @@ export default function RoboticsPage({
               height={100}
               loading="lazy"
               alt="Third image"
-              className="w-full h-full object-cover rounded-lg shadow-lg"
-              src="/english/IMG_4298.jpg"
+              className="w-full h-full object-cover rounded-3xl shadow-lg"
+              src="/svg/IMG_4298.svg"
             />
           </div>
 
           {/* Fourth large image */}
-          <div className="min-w-[200px] w-[200px] h-[150px] md:w-[545px] md:h-[456px] translate-y-0 md:translate-y-[-145px]">
+          <div className="min-w-[200px] w-[200px] h-[150px] md:w-[545px] md:h-[356px] translate-y-0 md:translate-y-[-45px]">
             <Image
               width={100}
               height={100}
               loading="lazy"
               alt="Fourth image"
-              className="w-full h-full object-cover rounded-lg shadow-lg"
-              src="/english/IMG_9908.jpg"
+              className="w-full h-full object-cover rounded-3xl shadow-lg"
+              src="/svg/IMG_9908.svg"
             />
           </div>
         </div>
@@ -464,7 +470,7 @@ export default function RoboticsPage({
           </p>
         </div>
 
-        <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5">
+        <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5 px-3">
           <Input
             className="w-full sm:w-[240px]"
             label={t("form_name")}

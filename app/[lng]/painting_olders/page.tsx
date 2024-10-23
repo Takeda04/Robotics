@@ -25,6 +25,7 @@ import { getCookie } from "cookies-next";
 import MyModal from "@/components/modal/modal";
 import { useState } from "react";
 import { FaCircleArrowLeft } from "react-icons/fa6";
+import { toastError, toastSuccess } from "@/app/components/toast";
 
 interface FormData {
   name: string;
@@ -176,9 +177,7 @@ export default function PaintingOlderPage({
       // Step 3: Set up a callback function to handle the response
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-          // Successfully completed the request
-          console.log(xhr.responseText, "askjdaskdskajhd");
-          alert("Form successfully submitted!");
+          toastSuccess("Ваш запрос принят.")
           setFormData({
             name: "",
             phone: "",
@@ -189,6 +188,7 @@ export default function PaintingOlderPage({
       };
       xhr.send(newformData);
     } catch (error) {
+      toastError("Ошибка отправки")
       console.error("Error submitting form", error);
     }
   };
@@ -212,9 +212,7 @@ export default function PaintingOlderPage({
       // Step 3: Set up a callback function to handle the response
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 2 && xhr.status === 200) {
-          // Successfully completed the request
-          console.log(xhr.responseText);
-          alert("Form successfully submitted!");
+          toastSuccess("Ваш запрос принят.")
           const newLocal = {
             name: "",
             phone: "",
@@ -224,6 +222,7 @@ export default function PaintingOlderPage({
       };
       xhr.send(newformData);
     } catch (error) {
+      toastError("Ошибка отправки")
       console.error("Error submitting form", error);
     }
   };
@@ -305,7 +304,7 @@ export default function PaintingOlderPage({
         </div>
         <Image
           alt="home robot"
-          className="absolute z-40 w-[253px] h-[253.5px] -mt-[146px] md:mt-0 -right-5 md:-right-[100px] md:w-[500px] md:h-[605px] rounded-br-3xl md:rounded-none "
+          className="absolute z-40 w-[253px] h-[253.5px] -mt-[146px] md:mt-0 -right-5 md:-right-[10px] md:w-[500px] md:h-[605px] rounded-br-3xl md:rounded-none "
           height={500}
           src="/olders/olders.png"
           width={500}
@@ -440,7 +439,7 @@ export default function PaintingOlderPage({
           </p>
         </div>
 
-        <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5">
+        <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5 px-3">
           <Input
             className="w-full sm:w-[240px]"
             label={t("form_name")}

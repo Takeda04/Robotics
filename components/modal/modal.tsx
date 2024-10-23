@@ -11,6 +11,7 @@ import {
   ModalContent,
 } from "@nextui-org/react"; // Adjust imports based on your library
 import Image from "next/image";
+import { toastError, toastSuccess } from "@/app/components/toast";
 
 interface MyModalProps {
   isOpen: boolean;
@@ -85,9 +86,7 @@ const MyModal: React.FC<MyModalProps> = ({
       // Step 3: Set up a callback function to handle the response
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-          // Successfully completed the request
-          console.log(xhr.responseText);
-          alert("Form successfully submitted!");
+          toastSuccess("Ваш запрос принят.")
           onOpenChange(false);
           setFormData({
             name: "",
@@ -99,6 +98,8 @@ const MyModal: React.FC<MyModalProps> = ({
       };
       xhr.send(newformData);
     } catch (error) {
+      toastError("Ошибка отправки")
+
       console.error("Error submitting form", error);
     }
   };

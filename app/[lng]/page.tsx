@@ -163,9 +163,7 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
       // Step 3: Set up a callback function to handle the response
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-          // Successfully completed the request
-          console.log(xhr.responseText, "askjdaskdskajhd");
-          alert("Form successfully submitted!");
+          toastSuccess("Ваш запрос принят.")
           setFormData({
             name: "",
             phone: "",
@@ -176,6 +174,7 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
       };
       xhr.send(newformData);
     } catch (error) {
+      toastError("Ошибка отправки")
       console.error("Error submitting form", error);
     }
   };
@@ -189,7 +188,7 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
             alt="home robot"
             className={`w-[166px] h-[201px] md:w-[250px] md:h-[250px] lg:w-[450px] lg:h-[450px] xl:w-[600px] xl:h-[600px] object-contain`}
             height={100}
-            src="/robotics/home_robot.png"
+            src="/svg/home_robot.svg"
             width={100}
           />
         </div>
@@ -264,7 +263,7 @@ export default function Home({ params: { lng } }: { params: { lng: string } }) {
           </p>
         </div>
 
-        <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5">
+        <div className="container mx-auto max-w-7xl my-[50px] flex flex-wrap items-end justify-center gap-4 sm:gap-5 px-3">
           <Input
             className="w-full sm:w-[240px]"
             label={t("form_name")}
