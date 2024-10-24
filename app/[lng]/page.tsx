@@ -16,6 +16,7 @@ import CustomCarousel from "@/components/carousel";
 
 import { getCookie } from "cookies-next";
 import { useRef, useState } from "react";
+import { toastError, toastSuccess } from "../components/toast";
 
 interface FormData {
   name: string;

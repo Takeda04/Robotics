@@ -197,7 +197,7 @@ export default function PaintingChildrenPage({
       // Step 2: Open the request with POST method and target URL
       xhr.open(
         "POST",
-        "https://script.google.com/macros/s/AKfycbyzipB8FBVwOEzrjFnRNmSFUlTlO1L8LdwyxBvmzvpaz_Vr6CZcLSuKVIEoTsG6W2zUuQ/exec",
+        "https://script.google.com/macros/s/AKfycbzbu76KOZuLswEl2Bwq6gnf9shjFFlISffE5JZM3P5_AUqvZrhgb7K6kUVu7BYHXTziuw/exec",
         true
       );
 
@@ -226,12 +226,14 @@ export default function PaintingChildrenPage({
       newformData.append("page", "Rasm bolalar uchun");
       newformData.append("name", formData.name);
       newformData.append("phone", formData.phone);
+      newformData.append("age", "N/A");
+      newformData.append("course", "Rasm bolalar uchun");
       var xhr = new XMLHttpRequest();
 
       // Step 2: Open the request with POST method and target URL
       xhr.open(
         "POST",
-        "https://script.google.com/macros/s/AKfycbyzipB8FBVwOEzrjFnRNmSFUlTlO1L8LdwyxBvmzvpaz_Vr6CZcLSuKVIEoTsG6W2zUuQ/exec",
+        "https://script.google.com/macros/s/AKfycbzbu76KOZuLswEl2Bwq6gnf9shjFFlISffE5JZM3P5_AUqvZrhgb7K6kUVu7BYHXTziuw/exec",
         true
       );
 

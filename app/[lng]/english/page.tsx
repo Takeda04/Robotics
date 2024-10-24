@@ -172,6 +172,8 @@ export default function RoboticsPage({
       newformData.append("page", "English sahifa");
       newformData.append("name", formData.name);
       newformData.append("phone", formData.phone);
+      newformData.append("age", "N/A");
+      newformData.append("course", "English sahifa");
       var xhr = new XMLHttpRequest();
 
       // Step 2: Open the request with POST method and target URL

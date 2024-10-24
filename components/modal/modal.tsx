@@ -69,7 +69,7 @@ const MyModal: React.FC<MyModalProps> = ({
     try {
 
       const newformData = new FormData();
-
+      newformData.append("page", "Modal");
       newformData.append("name", formData.name);
       newformData.append("phone", formData.phone);
       newformData.append("age", formData.age);
@@ -79,7 +79,7 @@ const MyModal: React.FC<MyModalProps> = ({
       // Step 2: Open the request with POST method and target URL
       xhr.open(
         "POST",
-        "https://script.google.com/macros/s/AKfycbyzipB8FBVwOEzrjFnRNmSFUlTlO1L8LdwyxBvmzvpaz_Vr6CZcLSuKVIEoTsG6W2zUuQ/exec",
+        "https://script.google.com/macros/s/AKfycbzbu76KOZuLswEl2Bwq6gnf9shjFFlISffE5JZM3P5_AUqvZrhgb7K6kUVu7BYHXTziuw/exec",
         true
       );
 
