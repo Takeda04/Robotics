@@ -5,7 +5,7 @@ import { fontTektur } from "@/config/fonts";
 const ChildCard = ({ text, subText }: { text: string; subText: string }) => {
   return (
     <div
-      className="flex flex-col w-[390px] h-[160px] md:w-[410px] md:h-[230px] rounded-3xl bg-[#FFDE00] py-[25px] px-[16px] md:px-[25px]"
+      className="flex flex-col w-[330px] h-[150px] md:w-[410px] md:h-[230px] rounded-3xl bg-[#FFDE00] py-[25px] px-[16px] md:px-[25px]"
       style={{
         boxShadow: "0 0 10px 0 #F0D625, 0 0 15px 0 #F0D625, 0 0 20px 0 #F0D625",
       }}

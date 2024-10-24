@@ -2,10 +2,15 @@
 
 import Image from "next/image";
 import { Input } from "@nextui-org/input";
-import { Accordion, AccordionItem, Button, Select, SelectItem } from "@nextui-org/react";
+import {
+  Accordion,
+  AccordionItem,
+  Button,
+  Select,
+  SelectItem,
+} from "@nextui-org/react";
 
 import { fontTektur } from "@/config/fonts";
-
 
 import CustomCarousel from "@/components/carousel";
 import HeadCard from "@/components/robotics/head-card";
@@ -16,9 +21,8 @@ import { useTranslation } from "../i18n/client";
 
 import { getCookie } from "cookies-next";
 import { FaCircleArrowLeft } from "react-icons/fa6";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { toastError, toastSuccess } from "@/app/components/toast";
-
 
 interface FormData {
   name: string;
@@ -41,6 +45,35 @@ export default function PaintingChildrenPage({
 }) {
   const { t } = useTranslation(lng, "translation", {});
   const lang = getCookie("i18next");
+
+  const [showAll, setShowAll] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  // Detect screen size for mobile responsiveness
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // Mobile breakpoint
+    };
+
+    // Initial check
+    handleResize();
+
+    // Add event listener for resize
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup the event listener on unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  // Toggle between showing 3 and 6 cards on mobile
+  const toggleShowAll = () => {
+    setShowAll(!showAll);
+  };
+
+  // Determine the number of visible cards
+  const visibleCards = isMobile && !showAll ? 3 : 6;
 
   const courses = [
     { drop: t("drop1") },
@@ -126,9 +159,6 @@ export default function PaintingChildrenPage({
     />
   );
 
-
-
-
   const [formData, setFormData] = useState<FormData>({
     name: "",
     phone: "",
@@ -161,20 +191,20 @@ export default function PaintingChildrenPage({
       newformData.append("name", formData.name);
       newformData.append("phone", formData.phone);
       newformData.append("age", formData.age);
-      newformData.append("course", courses[(formData.course as any)].drop)
+      newformData.append("course", courses[formData.course as any].drop);
       var xhr = new XMLHttpRequest();
 
       // Step 2: Open the request with POST method and target URL
       xhr.open(
         "POST",
-        "https://script.google.com/macros/s/AKfycbwqCmg8x--QN5gIelVgzYnJhUnwXXVX_G2sb10v-YI2cpFWn4xf1EDr4WMyPlo8czipTw/exec",
+        "https://script.google.com/macros/s/AKfycbyzipB8FBVwOEzrjFnRNmSFUlTlO1L8LdwyxBvmzvpaz_Vr6CZcLSuKVIEoTsG6W2zUuQ/exec",
         true
       );
 
       // Step 3: Set up a callback function to handle the response
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-          toastSuccess("Ваш запрос принят.")
+          toastSuccess("Ваш запрос принят.");
           setFormData({
             name: "",
             phone: "",
@@ -185,12 +215,11 @@ export default function PaintingChildrenPage({
       };
       xhr.send(newformData);
     } catch (error) {
-      toastError("Ошибка отправки")
+      toastError("Ошибка отправки");
       console.error("Error submitting form", error);
     }
   };
   const handleSubmit2 = async () => {
-
     try {
       const newformData = new FormData();
 
@@ -202,24 +231,24 @@ export default function PaintingChildrenPage({
       // Step 2: Open the request with POST method and target URL
       xhr.open(
         "POST",
-        "https://script.google.com/macros/s/AKfycbwqCmg8x--QN5gIelVgzYnJhUnwXXVX_G2sb10v-YI2cpFWn4xf1EDr4WMyPlo8czipTw/exec",
+        "https://script.google.com/macros/s/AKfycbyzipB8FBVwOEzrjFnRNmSFUlTlO1L8LdwyxBvmzvpaz_Vr6CZcLSuKVIEoTsG6W2zUuQ/exec",
         true
       );
 
       // Step 3: Set up a callback function to handle the response
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 2 && xhr.status === 200) {
-          toastSuccess("Ваш запрос принят.")
+          toastSuccess("Ваш запрос принят.");
           const newLocal = {
             name: "",
-            phone: ""
+            phone: "",
           };
           setFormData(newLocal as any);
         }
       };
       xhr.send(newformData);
     } catch (error) {
-      toastError("Ошибка отправки")
+      toastError("Ошибка отправки");
       console.error("Error submitting form", error);
     }
   };
@@ -287,7 +316,7 @@ export default function PaintingChildrenPage({
                 name="phone"
               />
               <Button
-              onClick={handleSubmit2}
+                onClick={handleSubmit2}
                 className={`${fontTektur.variable} font-tektur font-bold text-black bg-[#FFE000] h-[35px] md:h-[55px] text-[14px] md:text-[24px] w-[80px] md:w-[200px]`}
                 style={{
                   boxShadow:
@@ -350,7 +379,8 @@ export default function PaintingChildrenPage({
             </div>
             <br />
             <div className="mt-3">
-              {t("accordion_per_title")} : <span>{t("paint_children_time")}</span>
+              {t("accordion_per_title")} :{" "}
+              <span>{t("paint_children_time")}</span>
             </div>
           </AccordionItem>
         </Accordion>
@@ -371,10 +401,28 @@ export default function PaintingChildrenPage({
           {t("why")}
         </p>
         <div className="flex flex-wrap items-center justify-around gap-y-7 p-2 md:p-0">
-          {edu_card.map(({ text, subText }, idx) => (
-            <ChildCard key={idx} text={text} subText={subText} />
+          {edu_card.slice(0, visibleCards).map(({ text, subText }, idx) => (
+            <div
+              key={idx}
+              className={`transition-opacity duration-300 ${
+                !showAll && isMobile && idx > 2
+                  ? "opacity-0 h-0"
+                  : "opacity-100 h-auto"
+              }`}
+            >
+              <ChildCard key={idx} text={text} subText={subText} />
+            </div>
           ))}
         </div>
+        {isMobile && (
+          <Button
+            onClick={toggleShowAll}
+            variant="light"
+            className="mx-auto flex md:hidden mt-4 transition-all duration-300 ease-in-out text-[#F0D625]"
+          >
+           {showAll ? t("kam") : t("kop")}
+          </Button>
+        )}
       </section>
 
       <section className="container mx-auto max-w-7xl">

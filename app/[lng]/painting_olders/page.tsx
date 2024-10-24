@@ -23,7 +23,7 @@ import CustomCarousel from "@/components/carousel";
 
 import { getCookie } from "cookies-next";
 import MyModal from "@/components/modal/modal";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { FaCircleArrowLeft } from "react-icons/fa6";
 import { toastError, toastSuccess } from "@/app/components/toast";
 
@@ -59,6 +59,35 @@ export default function PaintingOlderPage({
       style={{ color: isOpen ? "#FFDE00" : "#FFF", fontSize: "24px" }}
     />
   );
+
+  const [showAll, setShowAll] = useState<boolean>(false);
+  const [isMobile, setIsMobile] = useState<boolean>(false);
+
+  // Detect screen size for mobile responsiveness
+  useEffect(() => {
+    const handleResize = () => {
+      setIsMobile(window.innerWidth < 768); // Mobile breakpoint
+    };
+
+    // Initial check
+    handleResize();
+
+    // Add event listener for resize
+    window.addEventListener("resize", handleResize);
+
+    // Cleanup the event listener on unmount
+    return () => {
+      window.removeEventListener("resize", handleResize);
+    };
+  }, []);
+
+  // Toggle between showing 3 and 6 cards on mobile
+  const toggleShowAll = () => {
+    setShowAll(!showAll);
+  };
+
+  // Determine the number of visible cards
+  const visibleCards = isMobile && !showAll ? 3 : 6;
 
   const courses = [
     { drop: t("drop1") },
@@ -170,14 +199,14 @@ export default function PaintingOlderPage({
       // Step 2: Open the request with POST method and target URL
       xhr.open(
         "POST",
-        "https://script.google.com/macros/s/AKfycbwqCmg8x--QN5gIelVgzYnJhUnwXXVX_G2sb10v-YI2cpFWn4xf1EDr4WMyPlo8czipTw/exec",
+        "https://script.google.com/macros/s/AKfycbyzipB8FBVwOEzrjFnRNmSFUlTlO1L8LdwyxBvmzvpaz_Vr6CZcLSuKVIEoTsG6W2zUuQ/exec",
         true
       );
 
       // Step 3: Set up a callback function to handle the response
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 4 && xhr.status === 200) {
-          toastSuccess("Ваш запрос принят.")
+          toastSuccess("Ваш запрос принят.");
           setFormData({
             name: "",
             phone: "",
@@ -188,7 +217,7 @@ export default function PaintingOlderPage({
       };
       xhr.send(newformData);
     } catch (error) {
-      toastError("Ошибка отправки")
+      toastError("Ошибка отправки");
       console.error("Error submitting form", error);
     }
   };
@@ -205,14 +234,14 @@ export default function PaintingOlderPage({
       // Step 2: Open the request with POST method and target URL
       xhr.open(
         "POST",
-        "https://script.google.com/macros/s/AKfycbwqCmg8x--QN5gIelVgzYnJhUnwXXVX_G2sb10v-YI2cpFWn4xf1EDr4WMyPlo8czipTw/exec",
+        "https://script.google.com/macros/s/AKfycbyzipB8FBVwOEzrjFnRNmSFUlTlO1L8LdwyxBvmzvpaz_Vr6CZcLSuKVIEoTsG6W2zUuQ/exec",
         true
       );
 
       // Step 3: Set up a callback function to handle the response
       xhr.onreadystatechange = function () {
         if (xhr.readyState === 2 && xhr.status === 200) {
-          toastSuccess("Ваш запрос принят.")
+          toastSuccess("Ваш запрос принят.");
           const newLocal = {
             name: "",
             phone: "",
@@ -222,7 +251,7 @@ export default function PaintingOlderPage({
       };
       xhr.send(newformData);
     } catch (error) {
-      toastError("Ошибка отправки")
+      toastError("Ошибка отправки");
       console.error("Error submitting form", error);
     }
   };
@@ -373,11 +402,29 @@ export default function PaintingOlderPage({
         >
           {t("why")}
         </p>
-        <div className="flex flex-wrap items-center justify-between gap-y-7 p-3 md:p-0 transition-all duration-300 ease-in-out">
-          {edu_card.map(({ text, subText }, idx) => (
-            <ChildCard key={idx} text={text} subText={subText} />
+        <div className="flex flex-wrap items-center justify-around gap-y-7 p-2 md:p-0">
+          {edu_card.slice(0, visibleCards).map(({ text, subText }, idx) => (
+            <div
+              key={idx}
+              className={`transition-opacity duration-300 ${
+                !showAll && isMobile && idx > 2
+                  ? "opacity-0 h-0"
+                  : "opacity-100 h-auto"
+              }`}
+            >
+              <ChildCard key={idx} text={text} subText={subText} />
+            </div>
           ))}
         </div>
+        {isMobile && (
+          <Button
+            onClick={toggleShowAll}
+            variant="light"
+            className="mx-auto flex md:hidden mt-4 transition-all duration-300 ease-in-out text-[#F0D625]"
+          >
+            {showAll ? t("kam") : t("kop")}
+          </Button>
+        )}
       </section>
       <section className="relative container mx-auto max-w-7xl my-20">
         <Image
@@ -406,7 +453,7 @@ export default function PaintingOlderPage({
           onOpenChange={handleModalChange}
           t={t}
           courses={courses}
-          />
+        />
       </section>
 
       <section className="container mx-auto max-w-7xl">
